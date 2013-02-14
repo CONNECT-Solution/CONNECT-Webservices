@@ -42,6 +42,7 @@
         <module>AdapterAuthenication</module>
         <module>AdminDistribution</module>
         <module>AuditRepository</module>
+        <module>Component</module>
         <module>ConnectionManager</module>
         <module>Direct</module>
         <module>DocRegistry</module>
