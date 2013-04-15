@@ -7,7 +7,7 @@
     </parent>
     <groupId>org.connectopensource</groupId>
     <artifactId>Webservices</artifactId>
-    <version>4.0.3-SNAPSHOT</version>
+    <version>4.0.3</version>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <name>CONNECT Web services</name>
@@ -16,7 +16,7 @@
         <connection>scm:git:git@github.com:${git.username}/CONNECT-Webservices.git</connection>
         <developerConnection>scm:git:git@github.com:${git.username}/CONNECT-Webservices.git</developerConnection>
         <url>https://github.com/${git.username}/CONNECT-Webservices</url>
-      <tag>HEAD</tag>
+      <tag>4.0.3</tag>
     </scm>
 
     <licenses>
