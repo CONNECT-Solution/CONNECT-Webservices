@@ -92,6 +92,7 @@
                         <sp:RequireSignatureConfirmation/>
                     </wsp:Policy>
                 </sp:Wss11>
+				<wsaw:UsingAddressing />
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>

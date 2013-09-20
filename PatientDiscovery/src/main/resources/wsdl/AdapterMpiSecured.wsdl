@@ -10,7 +10,7 @@
     xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
     xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy"
     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
-    xmlns:wsaw="http://www.w3.org/2005/08/addressing"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
     xmlns:ihe="urn:ihe:iti:xds-b:2007"
     xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
     xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
@@ -108,6 +108,7 @@
                         <sp:RequireSignatureConfirmation/>
                     </wsp:Policy>
                 </sp:Wss11>
+				<wsaw:UsingAddressing />
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
