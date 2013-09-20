@@ -9,7 +9,6 @@
    xmlns:ihe="urn:ihe:iti:xds-b:2007" 
    xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" 
    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
-   xmlns:wsaws="http://www.w3.org/2005/08/addressing"
    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
    xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
@@ -129,6 +128,7 @@
             <sp:RequireSignatureConfirmation/>
           </wsp:Policy>
         </sp:Wss11>
+		<wsaw:UsingAddressing />
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>

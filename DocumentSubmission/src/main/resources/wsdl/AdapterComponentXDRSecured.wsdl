@@ -7,7 +7,6 @@
              xmlns="http://schemas.xmlsoap.org/wsdl/" 
              xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
              xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" 
-             xmlns:wsaws="http://www.w3.org/2005/08/addressing" 
              xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
              xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty" 
              xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
@@ -105,6 +104,7 @@
                         <sp:RequireSignatureConfirmation/>
                     </wsp:Policy>
                 </sp:Wss11>
+				<wsaw:UsingAddressing />
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
