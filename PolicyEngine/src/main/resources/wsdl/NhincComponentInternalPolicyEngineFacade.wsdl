@@ -24,15 +24,6 @@
 	<message name="CheckPolicyFindAuditEventsRequestMessage">
 		<part name="CheckPolicyFindAuditEventsRequest" element="pdte:CheckPolicyFindAuditEventsRequest"/>
 	</message>
-	<message name="CheckPolicySubscribeRequestMessage">
-		<part name="CheckPolicySubscribeRequest" element="pdte:CheckPolicySubscribeRequest"/>
-	</message>
-	<message name="CheckPolicyUnsubscribeRequestMessage">
-		<part name="CheckPolicyUnsubscribeRequest" element="pdte:CheckPolicyUnsubscribeRequest"/>
-	</message>
-	<message name="CheckPolicyNotifyRequestMessage">
-		<part name="CheckPolicyNotifyRequest" element="pdte:CheckPolicyNotifyRequest"/>
-	</message>
 	<portType name="NhincComponentInternalPolicyEngineFacadePortType">
 		<operation name="CheckPolicySubjectAdded">
 			<input name="CheckPolicySubjectAddedRequest" message="tns:CheckPolicySubjectAddedRequestMessage"/>
@@ -57,18 +48,6 @@
 		<operation name="CheckPolicyFindAuditEvents">
 			<input name="CheckPolicyFindAuditEventsRequest" message="tns:CheckPolicyFindAuditEventsRequestMessage"/>
 			<output name="CheckPolicyFindAuditEventsResponse" message="tns:CheckPolicyResponseMessage"/>
-		</operation>
-		<operation name="CheckPolicySubscribe">
-			<input name="CheckPolicySubscribeRequest" message="tns:CheckPolicySubscribeRequestMessage"/>
-			<output name="CheckPolicySubscribeResponse" message="tns:CheckPolicyResponseMessage"/>
-		</operation>
-		<operation name="CheckPolicyUnsubscribe">
-			<input name="CheckPolicyUnsubscribeRequest" message="tns:CheckPolicyUnsubscribeRequestMessage"/>
-			<output name="CheckPolicyUnsubscribeResponse" message="tns:CheckPolicyResponseMessage"/>
-		</operation>
-		<operation name="CheckPolicyNotify">
-			<input name="CheckPolicyNotifyRequest" message="tns:CheckPolicyNotifyRequestMessage"/>
-			<output name="CheckPolicyNotifyResponse" message="tns:CheckPolicyResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="NhincComponentInternalPolicyEngineFacadePortTypeBinding" type="tns:NhincComponentInternalPolicyEngineFacadePortType">
@@ -124,33 +103,6 @@
 				<soap:body use="literal"/>
 			</input>
 			<output name="CheckPolicyFindAuditEventsResponse">
-				<soap:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="CheckPolicySubscribe">
-			<soap:operation soapAction="urn:CheckPolicySubscribe"/>
-			<input name="CheckPolicySubscribeRequest">
-				<soap:body use="literal"/>
-			</input>
-			<output name="CheckPolicySubscribeResponse">
-				<soap:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="CheckPolicyUnsubscribe">
-			<soap:operation soapAction="urn:CheckPolicyUnsubscribe"/>
-			<input name="CheckPolicyUnsubscribeRequest">
-				<soap:body use="literal"/>
-			</input>
-			<output name="CheckPolicyUnsubscribeResponse">
-				<soap:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="CheckPolicyNotify">
-			<soap:operation soapAction="urn:CheckPolicyNotify"/>
-			<input name="CheckPolicyNotifyRequest">
-				<soap:body use="literal"/>
-			</input>
-			<output name="CheckPolicyNotifyResponse">
 				<soap:body use="literal"/>
 			</output>
 		</operation>
