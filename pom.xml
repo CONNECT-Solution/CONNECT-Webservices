@@ -50,7 +50,6 @@
         <module>DocumentQuery</module>
         <module>DocumentRetrieve</module>
         <module>DocumentSubmission</module>
-        <module>HIEM</module>
         <module>PatientCorrelation</module>
         <module>PatientDiscovery</module>
         <module>PolicyEngine</module>
