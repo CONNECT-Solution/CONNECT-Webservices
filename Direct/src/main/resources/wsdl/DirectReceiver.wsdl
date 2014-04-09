@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="DirectReceiverService" targetNamespace="http://direct.nhinc.fha.hhs.gov/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://direct.nhinc.fha.hhs.gov/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://direct.nhinc.fha.hhs.gov/"
+           elementFormDefault="unqualified"
+           targetNamespace="http://direct.nhinc.fha.hhs.gov/"
+           version="1.0">
+   <xs:element name="receiveInbound" type="tns:receiveInbound"/>
+   <xs:element name="receiveInboundResponse" type="tns:receiveInboundResponse"/>
+   <xs:complexType name="receiveInbound">
+      <xs:sequence>
+         <xs:element minOccurs="0" name="arg0" type="tns:mimeMessage"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="mimeMessage">
+      <xs:complexContent>
+         <xs:extension base="tns:message">
+            <xs:sequence>
+               <xs:element minOccurs="0" name="contentID" type="xs:string"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" name="contentLanguage" nillable="true"
+                           type="xs:string"/>
+               <xs:element minOccurs="0" name="contentMD5" type="xs:string"/>
+               <xs:element minOccurs="0" name="dataHandler" type="xs:base64Binary"/>
+               <xs:element minOccurs="0" name="description" type="xs:string"/>
+               <xs:element minOccurs="0" name="disposition" type="xs:string"/>
+               <xs:element minOccurs="0" name="fileName" type="xs:string"/>
+               <xs:element minOccurs="0" name="sender" type="tns:address"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType abstract="true" name="message">
+      <xs:sequence>
+         <xs:element maxOccurs="unbounded" minOccurs="0" name="replyTo" nillable="true"
+                     type="tns:address"/>
+         <xs:element minOccurs="0" name="sentDate" type="xs:dateTime"/>
+         <xs:element minOccurs="0" name="subject" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType abstract="true" name="address">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="receiveInboundResponse">
+      <xs:sequence/>
+   </xs:complexType>
+</xs:schema>  </wsdl:types>
+  <wsdl:message name="receiveInbound">
+    <wsdl:part name="parameters" element="tns:receiveInbound">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="receiveInboundResponse">
+    <wsdl:part name="parameters" element="tns:receiveInboundResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DirectReceiver">
+    <wsdl:operation name="receiveInbound">
+      <wsdl:input name="receiveInbound" message="tns:receiveInbound">
+    </wsdl:input>
+      <wsdl:output name="receiveInboundResponse" message="tns:receiveInboundResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DirectReceiverServiceSoapBinding" type="tns:DirectReceiver">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="receiveInbound">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="receiveInbound">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="receiveInboundResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DirectReceiverService">
+    <wsdl:port name="DirectReceiverPort" binding="tns:DirectReceiverServiceSoapBinding">
+      <soap:address location="http://servicelocation/DirectReceiverPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
