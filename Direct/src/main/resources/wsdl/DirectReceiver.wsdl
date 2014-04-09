@@ -6,12 +6,28 @@
            elementFormDefault="unqualified"
            targetNamespace="http://direct.nhinc.fha.hhs.gov/"
            version="1.0">
+   <xs:element name="createFailedDeliveryDSNFailureMessage"
+               type="tns:createFailedDeliveryDSNFailureMessage"/>
+   <xs:element name="createFailedDeliveryDSNFailureMessageResponse"
+               type="tns:createFailedDeliveryDSNFailureMessageResponse"/>
    <xs:element name="receiveInbound" type="tns:receiveInbound"/>
    <xs:element name="receiveInboundResponse" type="tns:receiveInboundResponse"/>
    <xs:complexType name="receiveInbound">
       <xs:sequence>
-         <xs:element minOccurs="0" name="arg0" type="tns:mimeMessage"/>
+         <xs:element minOccurs="0" name="arg0" type="tns:mailSenderImpl"/>
+         <xs:element minOccurs="0" name="arg1" type="tns:directEventLogger"/>
+         <xs:element minOccurs="0" name="arg2" type="tns:smtpAgentImpl"/>
+         <xs:element minOccurs="0" name="arg3" type="tns:mimeMessage"/>
       </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="mailSenderImpl">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="directEventLogger">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="smtpAgentImpl">
+      <xs:sequence/>
    </xs:complexType>
    <xs:complexType name="mimeMessage">
       <xs:complexContent>
@@ -44,9 +60,65 @@
    <xs:complexType name="receiveInboundResponse">
       <xs:sequence/>
    </xs:complexType>
+   <xs:complexType name="createFailedDeliveryDSNFailureMessage">
+      <xs:sequence>
+         <xs:element minOccurs="0" name="arg0" type="tns:mimeMessage"/>
+         <xs:element minOccurs="0" name="arg1" type="tns:tx"/>
+         <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+         <xs:element minOccurs="0" name="arg3" type="tns:smtpAgentImpl"/>
+         <xs:element minOccurs="0" name="arg4" type="tns:directEventLogger"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="tx">
+      <xs:sequence>
+         <xs:element name="details">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element minOccurs="0" name="key" type="xs:string"/>
+                           <xs:element minOccurs="0" name="value" type="tns:txDetail"/>
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element minOccurs="0" name="msgType" type="tns:txMessageType"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="txDetail">
+      <xs:sequence>
+         <xs:element minOccurs="0" name="detailName" type="xs:string"/>
+         <xs:element minOccurs="0" name="detailValue" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="createFailedDeliveryDSNFailureMessageResponse">
+      <xs:sequence>
+         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:mimeMessage"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="txMessageType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="UNKNOWN"/>
+         <xs:enumeration value="IMF"/>
+         <xs:enumeration value="SMIME"/>
+         <xs:enumeration value="MDN"/>
+         <xs:enumeration value="DSN"/>
+      </xs:restriction>
+   </xs:simpleType>
 </xs:schema>  </wsdl:types>
+  <wsdl:message name="createFailedDeliveryDSNFailureMessage">
+    <wsdl:part name="parameters" element="tns:createFailedDeliveryDSNFailureMessage">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="receiveInbound">
     <wsdl:part name="parameters" element="tns:receiveInbound">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFailedDeliveryDSNFailureMessageResponse">
+    <wsdl:part name="parameters" element="tns:createFailedDeliveryDSNFailureMessageResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="receiveInboundResponse">
@@ -60,9 +132,24 @@
       <wsdl:output name="receiveInboundResponse" message="tns:receiveInboundResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="createFailedDeliveryDSNFailureMessage">
+      <wsdl:input name="createFailedDeliveryDSNFailureMessage" message="tns:createFailedDeliveryDSNFailureMessage">
+    </wsdl:input>
+      <wsdl:output name="createFailedDeliveryDSNFailureMessageResponse" message="tns:createFailedDeliveryDSNFailureMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DirectReceiverServiceSoapBinding" type="tns:DirectReceiver">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createFailedDeliveryDSNFailureMessage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createFailedDeliveryDSNFailureMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createFailedDeliveryDSNFailureMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="receiveInbound">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="receiveInbound">
@@ -75,7 +162,7 @@
   </wsdl:binding>
   <wsdl:service name="DirectReceiverService">
     <wsdl:port name="DirectReceiverPort" binding="tns:DirectReceiverServiceSoapBinding">
-      <soap:address location="http://servicelocation/DirectReceiverPort"/>
+      <soap:address location="http://localhost:9090/DirectReceiverPort"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
