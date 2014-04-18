@@ -13,19 +13,13 @@
         </xsd:schema>
     </wsdl:types>
     <wsdl:message name="sendOutboundDirect">
-        <wsdl:part name="parameters" element="tns:sendOutboundDirect">
-        </wsdl:part>
-    </wsdl:message>
-    <wsdl:message name="sendOutboundDirectResponse">
-        <wsdl:part name="parameters" element="tns:sendOutboundDirectResponse">
+        <wsdl:part name="parameters" element="tns:SendoutMessage">
         </wsdl:part>
     </wsdl:message>
     <wsdl:portType name="DirectSender_PortType">
         <wsdl:operation name="sendOutboundDirect">
             <wsdl:input name="sendOutboundDirect" message="tns:sendOutboundDirect">
-            </wsdl:input>
-            <wsdl:output name="sendOutboundDirectResponse" message="tns:sendOutboundDirectResponse">
-            </wsdl:output>
+            </wsdl:input>            
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="DirectSenderServiceSoapBinding" type="tns:DirectSender_PortType">
@@ -34,10 +28,7 @@
             <soap:operation soapAction="" style="document"/>
             <wsdl:input name="sendOutboundDirect">
                 <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="sendOutboundDirectResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
+            </wsdl:input>            
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="DirectSenderService">
