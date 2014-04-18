@@ -7,8 +7,8 @@
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
     <wsdl:types>
         <xsd:schema elementFormDefault="qualified"
-                targetNamespace="urn:gov:hhs:fha:nhinc:direct"
-                xmlns:dr="urn:gov:hhs:fha:nhinc:direct">
+                    targetNamespace="urn:gov:hhs:fha:nhinc:direct"
+                    xmlns:dr="urn:gov:hhs:fha:nhinc:direct">
             <xsd:include schemaLocation="classpath:schemas/nhinc/direct/DirectReceiver.xsd"/>
         </xsd:schema>
     </wsdl:types>
@@ -16,16 +16,10 @@
         <wsdl:part name="parameters" element="tns:receiveInbound">
         </wsdl:part>
     </wsdl:message>
-    <wsdl:message name="receiveInboundResponse">
-        <wsdl:part name="parameters" element="tns:receiveInboundResponse">
-        </wsdl:part>
-    </wsdl:message>
     <wsdl:portType name="DirectReceiver_PortType">
         <wsdl:operation name="receiveInbound">
             <wsdl:input name="receiveInbound" message="tns:receiveInbound">
-            </wsdl:input>
-            <wsdl:output name="receiveInboundResponse" message="tns:receiveInboundResponse">
-            </wsdl:output>
+            </wsdl:input>            
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="DirectReceiverServiceSoapBinding" type="tns:DirectReceiver_PortType">
@@ -34,10 +28,7 @@
             <soap:operation soapAction="" style="document"/>
             <wsdl:input name="receiveInbound">
                 <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="receiveInboundResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
+            </wsdl:input>            
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="DirectReceiverService">
