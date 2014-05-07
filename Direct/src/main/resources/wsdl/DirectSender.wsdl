@@ -8,7 +8,7 @@
     <wsdl:types>
         <xsd:schema elementFormDefault="qualified"
                 targetNamespace="urn:gov:hhs:fha:nhinc:direct"
-                xmlns:ds="urn:gov:hhs:fha:nhinc:direct">
+                xmlns:ds="urn:gov:hhs:fha:nhinc:direct">            
             <xsd:include schemaLocation="classpath:schemas/nhinc/direct/DirectSender.xsd"/>
         </xsd:schema>
     </wsdl:types>
