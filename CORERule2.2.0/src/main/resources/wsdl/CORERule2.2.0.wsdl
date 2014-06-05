@@ -13,7 +13,7 @@
 			    elementFormDefault="qualified"
 			    targetNamespace="http://www.caqh.org/SOAP/WSDL/">
       <xsd:import namespace="http://www.caqh.org/SOAP/WSDL/CORERule2.2.0.xsd"
-schemaLocation="CORERule2.2.0.xsd"/>
+schemaLocation="classpath:schemas/caqh/CORERule2.2.0.xsd"/>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="RealTimeRequestMessage">
