@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -54,14 +54,15 @@
         <module>PatientDiscovery</module>
         <module>PolicyEngine</module>
         <module>RedactionEngine</module>
-    </modules>
+    <module>X12DocumentSubmissionWebservices</module>
+  </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
             <groupId>org.connectopensource</groupId>
             <artifactId>CONNECTCommonTypesLib</artifactId>
-            <version>4.0.8</version>
+            <version>4.0.9-SNAPSHOT</version>
             <type>jar</type>
         </dependency> 
     </dependencies>
@@ -173,7 +174,7 @@
                                     <extraarg>-mark-generated</extraarg>
                                     <!-- next two are a pair -->
                                     <extraarg>-wsdlLocation</extraarg>
-                                    <extraarg />
+                                    <extraarg/>
                                 </extraargs>
                                 <noAddressBinding>true</noAddressBinding>
                             </defaultOptions>
