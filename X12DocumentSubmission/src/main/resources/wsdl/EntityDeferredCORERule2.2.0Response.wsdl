@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:nhincentitycoreresponse"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
+             xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
+             xmlns:x12="http://www.caqh.org/SOAP/WSDL/CORERule2.2.0.xsd"
+             xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+             name="NhincEntityCOREResponse"
+             targetNamespace="urn:gov:hhs:fha:nhinc:nhincentitycoreresponse">
+    <documentation>CAQH CORE X12 Document Submission Response</documentation>
+    <types>
+        <xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/"  elementFormDefault="qualified" targetNamespace="http://www.caqh.org/SOAP/WSDL/">
+            <xsd:import namespace="http://www.caqh.org/SOAP/WSDL/CORERule2.2.0.xsd" schemaLocation="classpath:schemas/nhin/x12.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="classpath:schemas/nhinc/common/NhincCommonEntity.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="COREEnvelopeBatchSubmissionResponseMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponse"/>
+    </message>
+    <message name="COREEnvelopeBatchSubmissionAckRetrievalResponse">
+        <part name="body" element="x12:X12Acknowledgement"/>
+    </message>   
+    <portType name="EntityBatchSubmissionResponse_PortType">
+        <operation name="EntityBatchSubmissionResponse">
+            <input message="tns:COREEnvelopeBatchSubmissionResponseMessage"/>
+            <output message="tns:COREEnvelopeBatchSubmissionAckRetrievalResponse"/>
+        </operation>
+    </portType>
+    <binding name="BatchSubmissionResponseSoapBinding" type="tns:EntityBatchSubmissionResponse_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="EntityBatchSubmissionResponse">
+            <soap12:operation soapAction="EntityBatchSubmissionResponse" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="EntityX12BatchSubmissionResponse">
+        <port name="EntityBatchSubmissionResponse_Port" binding="tns:BatchSubmissionResponseSoapBinding">
+            <soap12:address location="http://localhost:${HttpDefaultPort}/Gateway/X12DocumentSubmission/EntityService/EntityX12DocSubmissionResponseUnsecured"/>
+        </port>
+    </service>
+</definitions>
