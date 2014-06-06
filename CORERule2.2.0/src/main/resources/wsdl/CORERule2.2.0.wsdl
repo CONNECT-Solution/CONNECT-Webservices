@@ -5,6 +5,15 @@
 		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 		xmlns:CORE-XSD="http://www.caqh.org/SOAP/WSDL/CORERule2.2.0.xsd"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+    xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" 
+    xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
+    xmlns:sc="http://schemas.sun.com/2006/03/wss/server" 
+    xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
+    xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
+    xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
 		xmlns="http://schemas.xmlsoap.org/wsdl/"
 		name="CORE"
 		targetNamespace="http://www.caqh.org/SOAP/WSDL/">
@@ -36,7 +45,7 @@ schemaLocation="classpath:schemas/caqh/CORERule2.2.0.xsd"/>
     <wsdl:part name="body"
               element="CORE-XSD:COREEnvelopeBatchSubmissionAckRetrievalResponse"/>
   </wsdl:message>
-  <wsdl:message name="BatchResultsRetrievalRequestMessage">
+  <!-- wsdl:message name="BatchResultsRetrievalRequestMessage">
     <wsdl:part name="body"
                    element="CORE-XSD:COREEnvelopeBatchResultsRetrievalRequest"/>
   </wsdl:message>
@@ -49,23 +58,24 @@ schemaLocation="classpath:schemas/caqh/CORERule2.2.0.xsd"/>
   </wsdl:message>
   <wsdl:message name="BatchResultsAckSubmissionResponseMessage">
     <wsdl:part name="body" element="CORE-XSD:COREEnvelopeBatchResultsAckSubmissionResponse"/>
- </wsdl:message>
+  </wsdl:message -->
   <wsdl:portType name="CORETransactions">
     <wsdl:operation name="RealTimeTransaction">
-      <wsdl:input message="CORE:RealTimeRequestMessage"/>
-      <wsdl:output message="CORE:RealTimeResponseMessage"/>
+      <wsdl:input message="CORE:RealTimeRequestMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessage"/>
+      <wsdl:output message="CORE:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
     </wsdl:operation>
-    <wsdl:operation name="BatchSubmitTransaction">
+    <wsdl:operation name="BatchSubmitTransactionDeferredRequest">
+      <wsdl:input message="CORE:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessage"/>
+      <wsdl:output message="CORE:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="BatchSubmitTransactionDeferredResponse">
+      <wsdl:input message="CORE:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
+      <wsdl:output message="CORE:BatchSubmissionAckRetrievalResponseMessage"
+      wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
+    </wsdl:operation>
+    <!-- wsdl:operation name="GenericBatchSubmissionTransaction">
       <wsdl:input message="CORE:BatchSubmissionMessage"/>
       <wsdl:output message="CORE:BatchSubmissionResponseMessage"/>
-    </wsdl:operation>
-   <wsdl:operation name="GenericBatchSubmissionTransaction">
-      <wsdl:input message="CORE:BatchSubmissionMessage"/>
-      <wsdl:output message="CORE:BatchSubmissionResponseMessage"/>
-    </wsdl:operation>
-    <wsdl:operation name="BatchSubmitAckRetrievalTransaction">
-      <wsdl:input message="CORE:BatchSubmissionAckRetrievalRequestMessage"/>
-      <wsdl:output message="CORE:BatchSubmissionAckRetrievalResponseMessage"/>
     </wsdl:operation>
     <wsdl:operation name="BatchResultsRetrievalTransaction">
       <wsdl:input message="CORE:BatchResultsRetrievalRequestMessage"/>
@@ -75,48 +85,54 @@ schemaLocation="classpath:schemas/caqh/CORERule2.2.0.xsd"/>
       <wsdl:input message="CORE:BatchResultsAckSubmissionMessage"/>
       <wsdl:output message="CORE:BatchResultsAckSubmissionResponseMessage"/>
     </wsdl:operation>
-<wsdl:operation name="GenericBatchRetrievalTransaction">
+    <wsdl:operation name="GenericBatchRetrievalTransaction">
       <wsdl:input message="CORE:BatchResultsRetrievalRequestMessage"/>
       <wsdl:output message="CORE:BatchResultsRetrievalResponseMessage"/>
     </wsdl:operation>
     <wsdl:operation name="GenericBatchReceiptConfirmationTransaction">
       <wsdl:input message="CORE:BatchResultsAckSubmissionMessage"/>
       <wsdl:output message="CORE:BatchResultsAckSubmissionResponseMessage"/>
-    </wsdl:operation>
+    </wsdl:operation -->
   </wsdl:portType>
   <wsdl:binding name="CoreSoapBinding" type="CORE:CORETransactions">
     <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#NwHIN_MessagingPlatform_SoapPolicy"/>
     <wsdl:operation name="RealTimeTransaction">
       <soap12:operation soapAction="RealTimeTransaction" style="document"/>
       <wsdl:input>
         <soap12:body use="literal"/>
+        <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal"/>
+        <wsp:PolicyReference URI="#MTOM_Binding_Soap_Output_Policy"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="BatchSubmitTransaction">
+    <wsdl:operation name="BatchSubmitTransactionDeferredRequest">
       <soap12:operation soapAction="BatchSubmitTransaction" style="document"/>
       <wsdl:input>
         <soap12:body use="literal"/>
+        <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal"/>
+        <wsp:PolicyReference URI="#MTOM_Binding_Soap_Output_Policy"/>
       </wsdl:output>
     </wsdl:operation>
-<wsdl:operation name="GenericBatchSubmissionTransaction">
-      <soap12:operation
-                           soapAction="GenericBatchSubmissionTransaction" style="document"/>
+    <wsdl:operation name="BatchSubmitTransactionDeferredResponse">
+      <soap12:operation soapAction="BatchSubmitTransaction" style="document"/>
       <wsdl:input>
         <soap12:body use="literal"/>
+        <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal"/>
+        <wsp:PolicyReference URI="#MTOM_Binding_Soap_Output_Policy"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="BatchSubmitAckRetrievalTransaction">
+<!-- wsdl:operation name="GenericBatchSubmissionTransaction">
       <soap12:operation
-                           soapAction="BatchSubmitAckRetrievalTransaction" style="document"/>
+                           soapAction="GenericBatchSubmissionTransaction" style="document"/>
       <wsdl:input>
         <soap12:body use="literal"/>
       </wsdl:input>
@@ -163,11 +179,87 @@ schemaLocation="classpath:schemas/caqh/CORERule2.2.0.xsd"/>
       <wsdl:output>
         <soap12:body use="literal"/>
       </wsdl:output>
-    </wsdl:operation>
+    </wsdl:operation -->
   </wsdl:binding>
   <wsdl:service name="Core">
     <wsdl:port name="CoreSoapPort" binding="CORE:CoreSoapBinding">
       <soap12:address location="http://URL_OF_WEB_SERVICE"/>
     </wsdl:port>
   </wsdl:service>
+      <wsp:Policy wsu:Id="NwHIN_MessagingPlatform_SoapPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding>
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken>
+                                    <wsp:Policy>
+                                        <sp:RequireClientCertificate/>
+                                    </wsp:Policy>
+                                </sp:HttpsToken>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp/>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256 />
+                                <sp:Basic192 />
+                                <sp:Basic128 />
+                                <sp:TripleDes />
+                                <sp:Basic256Rsa15 />
+                                <sp:Basic192Rsa15 />
+                                <sp:Basic128Rsa15 />
+                                <sp:TripleDesRsa15 />
+                                <sp:Basic256Sha256 />
+                                <sp:Basic192Sha256 />
+                                <sp:Basic128Sha256 />
+                                <sp:TripleDesSha256 />
+                                <sp:Basic256Sha256Rsa15 />
+                                <sp:Basic192Sha256Rsa15 />
+                                <sp:Basic128Sha256Rsa15 />
+                                <sp:TripleDesSha256Rsa15 />
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+                <sp:EndorsingSupportingTokens>
+                    <wsp:Policy>
+                        <sp:SamlToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <wsp:Policy>
+                                <sp:WssSamlV20Token11/>
+                            </wsp:Policy>
+                        </sp:SamlToken>
+                    </wsp:Policy>
+                </sp:EndorsingSupportingTokens>
+                <sp:Wss11>
+                    <wsp:Policy>
+                        <sp:MustSupportRefKeyIdentifier/>
+                        <sp:MustSupportRefIssuerSerial/>
+                        <sp:RequireSignatureConfirmation/>
+                    </wsp:Policy>
+                </sp:Wss11>
+        <wsaw:UsingAddressing />
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="MTOM_Binding_Soap_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="MTOM_Binding_Soap_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
 </wsdl:definitions>
