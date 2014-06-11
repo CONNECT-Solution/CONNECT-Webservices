@@ -69,7 +69,7 @@ schemaLocation="classpath:schemas/caqh/CORERule2.2.0.xsd"/>
       <wsdl:output message="CORE:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
     </wsdl:operation>
     <wsdl:operation name="BatchSubmitTransactionDeferredResponse">
-      <wsdl:input message="CORE:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
+      <wsdl:input message="CORE:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
       <wsdl:output message="CORE:BatchSubmissionAckRetrievalResponseMessage"
       wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
     </wsdl:operation>
