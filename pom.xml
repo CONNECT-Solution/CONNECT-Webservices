@@ -44,6 +44,7 @@
         <module>AuditRepository</module>
         <module>Component</module>
         <module>ConnectionManager</module>
+	<module>CORERule2.2.0</module>
         <module>Direct</module>
         <module>DocRegistry</module>
         <module>DocRepository</module>
@@ -61,7 +62,7 @@
             <dependency>
             <groupId>org.connectopensource</groupId>
             <artifactId>CONNECTCommonTypesLib</artifactId>
-            <version>4.0.8</version>
+            <version>4.0.9-SNAPSHOT</version>
             <type>jar</type>
         </dependency> 
     </dependencies>
