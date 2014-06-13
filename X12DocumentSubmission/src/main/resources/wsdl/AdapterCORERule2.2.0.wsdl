@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:adaptercore"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
+             xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
+             xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
+             name="AdapterCORE"
+             targetNamespace="urn:gov:hhs:fha:nhinc:adaptercore">
+    <documentation>CAQH CORE X12 Document Submission</documentation>
+    <types>
+        <xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/"  elementFormDefault="qualified" targetNamespace="http://www.caqh.org/SOAP/WSDL/">
+            <xsd:import namespace="urn:ihe:iti:xds-b:2007:CORERULE:2.2.0" schemaLocation="classpath:schemas/www.caqh.org/CORERule2.2.0.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="RealTimeRequestMessage">
+        <part name="body" element="nccommonadapter:AdapterCOREEnvelopeRealTimeRequest"/>
+    </message>
+    <message name="RealTimeResponseMessage">
+        <part name="body" element="nccommonadapter:AdapterCOREEnvelopeRealTimeResponse"/>
+    </message>  
+    <portType name="AdapterRealTimeTransaction_PortType">
+        <operation name="RealTimeTransaction">
+            <input message="tns:RealTimeRequestMessage"/>
+            <output message="tns:RealTimeResponseMessage"/>
+        </operation>
+    </portType>
+    <binding name="AdapterRealTimeTransactionSoapBinding" type="tns:AdapterRealTimeTransaction_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="RealTimeTransaction">
+            <soap12:operation soapAction="RealTimeTransaction" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="AdapterX12RealTimeTransaction">
+        <port name="AdapterRealTimeTransaction_Port" binding="tns:AdapterRealTimeTransactionSoapBinding">
+            <soap12:address location="http://localhost:${HttpDefaultPort}/Adapter/X12DocSubmission/AdapterX12DocSubmissionUnsecured"/>
+        </port>
+    </service>
+</definitions>

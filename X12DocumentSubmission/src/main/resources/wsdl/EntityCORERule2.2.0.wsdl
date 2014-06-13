@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:nhincentitycore"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
+             xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
+             xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+             name="NhincEntityCORE"
+             targetNamespace="urn:gov:hhs:fha:nhinc:nhincentitycore">
+    <documentation>CAQH CORE X12 Document Submission</documentation>
+    <types>
+        <xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/"  elementFormDefault="qualified" targetNamespace="http://www.caqh.org/SOAP/WSDL/">
+            <xsd:import namespace="urn:ihe:iti:xds-b:2007:CORERULE:2.2.0" schemaLocation="classpath:schemas/www.caqh.org/CORERule2.2.0.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="classpath:schemas/nhinc/common/NhincCommonEntity.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="RealTimeRequestMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayCOREEnvelopeRealTimeRequest"/>
+    </message>
+    <message name="RealTimeResponseMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayCOREEnvelopeRealTimeResponse"/>
+    </message>  
+    <portType name="EntityRealTimeTransaction_PortType">
+        <operation name="RealTimeTransaction">
+            <input message="tns:RealTimeRequestMessage"/>
+            <output message="tns:RealTimeResponseMessage"/>
+        </operation>
+    </portType>
+    <binding name="RealTimeTransactionSoapBinding" type="tns:EntityRealTimeTransaction_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="RealTimeTransaction">
+            <soap12:operation soapAction="RealTimeTransaction" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="EntityX12RealTimeTransaction">
+        <port name="EntityRealTimeTransaction_Port" binding="tns:RealTimeTransactionSoapBinding">
+            <soap12:address location="http://localhost:${HttpDefaultPort}/Gateway/X12DocumentSubmission/EntityService/EntityX12DocSubmissionUnsecured"/>
+        </port>
+    </service>
+</definitions>
