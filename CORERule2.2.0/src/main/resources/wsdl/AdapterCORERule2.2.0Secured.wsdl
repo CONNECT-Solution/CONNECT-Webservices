@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:adaptercoresecured"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+             xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+             xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" 
+             xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
+             xmlns:sc="http://schemas.sun.com/2006/03/wss/server" 
+             xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
+             xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
+             name="AdapterCORESecured"
+             targetNamespace="urn:gov:hhs:fha:nhinc:adaptercoresecured">
+    <documentation>CAQH CORE X12 Document Submission</documentation>
+    <types>
+        <xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/"  elementFormDefault="qualified" targetNamespace="http://www.caqh.org/SOAP/WSDL/">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="RealTimeRequestMessageSecured">
+        <part name="body" element="nccommonadapter:AdapterCOREEnvelopeRealTimeSecuredRequest"/>
+    </message>
+    <message name="RealTimeResponseMessage">
+        <part name="body" element="nccommonadapter:AdapterCOREEnvelopeRealTimeResponse"/>
+    </message>
+    <message name="BatchSubmissionMessageSecured">
+        <part name="body" element="nccommonadapter:AdapterBatchSubmissionSecuredRequest"/>
+    </message>
+    <message name="BatchSubmissionResponseMessageSecured">
+        <part name="body" element="nccommonadapter:AdapterBatchSubmissionResponseSecured"/>
+    </message>
+    <message name="BatchSubmissionAckRetrievalResponseMessage">
+        <part name="body"
+              element="nccommonadapter:AdapterBatchSubmissionAckResponse"/>
+    </message>  
+    <portType name="AdapterCORETransactionSecured_PortType">
+        <operation name="RealTimeTransactionSecured">
+            <input message="tns:RealTimeRequestMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessageSecured"/>
+            <output message="tns:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
+        </operation>        
+        <operation name="BatchSubmitTransactionDeferredRequestSecured">
+            <input message="tns:BatchSubmissionMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessageSecured"/>
+            <output message="tns:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
+        </operation>        
+        <operation name="BatchSubmitTransactionDeferredResponseSecured">
+            <input message="tns:BatchSubmissionResponseMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessageSecured"/>
+            <output message="tns:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
+        </operation>                
+    </portType>
+    <binding name="AdapterCORETransactionSecuredSoapBinding" type="tns:AdapterCORETransactionSecured_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsp:PolicyReference URI="#Adapter_MessagingPlatform_SoapPolicy"/>
+        <operation name="RealTimeTransactionSecured">
+            <soap12:operation soapAction="RealTimeTransactionSecured" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Output_Policy"/>
+            </output>
+        </operation>
+        <operation name="BatchSubmitTransactionDeferredRequestSecured">
+            <soap12:operation soapAction="BatchSubmitTransactionDeferredRequestSecured" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Output_Policy"/>
+            </output>
+        </operation>
+        <operation name="BatchSubmitTransactionDeferredResponseSecured">
+            <soap12:operation soapAction="BatchSubmitTransactionDeferredResponseSecured" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Output_Policy"/>
+            </output>
+        </operation>        
+    </binding>
+    <service name="AdapterCORETransactionSecured">
+        <port name="AdapterCORETransactionSecured_Port" binding="tns:AdapterCORETransactionSecuredSoapBinding">
+            <soap12:address location="https://localhost:${HttpsDefaultPort}/Adapter/CORETransaction/AdapterCORETransactionSecured"/>
+        </port>
+    </service>
+    <wsp:Policy wsu:Id="Adaptere_MessagingPlatform_SoapPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding>
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken>
+                                    <wsp:Policy>
+                                        <sp:RequireClientCertificate/>
+                                    </wsp:Policy>
+                                </sp:HttpsToken>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp/>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256 />
+                                <sp:Basic192 />
+                                <sp:Basic128 />
+                                <sp:TripleDes />
+                                <sp:Basic256Rsa15 />
+                                <sp:Basic192Rsa15 />
+                                <sp:Basic128Rsa15 />
+                                <sp:TripleDesRsa15 />
+                                <sp:Basic256Sha256 />
+                                <sp:Basic192Sha256 />
+                                <sp:Basic128Sha256 />
+                                <sp:TripleDesSha256 />
+                                <sp:Basic256Sha256Rsa15 />
+                                <sp:Basic192Sha256Rsa15 />
+                                <sp:Basic128Sha256Rsa15 />
+                                <sp:TripleDesSha256Rsa15 />
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+                <sp:EndorsingSupportingTokens>
+                    <wsp:Policy>
+                        <sp:SamlToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <wsp:Policy>
+                                <sp:WssSamlV20Token11/>
+                            </wsp:Policy>
+                        </sp:SamlToken>
+                    </wsp:Policy>
+                </sp:EndorsingSupportingTokens>
+                <sp:Wss11>
+                    <wsp:Policy>
+                        <sp:MustSupportRefKeyIdentifier/>
+                        <sp:MustSupportRefIssuerSerial/>
+                        <sp:RequireSignatureConfirmation/>
+                    </wsp:Policy>
+                </sp:Wss11>
+                <wsaw:UsingAddressing />
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="MTOM_Binding_Soap_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="MTOM_Binding_Soap_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>
