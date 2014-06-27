@@ -44,7 +44,7 @@
         <module>AuditRepository</module>
         <module>Component</module>
         <module>ConnectionManager</module>
-	<module>CORERule2.2.0</module>
+		<module>CORERule2.2.0</module>
         <module>Direct</module>
         <module>DocRegistry</module>
         <module>DocRepository</module>
