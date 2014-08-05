@@ -19,22 +19,22 @@
             <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="classpath:schemas/nhinc/common/NhincCommonEntity.xsd"/>
         </xsd:schema>
     </types>
-    <message name="RealTimeRequestMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayRealTimeRequest"/>
+    <message name="BatchSubmissionMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionRequest"/>
     </message>
-    <message name="RealTimeResponseMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayRealTimeResponse"/>
-    </message>
-    <portType name="EntityCORETransaction_PortType">
-        <operation name="RealTimeTransaction">
-            <input message="tns:RealTimeRequestMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessage"/>
-            <output message="tns:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
+    <message name="BatchSubmissionResponseMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequest"/>
+    </message>  
+    <portType name="EntityCOREGenericBatchTransaction_PortType">
+        <operation name="CoreGenericBatchSubmitTransaction">
+            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessage"/>
+            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
         </operation>
     </portType>
-    <binding name="EntityCORETransactionSoapBinding" type="tns:EntityCORETransaction_PortType">
+    <binding name="EntityCOREGenericBatchTransactionSoapBinding" type="tns:EntityCOREGenericBatchTransaction_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="RealTimeTransaction">
-            <soap12:operation soapAction="RealTimeTransaction" style="document"/>
+        <operation name="CoreGenericBatchSubmitTransaction">
+            <soap12:operation soapAction="CoreGenericBatchSubmitTransaction" style="document"/>
             <input>
                 <soap12:body use="literal"/>
             </input>
@@ -43,9 +43,9 @@
             </output>
         </operation>
     </binding>
-    <service name="EntityCORETransaction">
-        <port name="EntityCORETransaction_Port" binding="tns:EntityCORETransactionSoapBinding">
-            <soap12:address location="http://localhost:${HttpDefaultPort}/Gateway/CORETransaction/EntityService/EntityCORETransactionUnsecured"/>
+    <service name="EntityCOREGenericBatchTransaction">
+        <port name="EntityCOREGenericBatchTransaction_Port" binding="tns:EntityCOREGenericBatchTransactionSoapBinding">
+            <soap12:address location="http://localhost:${HttpDefaultPort}/Gateway/COREGenericBatchTransaction/EntityService/EntityCOREGenericBatchTransactionUnsecured"/>
         </port>
     </service>
 </definitions>

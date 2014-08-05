@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:adaptercore"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
+             xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
+             xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
+             name="AdapterCORE"
+             targetNamespace="urn:gov:hhs:fha:nhinc:adaptercore">
+    <documentation>CAQH CORE X12 Document Submission</documentation>
+    <types>
+        <xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/"  elementFormDefault="qualified" targetNamespace="http://www.caqh.org/SOAP/WSDL/">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="BatchSubmissionMessage">
+        <part name="body" element="nccommonadapter:AdapterBatchSubmissionRequest"/>
+    </message>
+    <message name="BatchSubmissionResponseMessage">
+        <part name="body" element="nccommonadapter:AdapterBatchSubmissionResponse"/>
+    </message>
+    <portType name="AdapterCOREGenericBatchTransaction_PortType">
+        <operation name="AdapterGenericBatchSubmissionTransaction">
+            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessage"/>
+            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
+        </operation>        
+    </portType>
+    <binding name="AdapterCOREGenericBatchTransactionSoapBinding" type="tns:AdapterCOREGenericBatchTransaction_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="AdapterGenericBatchSubmissionTransaction">
+            <soap12:operation soapAction="AdapterGenericBatchSubmissionTransaction" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="AdapterGenericBatchSubmissionTransaction">
+            <soap12:operation soapAction="AdapterGenericBatchSubmissionTransaction" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>               
+    </binding>
+    <service name="AdapterGenericBatchSubmissionTransaction">
+        <port name="AdapterGenericBatchSubmissionTransaction_Port" binding="tns:AdapterCOREGenericBatchTransactionSoapBinding">
+            <soap12:address location="http://localhost:${HttpDefaultPort}/Adapter/COREGenericBatchTransaction/AdapterCOREGenericBatchTransactionUnsecured"/>
+        </port>
+    </service>
+</definitions>

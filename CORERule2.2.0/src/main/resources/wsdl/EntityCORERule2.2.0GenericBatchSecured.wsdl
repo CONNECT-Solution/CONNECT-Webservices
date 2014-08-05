@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:nhincentitycoresecured"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"             
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+             xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+             xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+             xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"
+             xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
+             xmlns:sc="http://schemas.sun.com/2006/03/wss/server"
+             xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+             xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty" 
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+             name="NhincEntityCORESecured"
+             targetNamespace="urn:gov:hhs:fha:nhinc:nhincentitycoresecured">
+    <documentation>CAQH CORE X12 Document Submission</documentation>
+    <types>
+        <xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/"  elementFormDefault="qualified" targetNamespace="http://www.caqh.org/SOAP/WSDL/">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="classpath:schemas/nhinc/common/NhincCommonEntity.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="BatchSubmissionMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionRequestSecured"/>
+    </message>
+    <message name="BatchSubmissionResponseMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequestSecured"/>
+    </message>  
+    <portType name="EntityCOREGenericBatchTransactionSecured_PortType">
+        <operation name="GenericBatchSubmitTransactionSecured">
+            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessageSecured"/>
+            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessageSecured"/>
+        </operation>
+    </portType>
+    <binding name="EntityCOREGenericBatchTransactionSecured_SoapBinding" type="tns:EntityCOREGenericBatchTransactionSecured_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_SoapPolicy" />
+        <operation name="GenericBatchSubmitTransactionSecured">
+            <soap12:operation soapAction="GenericBatchSubmitTransactionSecured" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+                <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Input_Policy" />
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+                <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Output_Policy" />
+            </output>
+        </operation>
+    </binding>
+    <service name="EntityCOREGenericBatchTransactionSecured">
+        <port name="EntityCOREGenericBatchTransactionSecured_Port" binding="tns:EntityCOREGenericBatchTransactionSecured_SoapBinding">
+            <soap12:address location="https://localhost:${HttpsDefaultPort}/Gateway/COREGenericBatchTransaction/EntityService/EntityCOREGenericBatchTransactionSecured"/>
+        </port>
+    </service>
+    <wsp:Policy wsu:Id="RespondingGateway_X12_Binding_SoapPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding>
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken>
+                                    <wsp:Policy>
+                                        <sp:RequireClientCertificate />
+                                    </wsp:Policy>
+                                </sp:HttpsToken>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict />
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp />
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256 />
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+                <sp:EndorsingSupportingTokens>
+                    <wsp:Policy>
+                        <sp:SamlToken
+                            sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <wsp:Policy>
+                                <sp:WssSamlV20Token11 />
+                            </wsp:Policy>
+                        </sp:SamlToken>
+                    </wsp:Policy>
+                </sp:EndorsingSupportingTokens>
+                <sp:Wss11>
+                    <wsp:Policy>
+                        <sp:MustSupportRefKeyIdentifier />
+                        <sp:MustSupportRefIssuerSerial />
+                        <sp:RequireSignatureConfirmation />
+                    </wsp:Policy>
+                </sp:Wss11>
+                <wsaw:UsingAddressing />
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="RespondingGateway_X12_Binding_Soap_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="RespondingGateway_X12_Binding_Soap_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>

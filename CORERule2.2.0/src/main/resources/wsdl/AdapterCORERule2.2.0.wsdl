@@ -23,30 +23,12 @@
     </message>
     <message name="RealTimeResponseMessage">
         <part name="body" element="nccommonadapter:AdapterCOREEnvelopeRealTimeResponse"/>
-    </message>
-    <message name="BatchSubmissionMessage">
-        <part name="body" element="nccommonadapter:AdapterBatchSubmissionRequest"/>
-    </message>
-    <message name="BatchSubmissionResponseMessage">
-        <part name="body" element="nccommonadapter:AdapterBatchSubmissionResponse"/>
-    </message>
-    <message name="BatchSubmissionAckRetrievalResponseMessage">
-        <part name="body"
-              element="nccommonadapter:AdapterBatchSubmissionAckResponse"/>
-    </message>  
+    </message>    
     <portType name="AdapterCORETransaction_PortType">
         <operation name="RealTimeTransaction">
             <input message="tns:RealTimeRequestMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessage"/>
             <output message="tns:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
-        </operation>        
-        <operation name="BatchSubmitTransactionDeferredRequest">
-            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessage"/>
-            <output message="tns:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
-        </operation>        
-        <operation name="BatchSubmitTransactionDeferredResponse">
-            <input message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
-            <output message="tns:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
-        </operation>                
+        </operation>         
     </portType>
     <binding name="AdapterCORETransactionSoapBinding" type="tns:AdapterCORETransaction_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -58,25 +40,7 @@
             <output>
                 <soap12:body use="literal"/>
             </output>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredRequest">
-            <soap12:operation soapAction="BatchSubmitTransactionDeferredRequest" style="document"/>
-            <input>
-                <soap12:body use="literal"/>
-            </input>
-            <output>
-                <soap12:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredResponse">
-            <soap12:operation soapAction="BatchSubmitTransactionDeferredResponse" style="document"/>
-            <input>
-                <soap12:body use="literal"/>
-            </input>
-            <output>
-                <soap12:body use="literal"/>
-            </output>
-        </operation>        
+        </operation> 
     </binding>
     <service name="AdapterCORETransaction">
         <port name="AdapterCORETransaction_Port" binding="tns:AdapterCORETransactionSoapBinding">

@@ -25,23 +25,23 @@
             <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
         </xsd:schema>
     </types>
-    <message name="RealTimeRequestMessageSecured">
-        <part name="body" element="nccommonadapter:AdapterCOREEnvelopeRealTimeSecuredRequest"/>
+    <message name="BatchSubmissionMessageSecured">
+        <part name="body" element="nccommonadapter:AdapterBatchSubmissionSecuredRequest"/>
     </message>
-    <message name="RealTimeResponseMessage">
-        <part name="body" element="nccommonadapter:AdapterCOREEnvelopeRealTimeResponse"/>
-    </message> 
-    <portType name="AdapterCORETransactionSecured_PortType">
-        <operation name="RealTimeTransactionSecured">
-            <input message="tns:RealTimeRequestMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessageSecured"/>
-            <output message="tns:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
+    <message name="BatchSubmissionResponseMessageSecured">
+        <part name="body" element="nccommonadapter:AdapterBatchSubmissionResponseSecured"/>
+    </message>
+    <portType name="AdapterCOREGenericBatchTransactionSecured_PortType">
+        <operation name="AdapterGenericBatchSubmissionTransactionSecured">
+            <input message="tns:BatchSubmissionMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessageSecured"/>
+            <input message="tns:BatchSubmissionResponseMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessageSecured"/>
         </operation>        
     </portType>
-    <binding name="AdapterCORETransactionSecuredSoapBinding" type="tns:AdapterCORETransactionSecured_PortType">
+    <binding name="AdapterCOREGenericBatchTransactionSecuredSoapBinding" type="tns:AdapterCOREGenericBatchTransactionSecured_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#Adapter_MessagingPlatform_SoapPolicy"/>
-        <operation name="RealTimeTransactionSecured">
-            <soap12:operation soapAction="RealTimeTransactionSecured" style="document"/>
+        <operation name="AdapterGenericBatchSubmissionTransactionSecured">
+            <soap12:operation soapAction="AdapterGenericBatchSubmissionTransactionSecured" style="document"/>
             <input>
                 <soap12:body use="literal"/>
                 <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
@@ -52,9 +52,9 @@
             </output>
         </operation>
     </binding>
-    <service name="AdapterCORETransactionSecured">
-        <port name="AdapterCORETransactionSecured_Port" binding="tns:AdapterCORETransactionSecuredSoapBinding">
-            <soap12:address location="https://localhost:${HttpsDefaultPort}/Adapter/CORETransaction/AdapterCORETransactionSecured"/>
+    <service name="AdapterCOREGenericBatchTransactionSecured">
+        <port name="AdapterCOREGenericBatchTransactionSecured_Port" binding="tns:AdapterCOREGenericBatchTransactionSecuredSoapBinding">
+            <soap12:address location="https://localhost:${HttpsDefaultPort}/Adapter/COREGenericBatchTransaction/AdapterCOREGenericBatchTransactionSecured"/>
         </port>
     </service>
     <wsp:Policy wsu:Id="Adaptere_MessagingPlatform_SoapPolicy">

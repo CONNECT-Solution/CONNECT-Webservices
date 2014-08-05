@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
                   xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -25,23 +25,23 @@
                         schemaLocation="classpath:schemas/caqh/CORERule2.2.0.xsd"/>
         </xsd:schema>
     </wsdl:types>
-    <wsdl:message name="RealTimeRequestMessage">
-        <wsdl:part name="body" element="CORE-XSD:COREEnvelopeRealTimeRequest"/>
+    <wsdl:message name="BatchSubmissionMessage">
+        <wsdl:part name="body" element="CORE-XSD:COREEnvelopeBatchSubmission"/>
     </wsdl:message>
-    <wsdl:message name="RealTimeResponseMessage">
-        <wsdl:part name="body" element="CORE-XSD:COREEnvelopeRealTimeResponse"/>
+    <wsdl:message name="BatchSubmissionResponseMessage">
+        <wsdl:part name="body" element="CORE-XSD:COREEnvelopeBatchSubmissionResponse"/>
     </wsdl:message>
-    <wsdl:portType name="CORETransactions">
-        <wsdl:operation name="RealTimeTransaction">
-            <wsdl:input message="CORE:RealTimeRequestMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessage"/>
-            <wsdl:output message="CORE:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
+    <wsdl:portType name="GenericBatchTransactionPort">
+        <wsdl:operation name="GenericBatchSubmissionTransaction">
+            <wsdl:input message="CORE:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:GenericBatchocumentSubmissionRequestMessage"/>
+            <wsdl:output message="CORE:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:GenericBatchocumentSubmissionResponseMessage"/>
         </wsdl:operation>
     </wsdl:portType>
-    <wsdl:binding name="CoreSoapBinding" type="CORE:CORETransactions">
+    <wsdl:binding name="GenericBatchSoapBinding" type="CORE:GenericBatchTransactionPort">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <wsp:PolicyReference URI="#NwHIN_MessagingPlatform_SoapPolicy"/>
-        <wsdl:operation name="RealTimeTransaction">
-            <soap12:operation soapAction="RealTimeTransaction" style="document"/>
+        <wsp:PolicyReference URI="#NwHIN_MessagingPlatform_SoapPolicy"/>        
+        <wsdl:operation name="GenericBatchSubmissionTransaction">
+            <soap12:operation soapAction="GenericBatchSubmissionTransaction" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
                 <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
@@ -52,9 +52,9 @@
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:service name="Core">
-        <wsdl:port name="CoreSoapPort" binding="CORE:CoreSoapBinding">
-            <soap12:address location="https://localhost:${HttpsDefaultPort}/Gateway/X12CoreRealTime/1_0/X12RealTimeDS_Service"/>
+    <wsdl:service name="GenericBatchTransaction">
+        <wsdl:port name="GenericBatchTransactionPort" binding="CORE:GenericBatchSoapBinding">
+            <soap12:address location="https://localhost:${HttpsDefaultPort}/Gateway/X12GenericBatchTransaction/1_0/GenericBatchTransaction_Service"/>
         </wsdl:port>
     </wsdl:service>
     <wsp:Policy wsu:Id="NwHIN_MessagingPlatform_SoapPolicy">
