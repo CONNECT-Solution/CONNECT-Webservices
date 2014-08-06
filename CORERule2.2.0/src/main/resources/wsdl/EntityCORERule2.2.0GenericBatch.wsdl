@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:nhincentitycore"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
+             xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
+             xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+             name="NhincEntityCORE"
+             targetNamespace="urn:gov:hhs:fha:nhinc:nhincentitycore">
+    <documentation>CAQH CORE X12 Document Submission</documentation>
+    <types>
+        <xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/"  elementFormDefault="qualified" targetNamespace="http://www.caqh.org/SOAP/WSDL/">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="classpath:schemas/nhinc/common/NhincCommonEntity.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="BatchSubmissionMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionRequest"/>
+    </message>
+    <message name="BatchSubmissionResponseMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequest"/>
+    </message>  
+    <portType name="EntityCOREGenericBatchTransaction_PortType">
+        <operation name="BatchSubmitTransaction">
+            <input message="tns:BatchSubmissionMessage" wsaw:Action="BatchSubmitTransaction"/>
+            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/BatchSubmitTransactionResponse"/>
+        </operation>
+    </portType>
+    <binding name="EntityCOREGenericBatchTransactionSoapBinding" type="tns:EntityCOREGenericBatchTransaction_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="BatchSubmitTransaction">
+            <soap12:operation soapAction="BatchSubmitTransaction" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="EntityCOREGenericBatchTransaction">
+        <port name="EntityCOREGenericBatchTransaction_Port" binding="tns:EntityCOREGenericBatchTransactionSoapBinding">
+            <soap12:address location="http://localhost:${HttpDefaultPort}/Gateway/COREGenericBatchTransaction/EntityService/EntityCOREGenericBatchTransactionUnsecured"/>
+        </port>
+    </service>
+</definitions>

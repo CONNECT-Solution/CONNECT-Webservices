@@ -25,51 +25,16 @@
     <message name="RealTimeResponseMessage">
         <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayRealTimeResponse"/>
     </message>
-    <message name="BatchSubmissionMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionRequest"/>
-    </message>
-    <message name="BatchSubmissionResponseMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequest"/>
-    </message>  
-    <message name="BatchSubmissionAckRetrievalResponseMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionAckResponse"/>
-    </message> 
     <portType name="EntityCORETransaction_PortType">
         <operation name="RealTimeTransaction">
-            <input message="tns:RealTimeRequestMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessage"/>
-            <output message="tns:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredRequest">
-            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessage"/>
-            <output message="tns:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredResponse">
-            <input message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
-            <output message="tns:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessage"/>
+            <input message="tns:RealTimeRequestMessage" wsaw:Action="RealTimeTransaction"/>
+            <output message="tns:RealTimeResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/RealTimeTransactionResponse"/>
         </operation>
     </portType>
     <binding name="EntityCORETransactionSoapBinding" type="tns:EntityCORETransaction_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="RealTimeTransaction">
             <soap12:operation soapAction="RealTimeTransaction" style="document"/>
-            <input>
-                <soap12:body use="literal"/>
-            </input>
-            <output>
-                <soap12:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredRequest">
-            <soap12:operation soapAction="BatchSubmitTransactionDeferredRequest" style="document"/>
-            <input>
-                <soap12:body use="literal"/>
-            </input>
-            <output>
-                <soap12:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredResponse">
-            <soap12:operation soapAction="BatchSubmitTransactionDeferredResponse" style="document"/>
             <input>
                 <soap12:body use="literal"/>
             </input>
