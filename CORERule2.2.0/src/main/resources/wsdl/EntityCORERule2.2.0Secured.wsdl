@@ -30,35 +30,18 @@
     </message>
     <message name="RealTimeResponseMessage">
         <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayRealTimeResponse"/>
-    </message>
-    <message name="BatchSubmissionMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionRequestSecured"/>
-    </message>
-    <message name="BatchSubmissionResponseMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequestSecured"/>
-    </message>  
-    <message name="BatchSubmissionAckRetrievalResponseMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionAckResponse"/>
-    </message> 
+    </message>   
     <portType name="EntityCORETransactionSecured_PortType">
-        <operation name="RealTimeTransactionSecured">
-            <input message="tns:RealTimeRequestMessage"/>
-            <output message="tns:RealTimeResponseMessage"/>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredRequestSecured">
-            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessageSecured"/>
-            <output message="tns:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessageSecured"/>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredResponseSecured">
-            <input message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessageSecured"/>
-            <output message="tns:BatchSubmissionAckRetrievalResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12999BatchSubmissionAcknowledgementRetrievalResponseMessageSecured"/>
+        <operation name="RealTimeTransaction">
+            <input message="tns:RealTimeRequestMessage" wsaw:Action="RealTimeTransaction"/>
+            <output message="tns:RealTimeResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/RealTimeTransactionResponse"/>
         </operation>
     </portType>
     <binding name="EntityCORETransactionSecured_SoapBinding" type="tns:EntityCORETransactionSecured_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_SoapPolicy" />
-        <operation name="RealTimeTransactionSecured">
-            <soap12:operation soapAction="RealTimeTransactionSecured" style="document"/>
+        <operation name="RealTimeTransaction">
+            <soap12:operation soapAction="RealTimeTransaction" style="document"/>
             <input>
                 <soap12:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Input_Policy" />
@@ -67,29 +50,7 @@
                 <soap12:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Output_Policy" />
             </output>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredRequestSecured">
-            <soap12:operation soapAction="BatchSubmitTransactionDeferredRequestSecured" style="document"/>
-            <input>
-                <soap12:body use="literal"/>
-                <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Input_Policy" />
-            </input>
-            <output>
-                <soap12:body use="literal"/>
-                <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Output_Policy" />
-            </output>
-        </operation>
-        <operation name="BatchSubmitTransactionDeferredResponseSecured">
-            <soap12:operation soapAction="BatchSubmitTransactionDeferredResponseSecured" style="document"/>
-            <input>
-                <soap12:body use="literal"/>
-                <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Input_Policy" />
-            </input>
-            <output>
-                <soap12:body use="literal"/>
-                <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Output_Policy" />
-            </output>
-        </operation>
+        </operation>        
     </binding>
     <service name="EntityCORETransactionSecured">
         <port name="EntityCORETransactionSecured_Port" binding="tns:EntityCORETransactionSecured_SoapBinding">

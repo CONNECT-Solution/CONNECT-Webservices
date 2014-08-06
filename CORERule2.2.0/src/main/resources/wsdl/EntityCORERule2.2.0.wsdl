@@ -27,8 +27,8 @@
     </message>
     <portType name="EntityCORETransaction_PortType">
         <operation name="RealTimeTransaction">
-            <input message="tns:RealTimeRequestMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessage"/>
-            <output message="tns:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
+            <input message="tns:RealTimeRequestMessage" wsaw:Action="RealTimeTransaction"/>
+            <output message="tns:RealTimeResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/RealTimeTransactionResponse"/>
         </operation>
     </portType>
     <binding name="EntityCORETransactionSoapBinding" type="tns:EntityCORETransaction_PortType">

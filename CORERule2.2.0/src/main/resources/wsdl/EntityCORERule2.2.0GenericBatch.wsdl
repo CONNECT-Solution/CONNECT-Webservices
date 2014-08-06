@@ -26,15 +26,15 @@
         <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequest"/>
     </message>  
     <portType name="EntityCOREGenericBatchTransaction_PortType">
-        <operation name="CoreGenericBatchSubmitTransaction">
-            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessage"/>
-            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
+        <operation name="BatchSubmitTransaction">
+            <input message="tns:BatchSubmissionMessage" wsaw:Action="BatchSubmitTransaction"/>
+            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/BatchSubmitTransactionResponse"/>
         </operation>
     </portType>
     <binding name="EntityCOREGenericBatchTransactionSoapBinding" type="tns:EntityCOREGenericBatchTransaction_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="CoreGenericBatchSubmitTransaction">
-            <soap12:operation soapAction="CoreGenericBatchSubmitTransaction" style="document"/>
+        <operation name="BatchSubmitTransaction">
+            <soap12:operation soapAction="BatchSubmitTransaction" style="document"/>
             <input>
                 <soap12:body use="literal"/>
             </input>

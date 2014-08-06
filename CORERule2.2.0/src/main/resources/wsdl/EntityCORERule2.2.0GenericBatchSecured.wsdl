@@ -32,16 +32,16 @@
         <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequestSecured"/>
     </message>  
     <portType name="EntityCOREGenericBatchTransactionSecured_PortType">
-        <operation name="GenericBatchSubmitTransactionSecured">
-            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessageSecured"/>
-            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessageSecured"/>
+        <operation name="BatchSubmitTransaction">
+            <input message="tns:BatchSubmissionMessage" wsaw:Action="BatchSubmitTransaction"/>
+            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/BatchSubmitTransactionResponse"/>
         </operation>
     </portType>
     <binding name="EntityCOREGenericBatchTransactionSecured_SoapBinding" type="tns:EntityCOREGenericBatchTransactionSecured_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_SoapPolicy" />
-        <operation name="GenericBatchSubmitTransactionSecured">
-            <soap12:operation soapAction="GenericBatchSubmitTransactionSecured" style="document"/>
+        <operation name="BatchSubmitTransaction">
+            <soap12:operation soapAction="BatchSubmitTransaction" style="document"/>
             <input>
                 <soap12:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_X12_Binding_Soap_Input_Policy" />

@@ -33,8 +33,8 @@
     </wsdl:message>
     <wsdl:portType name="CORETransactions">
         <wsdl:operation name="RealTimeTransaction">
-            <wsdl:input message="CORE:RealTimeRequestMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessage"/>
-            <wsdl:output message="CORE:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
+            <wsdl:input message="CORE:RealTimeRequestMessage" wsaw:Action="RealTimeTransaction"/>
+            <wsdl:output message="CORE:RealTimeResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/RealTimeTransactionResponse"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="CoreSoapBinding" type="CORE:CORETransactions">
@@ -44,11 +44,11 @@
             <soap12:operation soapAction="RealTimeTransaction" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
-                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
+                <wsp:PolicyReference URI="#Binding_Soap_Input_Policy"/>
             </wsdl:input>
             <wsdl:output>
                 <soap12:body use="literal"/>
-                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Output_Policy"/>
+                <wsp:PolicyReference URI="#Binding_Soap_Output_Policy"/>
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
@@ -119,17 +119,15 @@
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="MTOM_Binding_Soap_Input_Policy">
+    <wsp:Policy wsu:Id="Binding_Soap_Input_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
-                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="MTOM_Binding_Soap_Output_Policy">
+    <wsp:Policy wsu:Id="Binding_Soap_Output_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
-                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>

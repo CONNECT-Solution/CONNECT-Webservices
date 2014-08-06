@@ -32,16 +32,16 @@
         <part name="body" element="nccommonadapter:AdapterBatchSubmissionResponseSecured"/>
     </message>
     <portType name="AdapterCOREGenericBatchTransactionSecured_PortType">
-        <operation name="AdapterGenericBatchSubmissionTransactionSecured">
-            <input message="tns:BatchSubmissionMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessageSecured"/>
-            <input message="tns:BatchSubmissionResponseMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessageSecured"/>
+        <operation name="BatchSubmitTransaction">
+            <input message="tns:BatchSubmissionMessageSecured" wsaw:Action="BatchSubmitTransaction"/>
+            <input message="tns:BatchSubmissionResponseMessageSecured" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/BatchSubmitTransactionResponse"/>
         </operation>        
     </portType>
     <binding name="AdapterCOREGenericBatchTransactionSecuredSoapBinding" type="tns:AdapterCOREGenericBatchTransactionSecured_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#Adapter_MessagingPlatform_SoapPolicy"/>
-        <operation name="AdapterGenericBatchSubmissionTransactionSecured">
-            <soap12:operation soapAction="AdapterGenericBatchSubmissionTransactionSecured" style="document"/>
+        <operation name="BatchSubmitTransaction">
+            <soap12:operation soapAction="BatchSubmitTransaction" style="document"/>
             <input>
                 <soap12:body use="literal"/>
                 <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>

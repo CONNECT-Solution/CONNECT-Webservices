@@ -7,8 +7,7 @@
              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
-             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
-             xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" 
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"              
              xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
              xmlns:sc="http://schemas.sun.com/2006/03/wss/server" 
              xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
@@ -32,23 +31,23 @@
         <part name="body" element="nccommonadapter:AdapterCOREEnvelopeRealTimeResponse"/>
     </message> 
     <portType name="AdapterCORETransactionSecured_PortType">
-        <operation name="RealTimeTransactionSecured">
-            <input message="tns:RealTimeRequestMessageSecured" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeRequestMessageSecured"/>
-            <output message="tns:RealTimeResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:X12RealTimeResponseMessage"/>
+        <operation name="RealTimeTransaction">
+            <input message="tns:RealTimeRequestMessageSecured" wsaw:Action="RealTimeTransaction"/>
+            <output message="tns:RealTimeResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/RealTimeTransactionResponse"/>
         </operation>        
     </portType>
     <binding name="AdapterCORETransactionSecuredSoapBinding" type="tns:AdapterCORETransactionSecured_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#Adapter_MessagingPlatform_SoapPolicy"/>
-        <operation name="RealTimeTransactionSecured">
-            <soap12:operation soapAction="RealTimeTransactionSecured" style="document"/>
+        <operation name="RealTimeTransaction">
+            <soap12:operation soapAction="RealTimeTransaction" style="document"/>
             <input>
                 <soap12:body use="literal"/>
-                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
+                <wsp:PolicyReference URI="#Binding_Soap_Input_Policy"/>
             </input>
             <output>
                 <soap12:body use="literal"/>
-                <wsp:PolicyReference URI="#MTOM_Binding_Soap_Output_Policy"/>
+                <wsp:PolicyReference URI="#Binding_Soap_Output_Policy"/>
             </output>
         </operation>
     </binding>
@@ -119,17 +118,15 @@
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="MTOM_Binding_Soap_Input_Policy">
+    <wsp:Policy wsu:Id="Binding_Soap_Input_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
-                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="MTOM_Binding_Soap_Output_Policy">
+    <wsp:Policy wsu:Id="Binding_Soap_Output_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
-                <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>

@@ -25,31 +25,22 @@
         <part name="body" element="nccommonadapter:AdapterBatchSubmissionResponse"/>
     </message>
     <portType name="AdapterCOREGenericBatchTransaction_PortType">
-        <operation name="AdapterGenericBatchSubmissionTransaction">
-            <input message="tns:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionRequestMessage"/>
-            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:X12BatchDeferredDocumentSubmissionResponseMessage"/>
+        <operation name="BatchSubmitTransaction">
+            <input message="tns:BatchSubmissionMessage" wsaw:Action="BatchSubmitTransaction"/>
+            <output message="tns:BatchSubmissionResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/BatchSubmitTransactionResponse"/>
         </operation>        
     </portType>
     <binding name="AdapterCOREGenericBatchTransactionSoapBinding" type="tns:AdapterCOREGenericBatchTransaction_PortType">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="AdapterGenericBatchSubmissionTransaction">
-            <soap12:operation soapAction="AdapterGenericBatchSubmissionTransaction" style="document"/>
+        <operation name="BatchSubmitTransaction">
+            <soap12:operation soapAction="BatchSubmitTransaction" style="document"/>
             <input>
                 <soap12:body use="literal"/>
             </input>
             <output>
                 <soap12:body use="literal"/>
             </output>
-        </operation>
-        <operation name="AdapterGenericBatchSubmissionTransaction">
-            <soap12:operation soapAction="AdapterGenericBatchSubmissionTransaction" style="document"/>
-            <input>
-                <soap12:body use="literal"/>
-            </input>
-            <output>
-                <soap12:body use="literal"/>
-            </output>
-        </operation>               
+        </operation>        
     </binding>
     <service name="AdapterGenericBatchSubmissionTransaction">
         <port name="AdapterGenericBatchSubmissionTransaction_Port" binding="tns:AdapterCOREGenericBatchTransactionSoapBinding">

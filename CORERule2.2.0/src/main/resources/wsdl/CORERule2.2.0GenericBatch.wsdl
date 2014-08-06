@@ -32,16 +32,16 @@
         <wsdl:part name="body" element="CORE-XSD:COREEnvelopeBatchSubmissionResponse"/>
     </wsdl:message>
     <wsdl:portType name="GenericBatchTransactionPort">
-        <wsdl:operation name="GenericBatchSubmissionTransaction">
-            <wsdl:input message="CORE:BatchSubmissionMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:GenericBatchocumentSubmissionRequestMessage"/>
-            <wsdl:output message="CORE:BatchSubmissionResponseMessage" wsaw:Action="urn:ihe:iti:xdr:2007:Deferred:GenericBatchocumentSubmissionResponseMessage"/>
+        <wsdl:operation name="BatchSubmitTransaction">
+            <wsdl:input message="CORE:BatchSubmissionMessage" wsaw:Action="BatchSubmitTransaction"/>
+            <wsdl:output message="CORE:BatchSubmissionResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/BatchSubmitTransactionResponse"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="GenericBatchSoapBinding" type="CORE:GenericBatchTransactionPort">
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#NwHIN_MessagingPlatform_SoapPolicy"/>        
-        <wsdl:operation name="GenericBatchSubmissionTransaction">
-            <soap12:operation soapAction="GenericBatchSubmissionTransaction" style="document"/>
+        <wsdl:operation name="BatchSubmitTransaction">
+            <soap12:operation soapAction="BatchSubmitTransaction" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
                 <wsp:PolicyReference URI="#MTOM_Binding_Soap_Input_Policy"/>
