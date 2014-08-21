@@ -34,7 +34,7 @@
     <portType name="AdapterCOREGenericBatchTransactionSecured_PortType">
         <operation name="BatchSubmitTransaction">
             <input message="tns:BatchSubmissionMessageSecured" wsaw:Action="BatchSubmitTransaction"/>
-            <input message="tns:BatchSubmissionResponseMessageSecured" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/BatchSubmitTransactionResponse"/>
+            <output message="tns:BatchSubmissionResponseMessageSecured" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/BatchSubmitTransactionResponse"/>
         </operation>        
     </portType>
     <binding name="AdapterCOREGenericBatchTransactionSecuredSoapBinding" type="tns:AdapterCOREGenericBatchTransactionSecured_PortType">
