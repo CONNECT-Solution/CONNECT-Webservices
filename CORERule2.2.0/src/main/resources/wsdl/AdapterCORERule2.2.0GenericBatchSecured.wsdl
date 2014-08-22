@@ -57,7 +57,7 @@
             <soap12:address location="https://localhost:${HttpsDefaultPort}/Adapter/COREGenericBatchTransaction/AdapterCOREGenericBatchTransactionSecured"/>
         </port>
     </service>
-    <wsp:Policy wsu:Id="Adaptere_MessagingPlatform_SoapPolicy">
+    <wsp:Policy wsu:Id="Adapter_MessagingPlatform_SoapPolicy">
         <wsp:ExactlyOne>
             <wsp:All>
                 <sp:TransportBinding>
