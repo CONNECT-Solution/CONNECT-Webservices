@@ -23,7 +23,7 @@
         <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionRequest"/>
     </message>
     <message name="BatchSubmissionResponseMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequest"/>
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessage"/>
     </message>  
     <portType name="EntityCOREGenericBatchTransaction_PortType">
         <operation name="BatchSubmitTransaction">
