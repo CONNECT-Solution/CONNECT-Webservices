@@ -29,7 +29,7 @@
         <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionRequestSecured"/>
     </message>
     <message name="BatchSubmissionResponseMessage">
-        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessageRequestSecured"/>
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayBatchSubmissionResponseMessage"/>
     </message>  
     <portType name="EntityCOREGenericBatchTransactionSecured_PortType">
         <operation name="BatchSubmitTransaction">
