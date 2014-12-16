@@ -16,7 +16,7 @@
         <connection>scm:git:git@github.com:${git.username}/CONNECT-Webservices.git</connection>
         <developerConnection>scm:git:git@github.com:${git.username}/CONNECT-Webservices.git</developerConnection>
         <url>https://github.com/${git.username}/CONNECT-Webservices</url>
-      <tag>HEAD</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
@@ -30,14 +30,13 @@
     </developers>
 
     <prerequisites>
-       <maven>3.0.4</maven>
+        <maven>3.0.4</maven>
     </prerequisites>
-
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+
     <modules>
         <module>AdapterAuthenication</module>
         <module>AdminDistribution</module>
@@ -60,24 +59,24 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-            <groupId>org.connectopensource</groupId>
-            <artifactId>CONNECTCommonTypesLib</artifactId>
-            <version>4.1.0</version>
-            <type>jar</type>
-        </dependency> 
-    </dependencies>
-</dependencyManagement>
+                <groupId>org.connectopensource</groupId>
+                <artifactId>CONNECTCommonTypesLib</artifactId>
+                <version>4.1.0</version>
+                <type>jar</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
-         <dependency>
+        <dependency>
             <groupId>org.connectopensource</groupId>
             <artifactId>CONNECTCommonTypesLib</artifactId>
-        </dependency> 
+        </dependency>
     </dependencies>
+
     <build>
-     
-        <!-- Caution: If <resources> or <testResources> is overridden by 
-            a child POM then all <resource> and <testResouce> elements will need to be 
+        <!-- Caution: If <resources> or <testResources> is overridden by
+            a child POM then all <resource> and <testResouce> elements will need to be
             placed within the child POM that overrides the <resourcs> or <testResources> -->
         <resources>
             <resource>
@@ -110,13 +109,13 @@
         </testResources>
         <plugins>
             <plugin>
-             <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-release-plugin</artifactId>
-              <version>2.4</version>
-              <configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
                     <pushChanges>false</pushChanges>
-              </configuration>
-          </plugin>
+                </configuration>
+            </plugin>
             <plugin>
                 <!-- Used to pull XSD files from the JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
@@ -124,7 +123,7 @@
                 <executions>
                     <execution>
                         <id>unpack-xsd-files</id>
-                        <!-- Using the initialize phase because it is before 
+                        <!-- Using the initialize phase because it is before
                             the generate sources phase -->
                         <phase>initialize</phase>
                         <goals>
@@ -150,8 +149,6 @@
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
                 <version>2.7.3</version>
-                <dependencies>
-                </dependencies>
                 <executions>
                     <execution>
                         <phase>process-resources</phase>
@@ -185,9 +182,6 @@
                     </execution>
                 </executions>
             </plugin>
-            
-            
         </plugins>
-        
     </build>
 </project>
