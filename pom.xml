@@ -37,6 +37,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
     <modules>
         <module>AdapterAuthenication</module>
         <module>AdminDistribution</module>
@@ -61,7 +72,7 @@
             <dependency>
                 <groupId>org.connectopensource</groupId>
                 <artifactId>CONNECTCommonTypesLib</artifactId>
-                <version>4.1.0</version>
+                <version>4.1.1-SNAPSHOT</version>
                 <type>jar</type>
             </dependency>
         </dependencies>
@@ -181,6 +192,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <!-- use baseVersion instead of unique timestamp version to support skinny WARS -->
+                    <outputFileNameMapping>@{artifactId}@-@{baseVersion}@.@{extension}@</outputFileNameMapping>
+                </configuration>
             </plugin>
         </plugins>
     </build>
