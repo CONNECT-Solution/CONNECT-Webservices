@@ -16,7 +16,7 @@
         <connection>scm:git:git@github.com:${git.username}/CONNECT-Webservices.git</connection>
         <developerConnection>scm:git:git@github.com:${git.username}/CONNECT-Webservices.git</developerConnection>
         <url>https://github.com/${git.username}/CONNECT-Webservices</url>
-        <tag>4.0.9A-SNAPSHOT</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
@@ -72,7 +72,7 @@
             <dependency>
                 <groupId>org.connectopensource</groupId>
                 <artifactId>CONNECTCommonTypesLib</artifactId>
-                <version>4.1.0A</version>
+                <version>4.2.0-SNAPSHOT</version>
                 <type>jar</type>
             </dependency>
         </dependencies>

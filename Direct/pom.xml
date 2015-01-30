@@ -10,5 +10,41 @@
     <packaging>jar</packaging>
     <name>Direct Manager Web services</name>
     
-   
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <defaultOptions>
+                                <extraargs>
+                                    <extraarg>-verbose</extraarg>
+                                    <extraarg>-all</extraarg>
+                                    <extraarg>-dns</extraarg>
+                                    <extraarg>false</extraarg>
+                                    <extraarg>-noTypes</extraarg>
+                                    <extraarg>-mark-generated</extraarg>
+                                    <!-- next two are a pair -->
+                                    <extraarg>-wsdlLocation</extraarg>
+                                    <extraarg />
+                                    <extraarg>-p</extraarg>
+                                    <extraarg>http://nhind.org/config=gov.hhs.fha.nhinc.direct.config</extraarg>
+                                    <extraarg>-p</extraarg>
+                                    <extraarg>http://nhind.org/config/exception=gov.hhs.fha.nhinc.direct.config.exception</extraarg>
+                                    <extraarg>-p</extraarg>
+                                    <extraarg>http://impl.service.config.nhindirect.org/=gov.hhs.fha.nhinc.direct.config.service</extraarg>
+                                </extraargs>
+                            </defaultOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
