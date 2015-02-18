@@ -47,30 +47,6 @@
         <part name="GetPropertiesResponse" 
               element="propacc:GetPropertiesResponse"/>
     </message>
-    <message name="GetRefreshDurationRequestMessage">
-        <part name="GetRefreshDurationRequest" 
-              element="propacc:GetRefreshDurationRequest"/>
-    </message>
-    <message name="GetRefreshDurationResponseMessage">
-        <part name="GetRefreshDurationResponse" 
-              element="propacc:GetRefreshDurationResponse"/>
-    </message>
-    <message name="GetDurationBeforeNextRefreshRequestMessage">
-        <part name="GetDurationBeforeNextRefreshRequest" 
-              element="propacc:GetDurationBeforeNextRefreshRequest"/>
-    </message>
-    <message name="GetDurationBeforeNextRefreshResponseMessage">
-        <part name="GetDurationBeforeNextRefreshResponse" 
-              element="propacc:GetDurationBeforeNextRefreshResponse"/>
-    </message>
-    <message name="ForceRefreshRequestMessage">
-        <part name="ForceRefreshRequest" 
-              element="propacc:ForceRefreshRequest"/>
-    </message>
-    <message name="ForceRefreshResponseMessage">
-        <part name="ForceRefreshResponse" 
-              element="propacc:ForceRefreshResponse"/>
-    </message>
     <message name="GetPropertyFileLocationRequestMessage">
         <part name="GetPropertyFileLocationRequest" 
               element="propacc:GetPropertyFileLocationRequest"/>
@@ -128,24 +104,6 @@
                    message="tns:GetPropertiesRequestMessage"/>
             <output name="GetPropertiesResponse" 
                     message="tns:GetPropertiesResponseMessage"/>
-        </operation>
-        <operation name="GetRefreshDuration">
-            <input name="GetRefreshDurationRequest" 
-                   message="tns:GetRefreshDurationRequestMessage"/>
-            <output name="GetRefreshDurationResponse" 
-                    message="tns:GetRefreshDurationResponseMessage"/>
-        </operation>
-        <operation name="GetDurationBeforeNextRefresh">
-            <input name="GetDurationBeforeNextRefreshRequest" 
-                   message="tns:GetDurationBeforeNextRefreshRequestMessage"/>
-            <output name="GetDurationBeforeNextRefreshResponse" 
-                    message="tns:GetDurationBeforeNextRefreshResponseMessage"/>
-        </operation>
-        <operation name="ForceRefresh">
-            <input name="ForceRefreshRequest" 
-                   message="tns:ForceRefreshRequestMessage"/>
-            <output name="ForceRefreshResponse" 
-                    message="tns:ForceRefreshResponseMessage"/>
         </operation>
         <operation name="GetPropertyFileLocation">
             <input name="GetPropertyFileLocationRequest" 
@@ -210,33 +168,6 @@
                 <soap:body use="literal"/>
             </input>
             <output name="GetPropertiesResponse">
-                <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="GetRefreshDuration">
-            <soap:operation soapAction="urn:GetRefreshDuration"/>
-            <input name="GetRefreshDurationRequest">
-                <soap:body use="literal"/>
-            </input>
-            <output name="GetRefreshDurationResponse">
-                <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="GetDurationBeforeNextRefresh">
-            <soap:operation soapAction="urn:GetDurationBeforeNextRefresh"/>
-            <input name="GetDurationBeforeNextRefreshRequest">
-                <soap:body use="literal"/>
-            </input>
-            <output name="GetDurationBeforeNextRefreshResponse">
-                <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="ForceRefresh">
-            <soap:operation soapAction="urn:ForceRefresh"/>
-            <input name="ForceRefreshRequest">
-                <soap:body use="literal"/>
-            </input>
-            <output name="ForceRefreshResponse">
                 <soap:body use="literal"/>
             </output>
         </operation>
