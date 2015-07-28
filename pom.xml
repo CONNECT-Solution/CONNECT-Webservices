@@ -193,14 +193,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <!-- use baseVersion instead of unique timestamp version to support skinny WARS -->
-                    <outputFileNameMapping>@{artifactId}@-@{baseVersion}@.@{extension}@</outputFileNameMapping>
-                </configuration>
-            </plugin>
 			<plugin>
                 <inherited>true</inherited>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -213,6 +205,15 @@
                     <testTarget>1.7</testTarget>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <!-- use baseVersion instead of unique timestamp version to support skinny WARS -->
+                    <outputFileNameMapping>@{artifactId}@-@{baseVersion}@.@{extension}@</outputFileNameMapping>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
