@@ -193,6 +193,18 @@
                     </execution>
                 </executions>
             </plugin>
+			<plugin>
+                <inherited>true</inherited>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <testSource>1.7</testSource>
+                    <testTarget>1.7</testTarget>
+                </configuration>
+            </plugin>
             <plugin>
                 <inherited>true</inherited>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -213,6 +225,7 @@
                     <outputFileNameMapping>@{artifactId}@-@{baseVersion}@.@{extension}@</outputFileNameMapping>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
