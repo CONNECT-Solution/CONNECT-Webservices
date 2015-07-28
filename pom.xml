@@ -87,8 +87,8 @@
 
     <build>
         <!-- Caution: If <resources> or <testResources> is overridden by
-            a child POM then all <resource> and <testResouce> elements will need to be
-            placed within the child POM that overrides the <resourcs> or <testResources> -->
+        a child POM then all <resource> and <testResouce> elements will need to be
+        placed within the child POM that overrides the <resourcs> or <testResources> -->
         <resources>
             <resource>
                 <directory>${basedir}/src/main/resources</directory>
@@ -135,7 +135,7 @@
                     <execution>
                         <id>unpack-xsd-files</id>
                         <!-- Using the initialize phase because it is before
-                            the generate sources phase -->
+                        the generate sources phase -->
                         <phase>initialize</phase>
                         <goals>
                             <goal>unpack</goal>
@@ -193,7 +193,7 @@
                     </execution>
                 </executions>
             </plugin>
-			<plugin>
+            <plugin>
                 <inherited>true</inherited>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
