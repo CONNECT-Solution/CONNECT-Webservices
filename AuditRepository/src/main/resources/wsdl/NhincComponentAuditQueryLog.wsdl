@@ -24,9 +24,9 @@
     <message name="QueryAuditEventsRequestByMessageID">
         <part name="QueryAuditEventsRequestByMessageID" element="auditquery:QueryAuditEventsRequestByRequestMessageId"/>
     </message>
-    <message name="QueryAuditEventsResponseByRequestMessageID">
+    <!--<message name="QueryAuditEventsResponseByRequestMessageID">
         <part name="QueryAuditEventsResponseByMessageID" element="auditquery:QueryAuditEventsResponseByRequestMessageId"/>
-    </message>
+    </message>-->
     
     <message name="QueryAuditEventsBlobRequest">
         <part name="QueryAuditEventsBlobRequest" element="auditquery:QueryAuditEventsBlobRequest"/>
@@ -44,7 +44,7 @@
         </operation>
         <operation name="QueryAuditEventsByMessageID">
             <input name="QueryAuditEventsRequestByMessageID" message="tns:QueryAuditEventsRequestByMessageID" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestByMessageID"/>
-            <output name="QueryAuditEventsResponseByRequestMessageID" message="tns:QueryAuditEventsResponseByRequestMessageID" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsResponseByRequestMessageID"/>
+            <output name="QueryAuditEventsResponseMessage" message="tns:QueryAuditEventsResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsResponseType"/>
         </operation>
         <operation name="QueryAuditEventsBlob">
             <input name="QueryAuditEventsBlobRequest" message="tns:QueryAuditEventsBlobRequest" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsBlobRequest"/>
@@ -70,7 +70,7 @@
             <input name="QueryAuditEventsRequestByMessageID">
                 <soap:body use="literal"/>
             </input>
-            <output name="QueryAuditEventsResponseByRequestMessageID">
+            <output name="QueryAuditEventsResponseMessage">
                 <soap:body use="literal"/>
             </output>
         </operation>
