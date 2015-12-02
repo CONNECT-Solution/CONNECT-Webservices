@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AuditQueryLog" 
+    targetNamespace="urn:gov:hhs:fha:nhinc:common:nhinccomponentauditquerylog"
+    xmlns:tns="urn:gov:hhs:fha:nhinc:common:nhinccomponentauditquerylog" 
+    xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:auditquery="urn:gov:hhs:fha:nhinc:common:auditquerylog"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"     
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"    
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/" >
+    <types>
+        <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:nhinccomponentauditquerylog">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:auditquerylog" schemaLocation="classpath:schemas/nhinc/common/AuditQueryLog.xsd" />
+        </xsd:schema>
+    </types>
+    <message name="QueryAuditEventsRequestMessage">
+        <part name="QueryAuditEventsRequest" element="auditquery:QueryAuditEventsRequestType"/>
+    </message>
+    <message name="QueryAuditEventsResponseMessage">
+        <part name="QueryAuditEventsResponse" element="auditquery:QueryAuditEventsResponseType"/>
+    </message>
+
+    <message name="QueryAuditEventsRequestByMessageID">
+        <part name="QueryAuditEventsRequestByMessageID" element="auditquery:QueryAuditEventsRequestByRequestMessageId"/>
+    </message>
+    <message name="QueryAuditEventsResponseByRequestMessageID">
+        <part name="QueryAuditEventsResponseByMessageID" element="auditquery:QueryAuditEventsResponseByRequestMessageId"/>
+    </message>
+    
+    <message name="QueryAuditEventsBlobRequest">
+        <part name="QueryAuditEventsBlobRequest" element="auditquery:QueryAuditEventsBlobRequest"/>
+    </message>
+    <message name="QueryAuditEventsBlobResponse">
+        <part name="QueryAuditEventsBlobResponse" element="auditquery:QueryAuditEventsBlobResponse"/>
+    </message>
+
+    <portType name="AuditQueryLogPortType">
+        <operation name="QueryAuditEvents">
+            <input name="QueryAuditEventsRequestMessage" 
+                   message="tns:QueryAuditEventsRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestType"/>
+            <output name="QueryAuditEventsResponseMessage" 
+                    message="tns:QueryAuditEventsResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsResponseType"/>
+        </operation>
+        <operation name="QueryAuditEventsByMessageID">
+            <input name="QueryAuditEventsRequestByMessageID" message="tns:QueryAuditEventsRequestByMessageID" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestByMessageID"/>
+            <output name="QueryAuditEventsResponseByRequestMessageID" message="tns:QueryAuditEventsResponseByRequestMessageID" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsResponseByRequestMessageID"/>
+        </operation>
+        <operation name="QueryAuditEventsBlob">
+            <input name="QueryAuditEventsBlobRequest" message="tns:QueryAuditEventsBlobRequest" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsBlobRequest"/>
+            <output name="QueryAuditEventsBlobResponse" message="tns:QueryAuditEventsBlobResponse" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsBlobResponse"/>
+        </operation>
+    </portType>
+    <binding name="AuditQueryLogPortTypeBinding" 
+             type="tns:AuditQueryLogPortType">
+        <soap:binding style="document" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="QueryAuditEvents">
+            <soap:operation style="document" 
+                            soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestType"/>
+            <input name="QueryAuditEventsRequestMessage">
+                <soap:body use="literal"/>
+            </input>
+            <output name="QueryAuditEventsResponseMessage">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="QueryAuditEventsByMessageID">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestByMessageID"/>
+            <input name="QueryAuditEventsRequestByMessageID">
+                <soap:body use="literal"/>
+            </input>
+            <output name="QueryAuditEventsResponseByRequestMessageID">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="QueryAuditEventsBlob">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsBlobRequest"/>
+            <input name="QueryAuditEventsBlobRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="QueryAuditEventsBlobResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="AuditQueryLogService">
+        <port name="AuditQueryLogPortType" 
+              binding="tns:AuditQueryLogPortTypeBinding">
+            <soap:address 
+                location="http://localhost:${HttpDefaultPort}/CONNECTGateway/GatewayService/AuditQueryLogService"/>
+        </port>
+    </service>
+</definitions>
