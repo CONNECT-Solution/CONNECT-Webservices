@@ -30,9 +30,6 @@
     <message name="QueryAuditEventsRequestByMessageID">
         <part name="QueryAuditEventsRequestByMessageID" element="auditquery:QueryAuditEventsRequestByRequestMessageId"/>
     </message>
-    <!--<message name="QueryAuditEventsResponseByRequestMessageID">
-        <part name="QueryAuditEventsResponseByMessageID" element="auditquery:QueryAuditEventsResponseByRequestMessageId"/>
-    </message>-->
 
     <message name="QueryAuditEventsBlobRequest">
         <part name="QueryAuditEventsBlobRequest" element="auditquery:QueryAuditEventsBlobRequest"/>
