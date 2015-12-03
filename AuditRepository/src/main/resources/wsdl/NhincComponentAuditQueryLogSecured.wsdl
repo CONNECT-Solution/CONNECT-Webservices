@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions name="AuditQueryLog" 
-    targetNamespace="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog"
+    targetNamespace="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured"
     xmlns="http://schemas.xmlsoap.org/wsdl/"
     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns:tns="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog" 
+    xmlns:tns="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured" 
     xmlns:ns="http://nhinc.services.com/schema/auditmessage" 
     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
     xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
@@ -20,74 +20,74 @@
             <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:auditquerylog" schemaLocation="classpath:schemas/nhinc/common/AuditQueryLog.xsd" />
         </xsd:schema>
     </types>
-    <message name="QueryAuditEventsRequestMessage">
-        <part name="QueryAuditEventsRequest" element="auditquery:QueryAuditEventsRequestType"/>
+    <message name="QueryAuditEventsSecureRequestMessage">
+        <part name="QueryAuditEventsSecureRequest" element="auditquery:QueryAuditEventsSecureRequestType"/>
     </message>
-    <message name="QueryAuditEventsResponseMessage">
-        <part name="QueryAuditEventsResponse" element="auditquery:QueryAuditEventsResponseType"/>
-    </message>
-
-    <message name="QueryAuditEventsRequestByMessageID">
-        <part name="QueryAuditEventsRequestByMessageID" element="auditquery:QueryAuditEventsRequestByRequestMessageId"/>
+    <message name="QueryAuditEventsSecureResponseMessage">
+        <part name="QueryAuditEventsSecureResponse" element="auditquery:QueryAuditEventsSecureResponseType"/>
     </message>
 
-    <message name="QueryAuditEventsBlobRequest">
-        <part name="QueryAuditEventsBlobRequest" element="auditquery:QueryAuditEventsBlobRequest"/>
+    <message name="QueryAuditEventsSecureRequestByMessageID">
+        <part name="QueryAuditEventsSecureRequestByMessageID" element="auditquery:QueryAuditEventsSecureRequestByRequestMessageId"/>
     </message>
-    <message name="QueryAuditEventsBlobResponse">
-        <part name="QueryAuditEventsBlobResponse" element="auditquery:QueryAuditEventsBlobResponse"/>
+
+    <message name="QueryAuditEventsBlobSecureRequest">
+        <part name="QueryAuditEventsBlobSecureRequest" element="auditquery:QueryAuditEventsBlobSecureRequest"/>
+    </message>
+    <message name="QueryAuditEventsBlobSecureResponse">
+        <part name="QueryAuditEventsBlobSecureResponse" element="auditquery:QueryAuditEventsBlobSecureResponse"/>
     </message>
 
     <portType name="AuditQueryLogSecuredPortType">
-        <operation name="QueryAuditEvents">
-            <input name="QueryAuditEventsRequestMessage" 
-                   message="tns:QueryAuditEventsRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestType"/>
-            <output name="QueryAuditEventsResponseMessage" 
-                    message="tns:QueryAuditEventsResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsResponseType"/>
+        <operation name="QueryAuditEventsSecure">
+            <input name="QueryAuditEventsSecureRequestMessage" 
+                   message="tns:QueryAuditEventsSecureRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureRequestType"/>
+            <output name="QueryAuditEventsSecureResponseMessage" 
+                    message="tns:QueryAuditEventsSecureResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureResponseType"/>
         </operation>
-        <operation name="QueryAuditEventsByMessageID">
-            <input name="QueryAuditEventsRequestByMessageID" message="tns:QueryAuditEventsRequestByMessageID" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestByMessageID"/>
-            <output name="QueryAuditEventsResponseMessage" message="tns:QueryAuditEventsResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsResponseType"/>
+        <operation name="QueryAuditEventsSecureByMessageID">
+            <input name="QueryAuditEventsSecureRequestByMessageID" message="tns:QueryAuditEventsSecureRequestByMessageID" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureRequestByMessageID"/>
+            <output name="QueryAuditEventsSecureResponseMessage" message="tns:QueryAuditEventsSecureResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureResponseType"/>
         </operation>
-        <operation name="QueryAuditEventsBlob">
-            <input name="QueryAuditEventsBlobRequest" message="tns:QueryAuditEventsBlobRequest" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsBlobRequest"/>
-            <output name="QueryAuditEventsBlobResponse" message="tns:QueryAuditEventsBlobResponse" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsBlobResponse"/>
+        <operation name="QueryAuditEventsSecureBlob">
+            <input name="QueryAuditEventsBlobSecureRequest" message="tns:QueryAuditEventsBlobSecureRequest" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsBlobSecureRequest"/>
+            <output name="QueryAuditEventsBlobSecureResponse" message="tns:QueryAuditEventsBlobSecureResponse" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsBlobSecureResponse"/>
         </operation>
     </portType>
     <binding name="AuditQueryLogSecuredPortTypeBinding" 
              type="tns:AuditQueryLogSecuredPortType">
         <soap:binding style="document" 
                       transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="QueryAuditEvents">
+        <operation name="QueryAuditEventsSecure">
             <soap:operation style="document" 
-                            soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestType"/>
-            <input name="QueryAuditEventsRequestMessage">
+                            soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureRequestType"/>
+            <input name="QueryAuditEventsSecureRequestMessage">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#AuditQueryLog_Input_Policy"/>
             </input>
-            <output name="QueryAuditEventsResponseMessage">
+            <output name="QueryAuditEventsSecureResponseMessage">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#AuditQueryLog_Output_Policy"/>
             </output>
         </operation>
-        <operation name="QueryAuditEventsByMessageID">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsRequestByMessageID"/>
-            <input name="QueryAuditEventsRequestByMessageID">
+        <operation name="QueryAuditEventsSecureByMessageID">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureRequestByMessageID"/>
+            <input name="QueryAuditEventsSecureRequestByMessageID">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#AuditQueryLog_Input_Policy"/>
             </input>
-            <output name="QueryAuditEventsResponseMessage">
+            <output name="QueryAuditEventsSecureResponseMessage">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#AuditQueryLog_Output_Policy"/>
             </output>
         </operation>
-        <operation name="QueryAuditEventsBlob">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylog:QueryAuditEventsBlobRequest"/>
-            <input name="QueryAuditEventsBlobRequest">
+        <operation name="QueryAuditEventsSecureBlob">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsBlobSecureRequest"/>
+            <input name="QueryAuditEventsBlobSecureRequest">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#AuditQueryLog_Input_Policy"/>
             </input>
-            <output name="QueryAuditEventsBlobResponse">
+            <output name="QueryAuditEventsBlobSecureResponse">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#AuditQueryLog_Output_Policy"/>
             </output>
