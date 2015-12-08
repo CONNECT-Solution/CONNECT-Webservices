@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AuditQueryLog" 
+    targetNamespace="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:tns="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured" 
+    xmlns:ns="http://nhinc.services.com/schema/auditmessage" 
+    xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+    xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+    xmlns:sc="http://schemas.sun.com/2006/03/wss/server"
+    xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+    xmlns:auditquery="urn:gov:hhs:fha:nhinc:common:auditquerylog">
+    <types>
+        <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:nhinccomponentauditquerylog">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:auditquerylog" schemaLocation="classpath:schemas/nhinc/common/AuditQueryLog.xsd" />
+        </xsd:schema>
+    </types>
+    <message name="QueryAuditEventsSecureRequestMessage">
+        <part name="QueryAuditEventsSecureRequest" element="auditquery:QueryAuditEventsSecureRequestType"/>
+    </message>
+    <message name="QueryAuditEventsSecureResponseMessage">
+        <part name="QueryAuditEventsSecureResponse" element="auditquery:QueryAuditEventsSecureResponseType"/>
+    </message>
+
+    <message name="QueryAuditEventsSecureRequestByMessageID">
+        <part name="QueryAuditEventsSecureRequestByMessageID" element="auditquery:QueryAuditEventsSecureRequestByRequestMessageId"/>
+    </message>
+
+    <message name="QueryAuditEventsBlobSecureRequest">
+        <part name="QueryAuditEventsBlobSecureRequest" element="auditquery:QueryAuditEventsBlobSecureRequest"/>
+    </message>
+    <message name="QueryAuditEventsBlobSecureResponse">
+        <part name="QueryAuditEventsBlobSecureResponse" element="auditquery:QueryAuditEventsBlobSecureResponse"/>
+    </message>
+
+    <portType name="AuditQueryLogSecuredPortType">
+        <operation name="QueryAuditEventsSecure">
+            <input name="QueryAuditEventsSecureRequestMessage" 
+                   message="tns:QueryAuditEventsSecureRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureRequestType"/>
+            <output name="QueryAuditEventsSecureResponseMessage" 
+                    message="tns:QueryAuditEventsSecureResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureResponseType"/>
+        </operation>
+        <operation name="QueryAuditEventsSecureByMessageID">
+            <input name="QueryAuditEventsSecureRequestByMessageID" message="tns:QueryAuditEventsSecureRequestByMessageID" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureRequestByMessageID"/>
+            <output name="QueryAuditEventsSecureResponseMessage" message="tns:QueryAuditEventsSecureResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureResponseType"/>
+        </operation>
+        <operation name="QueryAuditEventsSecureBlob">
+            <input name="QueryAuditEventsBlobSecureRequest" message="tns:QueryAuditEventsBlobSecureRequest" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsBlobSecureRequest"/>
+            <output name="QueryAuditEventsBlobSecureResponse" message="tns:QueryAuditEventsBlobSecureResponse" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsBlobSecureResponse"/>
+        </operation>
+    </portType>
+    <binding name="AuditQueryLogSecuredPortTypeBinding" 
+             type="tns:AuditQueryLogSecuredPortType">
+        <soap:binding style="document" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="QueryAuditEventsSecure">
+            <soap:operation style="document" 
+                            soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureRequestType"/>
+            <input name="QueryAuditEventsSecureRequestMessage">
+                <soap:body use="literal"/>
+                <wsp:PolicyReference URI="#AuditQueryLog_Input_Policy"/>
+            </input>
+            <output name="QueryAuditEventsSecureResponseMessage">
+                <soap:body use="literal"/>
+                <wsp:PolicyReference URI="#AuditQueryLog_Output_Policy"/>
+            </output>
+        </operation>
+        <operation name="QueryAuditEventsSecureByMessageID">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsSecureRequestByMessageID"/>
+            <input name="QueryAuditEventsSecureRequestByMessageID">
+                <soap:body use="literal"/>
+                <wsp:PolicyReference URI="#AuditQueryLog_Input_Policy"/>
+            </input>
+            <output name="QueryAuditEventsSecureResponseMessage">
+                <soap:body use="literal"/>
+                <wsp:PolicyReference URI="#AuditQueryLog_Output_Policy"/>
+            </output>
+        </operation>
+        <operation name="QueryAuditEventsSecureBlob">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentauditquerylogsecured:QueryAuditEventsBlobSecureRequest"/>
+            <input name="QueryAuditEventsBlobSecureRequest">
+                <soap:body use="literal"/>
+                <wsp:PolicyReference URI="#AuditQueryLog_Input_Policy"/>
+            </input>
+            <output name="QueryAuditEventsBlobSecureResponse">
+                <soap:body use="literal"/>
+                <wsp:PolicyReference URI="#AuditQueryLog_Output_Policy"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="AuditQueryLogSecuredService">
+        <port name="AuditQueryLogSecuredPortType" 
+              binding="tns:AuditQueryLogSecuredPortTypeBinding">
+            <soap:address 
+                location="http://localhost:${HttpDefaultPort}/CONNECTGateway/GatewayService/AuditQueryLogSecuredService"/>
+        </port>
+    </service>
+    <wsp:Policy wsu:Id="AuditQueryLog_Binding_SoapPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding>
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken>
+                                    <wsp:Policy>
+                                        <sp:RequireClientCertificate/>
+                                    </wsp:Policy>
+                                </sp:HttpsToken>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp/>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+                <sp:EndorsingSupportingTokens>
+                    <wsp:Policy>
+                        <sp:SamlToken
+                sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <wsp:Policy>
+                                <sp:WssSamlV20Token11/>
+                            </wsp:Policy>
+                        </sp:SamlToken>
+                    </wsp:Policy>
+                </sp:EndorsingSupportingTokens>
+                <sp:Wss11>
+                    <wsp:Policy>
+                        <sp:MustSupportRefKeyIdentifier/>
+                        <sp:MustSupportRefIssuerSerial/>
+                        <sp:RequireSignatureConfirmation/>
+                    </wsp:Policy>
+                </sp:Wss11>
+                <wsaw:UsingAddressing />
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AuditQueryLog_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AuditQueryLog_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>
