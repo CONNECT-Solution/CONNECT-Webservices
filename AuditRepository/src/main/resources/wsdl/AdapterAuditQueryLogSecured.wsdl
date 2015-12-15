@@ -97,7 +97,7 @@
         <port name="AuditQueryLogSecuredPortType" 
               binding="tns:AuditQueryLogSecuredPortTypeBinding">
             <soap:address 
-                location="http://localhost:${HttpDefaultPort}/CONNECTGateway/GatewayService/AuditQueryLogSecuredService"/>
+                location="https://localhost:${HttpDefaultPort}/CONNECTGateway/GatewayService/AuditQueryLogSecuredService"/>
         </port>
     </service>
     <wsp:Policy wsu:Id="AuditQueryLog_Binding_SoapPolicy">
