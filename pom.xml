@@ -1,15 +1,18 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
     </parent>
+
     <groupId>org.connectopensource</groupId>
     <artifactId>Webservices</artifactId>
     <version>4.3.0-SNAPSHOT</version>
-    <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
     <name>CONNECT Web services</name>
 
     <scm>
@@ -26,15 +29,14 @@
         </license>
     </licenses>
 
-    <developers>
-    </developers>
-
     <prerequisites>
         <maven>3.0.4</maven>
     </prerequisites>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <compiler.source>1.7</compiler.source>
+        <compiler.target>1.7</compiler.target>
     </properties>
 
     <distributionManagement>
@@ -73,7 +75,6 @@
                 <groupId>org.connectopensource</groupId>
                 <artifactId>CONNECTCommonTypesLib</artifactId>
                 <version>4.3.0-SNAPSHOT</version>
-                <type>jar</type>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -122,7 +123,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.5.3</version>
                 <configuration>
                     <pushChanges>false</pushChanges>
                 </configuration>
@@ -131,6 +132,7 @@
                 <!-- Used to pull XSD files from the JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
                 <executions>
                     <execution>
                         <id>unpack-xsd-files</id>
@@ -165,7 +167,7 @@
                         <phase>process-resources</phase>
                         <configuration>
                             <fork>once</fork>
-                            <encoding>UTF-8</encoding>
+                            <encoding>${project.build.sourceEncoding}</encoding>
                             <sourceRoot>${project.build.directory}/generated-sources</sourceRoot>
                             <classesDirectory>${project.build.directory}/wsdl2java-sources/</classesDirectory>
                             <wsdlRoot>${project.build.directory}/wsdl2java-sources/</wsdlRoot>
@@ -197,17 +199,18 @@
                 <inherited>true</inherited>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.3</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                    <testSource>1.7</testSource>
-                    <testTarget>1.7</testTarget>
+                    <source>${compiler.source}</source>
+                    <target>${compiler.target}</target>
+                    <testSource>${compiler.source}</testSource>
+                    <testTarget>${compiler.target}</testTarget>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
                 <configuration>
                     <!-- use baseVersion instead of unique timestamp version to support skinny WARS -->
                     <outputFileNameMapping>@{artifactId}@-@{baseVersion}@.@{extension}@</outputFileNameMapping>
