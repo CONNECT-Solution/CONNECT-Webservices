@@ -86,14 +86,14 @@
                         </sp:TransportToken>
                         <sp:Layout>
                             <wsp:Policy>
-                                <sp:Strict/>
+                                <sp:Lax/>
                             </wsp:Policy>
                         </sp:Layout>
                         <sp:IncludeTimestamp/>
                         <sp:AlgorithmSuite>
                             <wsp:Policy>
                                 <sp:Basic256 />
-                                <sp:Basic192 />
+                                <!--<sp:Basic192 />
                                 <sp:Basic128 />
                                 <sp:TripleDes />
                                 <sp:Basic256Rsa15 />
@@ -108,6 +108,7 @@
                                 <sp:Basic192Sha256Rsa15 />
                                 <sp:Basic128Sha256Rsa15 />
                                 <sp:TripleDesSha256Rsa15 />
+                                -->
                             </wsp:Policy>
                         </sp:AlgorithmSuite>
                     </wsp:Policy>
