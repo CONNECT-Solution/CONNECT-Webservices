@@ -157,12 +157,13 @@
                         </sp:TransportToken>
                         <sp:Layout>
                             <wsp:Policy>
-                                <sp:Strict/>
+                                <sp:Lax/>
                             </wsp:Policy>
                         </sp:Layout>
                         <sp:IncludeTimestamp/>
                         <sp:AlgorithmSuite>
                             <wsp:Policy>
+                            <wsp:ExactlyOne>
                                 <sp:Basic256/>
                                 <sp:Basic192/>
                                 <sp:Basic128/>
@@ -179,6 +180,7 @@
                                 <sp:Basic192Sha256Rsa15/>
                                 <sp:Basic128Sha256Rsa15/>
                                 <sp:TripleDesSha256Rsa15/>
+                                </wsp:ExactlyOne>
                             </wsp:Policy>
                         </sp:AlgorithmSuite>
                     </wsp:Policy>
