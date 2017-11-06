@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ConfigAdminService" 
+             targetNamespace="urn:gov:hhs:fha:nhinc:configadmin"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:tns="urn:gov:hhs:fha:nhinc:configadmin" 
+             xmlns:config="urn:gov:hhs:fha:nhinc:common:configadmin" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <types>
+        <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:configadmin">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:configadmin" 
+                        schemaLocation="classpath:schemas/nhinc/common/configAdmin.xsd"/>
+        </xsd:schema>
+    </types>
+    
+    <message name="ImportCertificateRequestMessage">
+        <part name="ImportCertificateRequest" 
+              element="config:ImportCertificateRequestMessage"/>
+    </message>
+    <message name="ImportCertificateResponseMessage">
+        <part name="ImportCertificateResponse" 
+              element="config:ImportCertificateResponseMessage"/>
+    </message>
+    
+    <portType name="EntityConfigAdminPortType">
+        <operation name="ImportCertificate">
+            <input name="ImportCertificateRequest" 
+                   message="tns:ImportCertificateRequestMessage"/>
+            <output name="ImportCertificateResponse" 
+                    message="tns:ImportCertificateResponseMessage"/>
+        </operation>
+    </portType>
+    
+    <binding name="EntityConfigAdminBindingSoap" 
+             type="tns:EntityConfigAdminPortType">
+        <soap:binding style="document" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="ImportCertificate">
+            <soap:operation soapAction="urn:ImportCertificate"/>
+            <input name="ImportCertificateRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="ImportCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    
+    <service name="EntityConfigAdmin">
+        <port name="EntityConfigAdminPort" 
+              binding="tns:EntityConfigAdminBindingSoap">
+            <soap:address 
+               location="http://localhost:${HttpDefaultPort}/CONNECTCommon/EntityConfigAdmin"/>
+        </port>
+    </service>
+</definitions>
