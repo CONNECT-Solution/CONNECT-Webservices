@@ -22,13 +22,51 @@
         <part name="ImportCertificateResponse" 
               element="config:ImportCertificateResponseMessage"/>
     </message>
+     
+    <message name="ListTrustStoresRequestMessage">
+        <part name="ListTrustStoresRequest"
+              element="config:ListTrustStoresRequestMessage"/>
+    </message>
+    <message name="ListTrustStoresResponseMessage">
+        <part name="ListTrustStoresResponse"
+              element="config:ListTrustStoresResponseMessage"/>
+    </message>
+    
+	<message name="EditCertificateRequestMessage">
+        <part name="EditCertificateRequest"
+              element="config:EditCertificateRequestMessage"/>
+    </message>
+    <message name="EditCertificateResponseMessage">
+        <part name="EditCertificateResponse"
+              element="config:EditCertificateResponseMessage"/>
+    </message>
+	
+	<message name="DeleteCertificateRequestMessage">
+        <part name="DeleteCertificateRequest"
+              element="config:DeleteCertificateRequestMessage"/>
+    </message>
+    <message name="DeleteCertificateResponseMessage">
+        <part name="DeleteCertificateResponse"
+              element="config:DeleteCertificateResponseMessage"/>
+    </message>
+	
     
     <portType name="EntityConfigAdminPortType">
         <operation name="ImportCertificate">
-            <input name="ImportCertificateRequest" 
-                   message="tns:ImportCertificateRequestMessage"/>
-            <output name="ImportCertificateResponse" 
-                    message="tns:ImportCertificateResponseMessage"/>
+            <input name="ImportCertificateRequest" message="tns:ImportCertificateRequestMessage"/>
+            <output name="ImportCertificateResponse" message="tns:ImportCertificateResponseMessage"/>
+        </operation>
+        <operation name="ListTrustStores">
+            <input name="ListTrustStoresRequest"  message="tns:ListTrustStoresRequestMessage"/>
+            <output name="ListTrustStoresResponse" message="tns:ListTrustStoresResponseMessage"/>
+        </operation>
+		<operation name="EditCertificate">
+            <input name="EditCertificateRequest"  message="tns:EditCertificateRequestMessage"/>
+            <output name="EditCertificateResponse" message="tns:EditCertificateResponseMessage"/>
+        </operation>
+		<operation name="DeleteCertificate">
+            <input name="DeleteCertificateRequest"  message="tns:DeleteCertificateRequestMessage"/>
+            <output name="DeleteCertificateResponse" message="tns:DeleteCertificateResponseMessage"/>
         </operation>
     </portType>
     
@@ -45,6 +83,37 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
+        
+        <operation name="ListTrustStores">
+            <soap:operation soapAction="urn:ListTrustStores"/>
+            <input name="ListTrustStoresRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="ListTrustStoresResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        
+		<operation name="EditCertificate">
+            <soap:operation soapAction="urn:EditCertificate"/>
+            <input name="EditCertificateRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="EditCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+		
+		<operation name="DeleteCertificate">
+            <soap:operation soapAction="urn:DeleteCertificate"/>
+            <input name="DeleteCertificateRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="DeleteCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+		
     </binding>
     
     <service name="EntityConfigAdmin">
