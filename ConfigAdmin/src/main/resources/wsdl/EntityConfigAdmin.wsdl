@@ -22,7 +22,16 @@
         <part name="ImportCertificateResponse" 
               element="config:ImportCertificateResponseMessage"/>
     </message>
-     
+    
+	<message name="ListKeyStoresRequestMessage">
+        <part name="ListKeyStoresRequest"
+              element="config:ListKeyStoresRequestMessage"/>
+    </message>
+    <message name="ListKeyStoresResponseMessage">
+        <part name="ListKeyStoresResponse"
+              element="config:ListKeyStoresResponseMessage"/>
+    </message>
+	
     <message name="ListTrustStoresRequestMessage">
         <part name="ListTrustStoresRequest"
               element="config:ListTrustStoresRequestMessage"/>
@@ -60,6 +69,10 @@
             <input name="ListTrustStoresRequest"  message="tns:ListTrustStoresRequestMessage"/>
             <output name="ListTrustStoresResponse" message="tns:ListTrustStoresResponseMessage"/>
         </operation>
+		 <operation name="ListKeyStores">
+            <input name="ListKeyStoresRequest"  message="tns:ListKeyStoresRequestMessage"/>
+            <output name="ListKeyStoresResponse" message="tns:ListKeyStoresResponseMessage"/>
+        </operation>
 		<operation name="EditCertificate">
             <input name="EditCertificateRequest"  message="tns:EditCertificateRequestMessage"/>
             <output name="EditCertificateResponse" message="tns:EditCertificateResponseMessage"/>
@@ -94,6 +107,16 @@
             </output>
         </operation>
         
+		<operation name="ListKeyStores">
+            <soap:operation soapAction="urn:ListKeyStores"/>
+            <input name="ListKeyStoresRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="ListKeyStoresResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+		
 		<operation name="EditCertificate">
             <soap:operation soapAction="urn:EditCertificate"/>
             <input name="EditCertificateRequest">
