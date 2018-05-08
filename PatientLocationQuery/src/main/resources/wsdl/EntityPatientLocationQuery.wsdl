@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="urn:gov:hhs:fha:nhinc:entitypatientlocationquery"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+                  name="EntityPatientLocationQuery" targetNamespace="urn:gov:hhs:fha:nhinc:entitypatientlocationquery">
+	<wsdl:documentation>
+     Entity WSDL for Patient Location Query UnSecured
+    </wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" targetNamespace="urn:gov:hhs:fha:nhinc:entitypatientlocationquery">
+			<!-- Include the message schema -->
+			<xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+                  schemaLocation="classpath:schemas/nhinc/common/NhincCommonEntity.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="RespondingGateway_PateintLocationQueryRequestMessage">
+		<wsdl:part name="RespondingGateway_PateintLocationQueryRequest"
+                   element="nccommonentity:RespondingGateway_PatientLocationQueryRequest"/>
+	</wsdl:message>
+	<wsdl:message name="RespondingGateway_PateintLocationQueryResponseMessage">
+		<wsdl:part name="RespondingGateway_PateintLocationQueryResponse"
+                   element="nccommonentity:RespondingGateway_PatientLocationQueryResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="EntityPatientLocationQueryPortType">
+		<wsdl:operation name="RespondingGateway_PatientLocationQuery">
+			<wsdl:input name="RespondingGateway_PateintLocationQueryRequest"
+                        message="tns:RespondingGateway_PateintLocationQueryRequestMessage"
+                        wsaw:Action="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:PatientLocationQuery"/>
+			<wsdl:output name="RespondingGateway_PateintLocationQueryResponse"
+                         message="tns:RespondingGateway_PateintLocationQueryResponseMessage"
+                         wsaw:Action="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:PatientLocationQueryResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="EntityPatientLocationQueryBindingSoap" type="tns:EntityPatientLocationQueryPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsp:PolicyReference URI="#Entity_PatientLocationQuery_SoapPolicy"/>
+		<wsdl:operation name="RespondingGateway_PatientLocationQuery">
+			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:PatientLocationQuery"/>
+			<wsdl:input name="RespondingGateway_PateintLocationQueryRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="RespondingGateway_PateintLocationQueryResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="EntityPatientLocationQuery">
+		<wsdl:port name="EntityPatientLocationQueryPortSoap" binding="tns:EntityPatientLocationQueryBindingSoap">
+			<soap:address location="http://localhost:${HttpDefaultPort}/Gateway/PatientLocationQuery/1_0/EntityPatientLocationQuery"/>
+		</wsdl:port>
+	</wsdl:service>
+	<wsp:Policy wsu:Id="Entity_PatientLocationQuery_SoapPolicy">
+	    <wsp:ExactlyOne>
+	        <wsp:All>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</wsdl:definitions>
