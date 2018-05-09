@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This wsdl file is for an XDS.b Document Repository Actor -->
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:adapterxdr:data"
+             xmlns:ihe="urn:ihe:iti:xds-b:2007"
+             xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+             xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             name="AdapterXDR" targetNamespace="urn:gov:hhs:fha:nhinc:adapterxdr:data">
+	<documentation>IHE XDR Document Repository</documentation>
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
+			<xsd:import namespace="urn:ihe:iti:xds-b:2007" schemaLocation="classpath:schemas/ihe/XDS.b_DocumentRepository.xsd"/>
+			<xsd:import schemaLocation="classpath:schemas/ebRS/query.xsd" namespace="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0"/>
+			<xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
+			<xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="RegisterDocumentSet-b_Message">
+		<documentation>Register Document Set</documentation>
+		<part name="body" element="nccommonadapter:Adapter_RegisterDocumentSetRequest"/>
+	</message>
+	<message name="RegisterDocumentSet-bResponse_Message">
+		<documentation>Register Document Set Response</documentation>
+		<part name="body" element="rs:RegistryResponse"/>
+	</message>
+	<portType name="AdapterXDR_PortType">
+		<operation name="RegisterDocumentSetb">
+			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adapterxdr:data:RegisterDocumentSet-b"/>
+			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adapterxdr:data:RegisterDocumentSet-bResponse"/>
+		</operation>
+	</portType>
+	<binding name="AdapterXDR_Binding" type="tns:AdapterXDR_PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="RegisterDocumentSetb">
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="AdapterXDR_Service">
+		<port name="AdapterXDR_Port" binding="tns:AdapterXDR_Binding">
+			<soap:address location="http://localhost:${HttpDefaultPort}/Adapter/DocumentDataSubmission/A_0/AdapterDocDataSubmissionUnsecured"/>
+		</port>
+	</service>
+</definitions>
