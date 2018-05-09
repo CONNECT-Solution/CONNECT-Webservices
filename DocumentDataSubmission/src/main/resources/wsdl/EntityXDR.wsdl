@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This wsdl file is for an XDS.b Document Repository Actor -->
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ihe="urn:ihe:iti:xds-b:2007" xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:gov:hhs:fha:nhinc:nhincentityxdr" xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" xmlns:wsaws="http://www.w3.org/2005/08/addressing" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="NhincEntityXDR" targetNamespace="urn:gov:hhs:fha:nhinc:nhincentityxdr">
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:ihe="urn:ihe:iti:xds-b:2007"
+             xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:entityxdr:data"
+             xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             name="NhincEntityXDR"
+             targetNamespace="urn:gov:hhs:fha:nhinc:entityxdr:data">
 	<documentation>IHE XDR Document Repository</documentation>
 	<types>
 		<xsd:schema>
@@ -10,15 +21,6 @@
 			<xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="classpath:schemas/nhinc/gateway/SamlTokenData.xsd"/>
 			<xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="classpath:schemas/nhinc/common/NhincCommonEntity.xsd"/>
 		</xsd:schema>
-		<!--	Importing all schemas within one seems to confuse some parsers
-      and code-generation tools (and may be invalid)
-    <xsd:schema elementFormDefault="qualified">
-      <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
-        schemaLocation="../schema/ebRS/rs.xsd"/>
-      <xsd:import namespace="urn:ihe:iti:xds-b:2007"
-        schemaLocation="../schema/IHE/XDS.b_DocumentRepository.xsd"/>
-    </xsd:schema>
-    -->
 	</types>
 	<message name="RegisterDocumentSet-b_Message">
 		<documentation>Register Document Set</documentation>
@@ -47,7 +49,7 @@
 	</binding>
 	<service name="EntityXDR_Service">
 		<port name="EntityXDR_Port" binding="tns:EntityXDR_Binding">
-			<soap:address location="http://localhost:${HttpDefaultPort}/Gateway/DocumentDataSubmission/1_1/EntityService/EntityDocSubmissionUnsecured"/>
+			<soap:address location="http://localhost:${HttpDefaultPort}/Gateway/DocumentDataSubmission/1_1/EntityService/EntityDocDataSubmissionUnsecured"/>
 		</port>
 	</service>
 </definitions>
