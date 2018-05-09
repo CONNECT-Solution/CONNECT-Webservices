@@ -28,6 +28,11 @@
         <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:adaptermpi">
              <xsd:import schemaLocation="classpath:schemas/nhin/PatientDiscoveryFault.xsd" namespace="http://www.hhs.gov/healthit/nhin"/>
         </xsd:schema>
+        <xsd:schema elementFormDefault="qualified" targetNamespace="urn:ihe:iti:xcpd:2009">
+			<!-- Include the message schema -->
+			 <xsd:import namespace="urn:ihe:iti:xcpd:2009"
+                  schemaLocation="classpath:schemas/HL7V3/NE2008/multicacheschemas/XCPD_PLQ.xsd"/>
+		</xsd:schema>
     </wsdl:types>
     <wsdl:message name="PRPA_IN201305UV02_Message">
         <wsdl:part name="Body" element="hl7:PRPA_IN201305UV02"/>
@@ -38,12 +43,30 @@
     <wsdl:message name="PRPA_IN201305UV02_Fault">
         <wsdl:part name="PatientDiscoveryFault" element="nhin:PatientDiscoveryFault"/>
     </wsdl:message>
+    <!-- Patient Location Query Nhin message -->
+    <wsdl:message name="PatientLocationQuery_Message">
+		<wsdl:part name="body" element="tns:PatientLocationQueryRequest"/>
+	</wsdl:message>
+	<wsdl:message name="PatientLocationQueryResponse_Message">
+		<wsdl:part name="body"
+                   element="tns:PatientLocationQueryResponse"/>
+	</wsdl:message>
     <wsdl:portType name="RespondingGateway_PortType">
         <wsdl:operation name="RespondingGateway_PRPA_IN201305UV02">
             <wsdl:input message="tns:PRPA_IN201305UV02_Message" wsaw:Action="urn:hl7-org:v3:PRPA_IN201305UV02:CrossGatewayPatientDiscovery"/>
             <wsdl:output message="tns:PRPA_IN201306UV02_Message" wsaw:Action="urn:hl7-org:v3:PRPA_IN201306UV02:CrossGatewayPatientDiscovery"/>
             <wsdl:fault name="PRPA_IN201305UV02_Fault" message="tns:PRPA_IN201305UV02_Fault"/>
         </wsdl:operation>
+    </wsdl:portType>
+    <!-- Patient Location Query Port Type -->
+    <wsdl:portType name="RespondingGateway_PLQ_PortType">
+        <!-- Patient Location Query operation-->
+        <wsdl:operation name="RespondingGateway_PatientLocationQuery">
+			<wsdl:input message="tns:PatientLocationQuery_Message"
+                        wsaw:Action="urn:ihe:iti:xcpd:2009:PatientLocationQuery"/>
+			<wsdl:output message="tns:PatientLocationQueryResponse_Message"
+                         wsaw:Action="urn:ihe:iti:xcpd:2009:PatientLocationQueryResponse"/>
+		</wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="RespondingGateway_Binding_Soap" type="tns:RespondingGateway_PortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -64,9 +87,27 @@
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
+    <wsdl:binding name="RespondingGateway_PLQ_Binding_Soap" type="tns:RespondingGateway_PLQ_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsp:PolicyReference URI="#RespondingGateway_Binding_SoapPolicy"/>
+        <wsdl:operation name="RespondingGateway_PatientLocationQuery">
+			<soap:operation soapAction="urn:ihe:iti:2009:PatientLocationQuery"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+                <wsp:PolicyReference URI="#RespondingGateway_Binding_Soap_Input_Policy"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+                <wsp:PolicyReference URI="#RespondingGateway_Binding_Soap_Output_Policy"/>
+			</wsdl:output>
+		</wsdl:operation>
+    </wsdl:binding>
     <wsdl:service name="RespondingGateway_Service">
         <wsdl:port name="RespondingGateway_Port_Soap" binding="tns:RespondingGateway_Binding_Soap">
             <soap:address location="https://localhost:${HttpsDefaultPort}/Gateway/PatientDiscovery/1_0/NhinService/NhinPatientDiscovery"/>
+        </wsdl:port>
+        <wsdl:port name="RespondingGateway_PLQ_Port_Soap" binding="tns:RespondingGateway_PLQ_Binding_Soap">
+            <soap:address location="https://localhost:${HttpsDefaultPort}/Gateway/PatientLocationQuery/1_0/NhinService/NhinPatientLocationQuery"/>
         </wsdl:port>
     </wsdl:service>
     <wsp:Policy wsu:Id="RespondingGateway_Binding_SoapPolicy">

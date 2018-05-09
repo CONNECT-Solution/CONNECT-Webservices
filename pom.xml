@@ -69,7 +69,6 @@
         <module>PolicyEngine</module>
         <module>RedactionEngine</module>
 	<module>ConfigAdmin</module>
-	<module>PatientLocationQuery</module>
     </modules>
 
     <dependencyManagement>
