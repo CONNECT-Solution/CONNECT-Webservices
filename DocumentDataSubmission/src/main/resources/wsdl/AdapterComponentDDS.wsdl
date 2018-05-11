@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This wsdl file is for an XDS.b Document Repository Actor -->
 <definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
-             xmlns:tns="urn:gov:hhs:fha:nhinc:adaptercomponentxdr:data"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:adaptercomponentdds:data"
              xmlns:ihe="urn:ihe:iti:xds-b:2007"
              xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
              xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
              xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
              xmlns:wsaws="http://www.w3.org/2005/08/addressing"
-             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdapterXDR"
-             targetNamespace="urn:gov:hhs:fha:nhinc:adaptercomponentxdr:data">
-	<documentation>IHE XDR Document Repository</documentation>
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdapterDDS"
+             targetNamespace="urn:gov:hhs:fha:nhinc:adaptercomponentdds:data">
+	<documentation>IHE DDS Document Repository</documentation>
 	<types>
 		<xsd:schema>
 			<xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
@@ -28,13 +28,13 @@
 		<documentation>Register Document Set Response</documentation>
 		<part name="body" element="rs:RegistryResponse"/>
 	</message>
-	<portType name="AdapterComponentXDR_PortType">
+	<portType name="AdapterComponentDDS_PortType">
 		<operation name="RegisterDocumentSetb">
-			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentxdr:data:RegisterDocumentSet-b"/>
-			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentxdr:data:RegisterDocumentSet-bResponse"/>
+			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentDDS:data:RegisterDocumentSet-b"/>
+			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentDDS:data:RegisterDocumentSet-bResponse"/>
 		</operation>
 	</portType>
-	<binding name="AdapterComponentXDR_Binding" type="tns:AdapterComponentXDR_PortType">
+	<binding name="AdapterComponentDDS_Binding" type="tns:AdapterComponentDDS_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="RegisterDocumentSetb">
 			<input>
@@ -45,8 +45,8 @@
 			</output>
 		</operation>
 	</binding>
-	<service name="AdapterComponentXDR_Service">
-		<port name="AdapterComponentXDR_Port" binding="tns:AdapterComponentXDR_Binding">
+	<service name="AdapterComponentDDS_Service">
+		<port name="AdapterComponentDDS_Port" binding="tns:AdapterComponentDDS_Binding">
 			<soap:address location="http://localhost:${HttpDefaultPort}/Adapter/DocumentDataSubmission/A_0/AdapterComponentDocDataSubmissionUnsecured"/>
 		</port>
 	</service>
