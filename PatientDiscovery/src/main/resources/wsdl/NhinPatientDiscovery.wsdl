@@ -91,7 +91,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_Binding_SoapPolicy"/>
         <wsdl:operation name="RespondingGateway_PatientLocationQuery">
-			<soap:operation soapAction="urn:ihe:iti:2009:PatientLocationQuery"/>
+			<soap:operation soapAction="urn:ihe:iti:xcpd:2009:PatientLocationQuery"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_Binding_Soap_Input_Policy"/>
