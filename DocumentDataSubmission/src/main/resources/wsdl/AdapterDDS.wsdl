@@ -9,7 +9,7 @@
              xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
              xmlns:wsaws="http://www.w3.org/2005/08/addressing"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-             name="Adapterdds" targetNamespace="urn:gov:hhs:fha:nhinc:adapterdds:data">
+             name="AdapterDDS" targetNamespace="urn:gov:hhs:fha:nhinc:adapterdds:data">
 	<documentation>IHE DDS Document Repository</documentation>
 	<types>
 		<xsd:schema>
@@ -28,13 +28,13 @@
 		<documentation>Register Document Set Response</documentation>
 		<part name="body" element="rs:RegistryResponse"/>
 	</message>
-	<portType name="Adapterdds_PortType">
+	<portType name="AdapterDDS_PortType">
 		<operation name="RegisterDocumentSetb">
 			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adapterdds:data:RegisterDocumentSet-b"/>
 			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adapterdds:data:RegisterDocumentSet-bResponse"/>
 		</operation>
 	</portType>
-	<binding name="Adapterdds_Binding" type="tns:Adapterdds_PortType">
+	<binding name="AdapterDDS_Binding" type="tns:AdapterDDS_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="RegisterDocumentSetb">
 			<input>
@@ -45,8 +45,8 @@
 			</output>
 		</operation>
 	</binding>
-	<service name="Adapterdds_Service">
-		<port name="Adapterdds_Port" binding="tns:Adapterdds_Binding">
+	<service name="AdapterDDS_Service">
+		<port name="AdapterDDS_Port" binding="tns:AdapterDDS_Binding">
 			<soap:address location="http://localhost:${HttpDefaultPort}/Adapter/DocumentDataSubmission/A_0/AdapterDocDataSubmissionUnsecured"/>
 		</port>
 	</service>

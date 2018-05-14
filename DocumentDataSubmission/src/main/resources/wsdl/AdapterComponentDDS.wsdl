@@ -28,13 +28,13 @@
 		<documentation>Register Document Set Response</documentation>
 		<part name="body" element="rs:RegistryResponse"/>
 	</message>
-	<portType name="AdapterComponentdds_PortType">
+	<portType name="AdapterComponentDDS_PortType">
 		<operation name="RegisterDocumentSetb">
 			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentdds:data:RegisterDocumentSet-b"/>
 			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentdds:data:RegisterDocumentSet-bResponse"/>
 		</operation>
 	</portType>
-	<binding name="AdapterComponentdds_Binding" type="tns:AdapterComponentdds_PortType">
+	<binding name="AdapterComponentDDS_Binding" type="tns:AdapterComponentDDS_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="RegisterDocumentSetb">
 			<input>
@@ -45,8 +45,8 @@
 			</output>
 		</operation>
 	</binding>
-	<service name="AdapterComponentdds_Service">
-		<port name="AdapterComponentdds_Port" binding="tns:AdapterComponentdds_Binding">
+	<service name="AdapterComponentDDS_Service">
+		<port name="AdapterComponentDDS_Port" binding="tns:AdapterComponentDDS_Binding">
 			<soap:address location="http://localhost:${HttpDefaultPort}/Adapter/DocumentDataSubmission/A_0/AdapterComponentDocDataSubmissionUnsecured"/>
 		</port>
 	</service>
