@@ -13,7 +13,7 @@
              xmlns:sc="http://schemas.sun.com/2006/03/wss/server" 
              xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
              xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-             name="DocumentRepositorydds" 
+             name="DocumentRepositoryDDS" 
              targetNamespace="urn:ihe:iti:xdr:2007">
     <documentation>IHE DDS Document Repository</documentation>
     <types>
@@ -32,32 +32,32 @@
         <documentation>Register Document Set Response</documentation>
         <part name="body" element="rs:RegistryResponse"/>
     </message>
-    <portType name="DocumentRepositorydds_PortType">
-        <operation name="DocumentRepository_RegisterDocumentSet-b">
+    <portType name="DocumentRepositoryDDS_PortType">
+        <operation name="DocumentRepositoryDDS_RegisterDocumentSet-b">
             <input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:ihe:iti:2007:RegisterDocumentSet-b"/>
             <output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:ihe:iti:2007:RegisterDocumentSet-bResponse"/>
         </operation>
     </portType>
-    <binding name="DocumentRepositorydds_Binding" type="tns:DocumentRepositorydds_PortType">
+    <binding name="DocumentRepositoryDDS_Binding" type="tns:DocumentRepositoryDDS_PortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <wsp:PolicyReference URI="#RespondingGateway_dds_Binding_SoapPolicy"/>
-        <operation name="DocumentRepository_RegisterDocumentSet-b">
+        <wsp:PolicyReference URI="#RespondingGateway_DDS_Binding_SoapPolicy"/>
+        <operation name="DocumentRepositoryDDS_RegisterDocumentSet-b">
             <input>
                 <soap:body use="literal"/>
-                <wsp:PolicyReference URI="#RespondingGateway_dds_Binding_Soap_Input_Policy"/>
+                <wsp:PolicyReference URI="#RespondingGateway_DDS_Binding_Soap_Input_Policy"/>
             </input>
             <output>
                 <soap:body use="literal"/>
-                <wsp:PolicyReference URI="#RespondingGateway_dds_Binding_Soap_Output_Policy"/>
+                <wsp:PolicyReference URI="#RespondingGateway_DDS_Binding_Soap_Output_Policy"/>
             </output>
         </operation>
     </binding>
-    <service name="DocumentRepositorydds_Service">
-        <port name="DocumentRepositorydds_Port_Soap" binding="tns:DocumentRepositorydds_Binding">
+    <service name="DocumentRepositoryDDS_Service">
+        <port name="DocumentRepositoryDDS_Port_Soap" binding="tns:DocumentRepositoryDDS_Binding">
             <soap:address location="https://localhost:${HttpsDefaultPort}/Gateway/DocumentDataSubmission/2_0/DocumentRepositoryDocDataSubmission_Service"/>
         </port>
     </service>
-    <wsp:Policy wsu:Id="RespondingGateway_dds_Binding_SoapPolicy">
+    <wsp:Policy wsu:Id="RespondingGateway_DDS_Binding_SoapPolicy">
         <wsp:ExactlyOne>
             <wsp:All>
                 <sp:TransportBinding>
@@ -121,14 +121,14 @@
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="RespondingGateway_dds_Binding_Soap_Input_Policy">
+    <wsp:Policy wsu:Id="RespondingGateway_DDS_Binding_Soap_Input_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
                 <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="RespondingGateway_dds_Binding_Soap_Output_Policy">
+    <wsp:Policy wsu:Id="RespondingGateway_DDS_Binding_Soap_Output_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
                 <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>

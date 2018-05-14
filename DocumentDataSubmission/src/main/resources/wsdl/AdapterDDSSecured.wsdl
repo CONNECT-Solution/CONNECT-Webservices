@@ -14,7 +14,7 @@
 	xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
 	xmlns:sc="http://schemas.sun.com/2006/03/wss/server"
 	xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
-	name="AdapterddsSecured" 
+	name="AdapterDDSSecured" 
 	targetNamespace="urn:gov:hhs:fha:nhinc:adapterddssecured:data">
     <documentation>IHE DDS Document Repository</documentation>
     <types>
@@ -34,32 +34,32 @@
         <documentation>Register Document Set Response</documentation>
         <part name="body" element="rs:RegistryResponse"/>
     </message>
-    <portType name="AdapterddsSecured_PortType">
+    <portType name="AdapterDDSSecured_PortType">
         <operation name="RegisterDocumentSetb">
             <input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adapterddssecured:data:RegisterDocumentSet-b"/>
             <output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adapterddssecured:data::RegisterDocumentSet-bResponse"/>
         </operation>
     </portType>
-    <binding name="AdapterddsSecured_Binding" type="tns:AdapterddsSecured_PortType">
+    <binding name="AdapterDDSSecured_Binding" type="tns:AdapterDDSSecured_PortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <wsp:PolicyReference URI="#AdapterComponentddsPolicy"/>
+        <wsp:PolicyReference URI="#AdapterComponentDDSPolicy"/>
         <operation name="RegisterDocumentSetb">
             <input>
                 <soap:body use="literal"/>
-                <wsp:PolicyReference URI="#AdapterComponentddsPolicy_Input_Policy"/>
+                <wsp:PolicyReference URI="#AdapterComponentDDSPolicy_Input_Policy"/>
             </input>
             <output>
                 <soap:body use="literal"/>
-                <wsp:PolicyReference URI="#AdapterComponentddsPolicy_Output_Policy"/>
+                <wsp:PolicyReference URI="#AdapterComponentDDSPolicy_Output_Policy"/>
             </output>
         </operation>
     </binding>
-    <service name="AdapterddsSecured_Service">
-        <port name="AdapterddsSecured_Port" binding="tns:AdapterddsSecured_Binding">
+    <service name="AdapterDDSSecured_Service">
+        <port name="AdapterDDSSecured_Port" binding="tns:AdapterDDSSecured_Binding">
             <soap:address location="https://localhost:${HttpsDefaultPort}/Adapter/DocumentDataSubmission/A_0/AdapterDocDataSubmissionSecured"/>
         </port>
     </service>
-    <wsp:Policy wsu:Id="AdapterComponentddsPolicy">
+    <wsp:Policy wsu:Id="AdapterComponentDDSPolicy">
         <wsp:ExactlyOne>
             <wsp:All>
                 <sp:TransportBinding>
@@ -106,14 +106,14 @@
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="AdapterComponentddsPolicy_Input_Policy">
+    <wsp:Policy wsu:Id="AdapterComponentDDSPolicy_Input_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
                 <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="AdapterComponentddsPolicy_Output_Policy">
+    <wsp:Policy wsu:Id="AdapterComponentDDSPolicy_Output_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
                 <wsoma:OptimizedMimeSerialization wsp:Optional="true"/>

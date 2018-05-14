@@ -10,7 +10,7 @@
              xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
              xmlns:wsaws="http://www.w3.org/2005/08/addressing"
              xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
-             name="NhincEntitydds"
+             name="EntityDDS"
              targetNamespace="urn:gov:hhs:fha:nhinc:entitydds:data">
 	<documentation>IHE DDS Document Repository</documentation>
 	<types>
@@ -30,13 +30,13 @@
 		<documentation>Register Document Set Response</documentation>
 		<part name="body" element="rs:RegistryResponse"/>
 	</message>
-	<portType name="Entitydds_PortType">
+	<portType name="EntityDDS_PortType">
 		<operation name="RegisterDocumentSet-b">
 			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="tns:RegisterDocumentSet-b"/>
 			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="tns:RegisterDocumentSet-bResponse"/>
 		</operation>
 	</portType>
-	<binding name="Entitydds_Binding" type="tns:Entitydds_PortType">
+	<binding name="EntityDDS_Binding" type="tns:EntityDDS_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="RegisterDocumentSet-b">
 			<input>
@@ -47,8 +47,8 @@
 			</output>
 		</operation>
 	</binding>
-	<service name="Entitydds_Service">
-		<port name="Entitydds_Port" binding="tns:Entitydds_Binding">
+	<service name="EntityDDS_Service">
+		<port name="EntityDDS_Port" binding="tns:EntityDDS_Binding">
 			<soap:address location="http://localhost:${HttpDefaultPort}/Gateway/DocumentDataSubmission/1_1/EntityService/EntityDocDataSubmissionUnsecured"/>
 		</port>
 	</service>
