@@ -54,7 +54,7 @@
     </binding>
     <service name="DocumentRepositoryDDS_Service">
         <port name="DocumentRepositoryDDS_Port_Soap" binding="tns:DocumentRepositoryDDS_Binding">
-            <soap:address location="https://localhost:${HttpsDefaultPort}/Gateway/DocumentDataSubmission/2_0/DocumentRepositoryDocDataSubmission_Service"/>
+            <soap:address location="https://localhost:${HttpsDefaultPort}/Gateway/DocumentDataSubmission/1_0/DocumentRepositoryDocDataSubmission_Service"/>
         </port>
     </service>
     <wsp:Policy wsu:Id="RespondingGateway_DDS_Binding_SoapPolicy">

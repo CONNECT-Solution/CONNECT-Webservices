@@ -49,7 +49,7 @@
 	</binding>
 	<service name="EntityDDS_Service">
 		<port name="EntityDDS_Port" binding="tns:EntityDDS_Binding">
-			<soap:address location="http://localhost:${HttpDefaultPort}/Gateway/DocumentDataSubmission/1_1/EntityService/EntityDocDataSubmissionUnsecured"/>
+			<soap:address location="http://localhost:${HttpDefaultPort}/Gateway/DocumentDataSubmission/1_0/EntityService/EntityDocDataSubmissionUnsecured"/>
 		</port>
 	</service>
 </definitions>
