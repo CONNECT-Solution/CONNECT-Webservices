@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This wsdl file is for an XDS.b Document Repository Actor -->
+<!-- This wsdl file is for an XDS.b Document Registry Actor -->
 <definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
              xmlns:tns="urn:gov:hhs:fha:nhinc:adaptercomponentdds:data"
              xmlns:ihe="urn:ihe:iti:xds-b:2007"
@@ -8,9 +8,9 @@
              xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
              xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
              xmlns:wsaws="http://www.w3.org/2005/08/addressing"
-             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdapterDDS"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdapterXDS"
              targetNamespace="urn:gov:hhs:fha:nhinc:adaptercomponentdds:data">
-	<documentation>IHE DDS Document Repository</documentation>
+	<documentation>IHE XDS Document Registry</documentation>
 	<types>
 		<xsd:schema>
 			<xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
@@ -28,13 +28,13 @@
 		<documentation>Register Document Set Response</documentation>
 		<part name="body" element="rs:RegistryResponse"/>
 	</message>
-	<portType name="AdapterComponentDDS_PortType">
+	<portType name="AdapterComponentXDS_PortType">
 		<operation name="RegisterDocumentSetb">
 			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentdds:data:RegisterDocumentSet-b"/>
 			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentdds:data:RegisterDocumentSet-bResponse"/>
 		</operation>
 	</portType>
-	<binding name="AdapterComponentDDS_Binding" type="tns:AdapterComponentDDS_PortType">
+	<binding name="AdapterComponentXDS_Binding" type="tns:AdapterComponentXDS_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="RegisterDocumentSetb">
 			<input>
@@ -45,8 +45,8 @@
 			</output>
 		</operation>
 	</binding>
-	<service name="AdapterComponentDDS_Service">
-		<port name="AdapterComponentDDS_Port" binding="tns:AdapterComponentDDS_Binding">
+	<service name="AdapterComponentXDS_Service">
+		<port name="AdapterComponentXDS_Port" binding="tns:AdapterComponentXDS_Binding">
 			<soap:address location="http://localhost:${HttpDefaultPort}/Adapter/DocumentDataSubmission/A_0/AdapterComponentDocDataSubmissionUnsecured"/>
 		</port>
 	</service>
