@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This wsdl file is for an XDS.b Document Registry Actor -->
 <definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" 
-    xmlns:tns="urn:gov:hhs:fha:nhinc:entityxdssecured:data"
+    xmlns:tns="urn:gov:hhs:fha:nhinc:entityxdssecured"
     xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" 
     xmlns="http://schemas.xmlsoap.org/wsdl/"
     xmlns:ihe="urn:ihe:iti:xds-b:2007" 
@@ -15,7 +15,7 @@
     xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     name="EntityXDSSecured" 
-    targetNamespace="urn:gov:hhs:fha:nhinc:entityxdssecured:data">
+    targetNamespace="urn:gov:hhs:fha:nhinc:entityxdssecured">
     <documentation>IHE XDS Document Registry</documentation>
     <types>
         <xsd:schema>
