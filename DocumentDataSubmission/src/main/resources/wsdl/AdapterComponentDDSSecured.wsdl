@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This wsdl file is for an XDS.b Document Registry Actor -->
 <definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" 
-             xmlns:tns="urn:gov:hhs:fha:nhinc:adaptercomponentddssecured:data" 
+             xmlns:tns="urn:gov:hhs:fha:nhinc:adaptercomponentxdssecured:data" 
              xmlns:ihe="urn:ihe:iti:xds-b:2007" 
              xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" 
              xmlns="http://schemas.xmlsoap.org/wsdl/" 
@@ -15,7 +15,7 @@
              xmlns:sc="http://schemas.sun.com/2006/03/wss/server" 
              xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
              name="AdapterComponentXDSSecured" 
-             targetNamespace="urn:gov:hhs:fha:nhinc:adaptercomponentddssecured:data">
+             targetNamespace="urn:gov:hhs:fha:nhinc:adaptercomponentxdssecured:data">
     <documentation>IHE XDS Document Registry</documentation>
     <types>
         <xsd:schema>
@@ -36,8 +36,8 @@
     </message>
     <portType name="AdapterComponentXDSSecured_PortType">
         <operation name="RegisterDocumentSetb">
-            <input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentddssecured:data:RegisterDocumentSet-b"/>
-            <output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentddssecured:data:RegisterDocumentSet-bResponse"/>
+            <input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentxdssecured:data:RegisterDocumentSet-b"/>
+            <output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:adaptercomponentxdssecured:data:RegisterDocumentSet-bResponse"/>
         </operation>
     </portType>
     <binding name="AdapterXDSSecured_Binding" type="tns:AdapterComponentXDSSecured_PortType">
