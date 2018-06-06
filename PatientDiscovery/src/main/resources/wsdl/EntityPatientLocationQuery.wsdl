@@ -30,17 +30,17 @@
 		<wsdl:operation name="RespondingGateway_PatientLocationQuery">
 			<wsdl:input name="RespondingGateway_PatientLocationQueryRequest"
                         message="tns:RespondingGateway_PatientLocationQueryRequestMessage"
-                        wsaw:Action="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:PatientLocationQuery"/>
+                        wsaw:Action="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:RespondingGateway_PatientLocationQueryRequestMessage"/>
 			<wsdl:output name="RespondingGateway_PatientLocationQueryResponse"
                          message="tns:RespondingGateway_PatientLocationQueryResponseMessage"
-                         wsaw:Action="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:PatientLocationQueryResponse"/>
+                         wsaw:Action="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:RespondingGateway_PatientLocationQueryResponseMessage"/>
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="EntityPatientLocationQueryBindingSoap" type="tns:EntityPatientLocationQueryPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsp:PolicyReference URI="#Entity_PatientLocationQuery_SoapPolicy"/>
 		<wsdl:operation name="RespondingGateway_PatientLocationQuery">
-			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:PatientLocationQuery"/>
+			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:entitypatientlocationquery:RespondingGateway_PatientLocationQueryRequestMessage"/>
 			<wsdl:input name="RespondingGateway_PatientLocationQueryRequest">
 				<soap:body use="literal"/>
 			</wsdl:input>
