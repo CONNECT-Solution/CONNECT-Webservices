@@ -1,117 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions name="ExchangeManagementService" 
+<definitions name="ExchangeManagementService"
              targetNamespace="urn:gov:hhs:fha:nhinc:exchangemanagement"
              xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-             xmlns:tns="urn:gov:hhs:fha:nhinc:exchangemanagement" 
-             xmlns:exchange="urn:gov:hhs:fha:nhinc:common:exchangemanagement" 
-             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/">
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:exchangemanagement"
+             xmlns:exchange="urn:gov:hhs:fha:nhinc:common:exchangemanagement"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl">
     <types>
         <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:exchangemanagement">
-            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:exchangemanagement" 
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:exchangemanagement"
                         schemaLocation="classpath:schemas/nhinc/common/ExchangeManagement.xsd"/>
         </xsd:schema>
     </types>
+    <message name="BasicRequestMessage">
+        <part name="BasicRequest"
+              element="exchange:BasicRequestMessage"/>
+    </message>
     <message name="SimpleExchangeManagementResponseMessage">
-        <part name="SimpleExchangeManagementResponse" 
+        <part name="SimpleExchangeManagementResponse"
               element="exchange:SimpleExchangeManagementResponseMessage"/>
     </message>
-    <message name="SaveExchangeRequestMessage">
-        <part name="SaveExchangeRequest" 
-              element="exchange:SaveExchangeRequestMessage"/>
+    <message name="ExchangeRequestMessage">
+        <part name="ExchangeRequest"
+              element="exchange:ExchangeRequestMessage"/>
     </message>
-    <message name="DeleteExchangeRequestMessage">
-        <part name="DeleteExchangeRequest" 
-              element="exchange:DeleteExchangeRequestMessage"/>
+    <message name="ExchangeNameRequestMessage">
+        <part name="ExchangeNameRequest"
+              element="exchange:ExchangeNameRequestMessage"/>
     </message>
     <message name="ListExchangesRequestMessage">
-        <part name="ListExchangesRequest" 
+        <part name="ListExchangesRequest"
               element="exchange:ListExchangesRequestMessage"/>
     </message>
     <message name="ListExchangesResponseMessage">
-        <part name="ListExchangesResponse" 
+        <part name="ListExchangesResponse"
               element="exchange:ListExchangesResponseMessage"/>
     </message>
-    <message name="ListOrganizationsRequestMessage">
-        <part name="ListOrganizationsRequest" 
-              element="exchange:ListOrganizationsRequestMessage"/>
-    </message>
-    <message name="ListOrganizationsResponseMessage">
-        <part name="ListOrganizationsResponse" 
-              element="exchange:ListOrganizationsResponseMessage"/>
-    </message>
     <message name="ListEndpointsRequestMessage">
-        <part name="ListEndpointsRequest" 
+        <part name="ListEndpointsRequest"
               element="exchange:ListEndpointsRequestMessage"/>
     </message>
     <message name="ListEndpointsResponseMessage">
-        <part name="ListEndpointsResponse" 
+        <part name="ListEndpointsResponse"
               element="exchange:ListEndpointsResponseMessage"/>
     </message>
-    <message name="GetExchangeInfoViewRequestMessage">
-        <part name="GetExchangeInfoViewRequest" 
-              element="exchange:GetExchangeInfoViewRequestMessage"/>
-    </message>
     <message name="GetExchangeInfoViewResponseMessage">
-        <part name="GetExchangeInfoViewResponse" 
+        <part name="GetExchangeInfoViewResponse"
               element="exchange:GetExchangeInfoViewResponseMessage"/>
     </message>
     <message name="SaveExchangeConfigRequestMessage">
-        <part name="SaveExchangeConfigRequest" 
+        <part name="SaveExchangeConfigRequest"
               element="exchange:SaveExchangeConfigRequestMessage"/>
     </message>
-    <message name="RefreshExchangeManagerRequestMessage">
-        <part name="RefreshExchangeManagerRequest" 
-              element="exchange:RefreshExchangeManagerRequestMessage"/>
-    </message>
     <message name="RefreshExchangeManagerResponseMessage">
-        <part name="RefreshExchangeManagerResponse" 
+        <part name="RefreshExchangeManagerResponse"
               element="exchange:RefreshExchangeManagerResponseMessage"/>
     </message>
-    
+    <message name="HCIDRequestMessage">
+        <part name="HCIDRequest"
+              element="exchange:HCIDRequestMessage"/>
+    </message>
+    <message name="ServiceNameRequestMessage">
+        <part name="ServiceNameRequest"
+              element="exchange:ServiceNameRequestMessage"/>
+    </message>
+    <message name="HCIDServiceNameRequestMessage">
+        <part name="HCIDServiceNameRequest"
+              element="exchange:HCIDServiceNameRequestMessage"/>
+    </message>
+    <message name="ListOrganizationsByHCIDListRequestMessage">
+        <part name="ListOrganizationsByHCIDListRequest"
+              element="exchange:ListOrganizationsByHCIDListRequestMessage"/>
+    </message>
+    <message name="GetEndpointUrlByNhinTargetRequestMessage">
+        <part name="GetEndpointUrlByNhinTargetRequest"
+              element="exchange:GetEndpointUrlByNhinTargetRequestMessage"/>
+    </message>
+    <message name="ListEndpointUrlInfoByNhinTargetCommunitiesRequestMessage">
+        <part name="ListEndpointUrlInfoByNhinTargetCommunitiesRequest"
+              element="exchange:ListEndpointUrlInfoByNhinTargetCommunitiesRequestMessage"/>
+    </message>
+    <message name="ListEndpointUrlInfoByNhinTargetCommunitiesResponseMessage">
+        <part name="ListEndpointUrlInfoByNhinTargetCommunitiesResponse"
+              element="exchange:ListEndpointUrlInfoByNhinTargetCommunitiesResponseMessage"/>
+    </message>
+    <message name="GetEndpointUrlByAdapterRequestMessage">
+        <part name="GetEndpointUrlByAdapterRequest"
+              element="exchange:GetEndpointUrlByAdapterRequestMessage"/>
+    </message>
+    <message name="GetHomeCommunityIdByAssigningAuthorityIdRequestMessage">
+        <part name="GetHomeCommunityIdByAssigningAuthorityIdRequest"
+              element="exchange:GetHomeCommunityIdByAssigningAuthorityIdRequestMessage"/>
+    </message>
+
     <portType name="EntityExchangeManagementPortType">
         <operation name="SaveExchange">
-            <input name="SaveExchangeRequest" message="tns:SaveExchangeRequestMessage"/>
+            <input name="ExchangeRequest" message="tns:ExchangeRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:SaveExchange"/>
             <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
         </operation>
         <operation name="DeleteExchange">
-            <input name="DeleteExchangeRequest" message="tns:DeleteExchangeRequestMessage"/>
+            <input name="RequiredExchangeNameRequest" message="tns:ExchangeNameRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:DeleteExchange"/>
             <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
         </operation>
         <operation name="ListExchanges">
-            <input name="ListExchangesRequest" message="tns:ListExchangesRequestMessage"/>
+            <input name="BasicRequest" message="tns:BasicRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:ListExchanges"/>
             <output name="ListExchangesResponse" message="tns:ListExchangesResponseMessage"/>
         </operation>
         <operation name="ListOrganizations">
-            <input name="ListOrganizationsRequest" message="tns:ListOrganizationsRequestMessage"/>
-            <output name="ListOrganizationsResponse" message="tns:ListOrganizationsResponseMessage"/>
+            <input name="OptionalExchangeNameRequest" message="tns:ExchangeNameRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:ListOrganizations"/>
+            <output name="ListOrganizationsResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
         </operation>
         <operation name="ListEndpoints">
-            <input name="ListEndpointsRequest" message="tns:ListEndpointsRequestMessage"/>
+            <input name="ListEndpointsRequest" message="tns:ListEndpointsRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:ListEndpoints"/>
             <output name="ListEndpointsResponse" message="tns:ListEndpointsResponseMessage"/>
         </operation>
         <operation name="GetExchangeInfoView">
-            <input name="GetExchangeInfoViewRequest" message="tns:GetExchangeInfoViewRequestMessage"/>
+            <input name="BasicRequest" message="tns:BasicRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetExchangeInfoView"/>
             <output name="GetExchangeInfoViewResponse" message="tns:GetExchangeInfoViewResponseMessage"/>
         </operation>
         <operation name="SaveExchangeConfig">
-            <input name="SaveExchangeConfigRequest" message="tns:SaveExchangeConfigRequestMessage"/>
+            <input name="SaveExchangeConfigRequest" message="tns:SaveExchangeConfigRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:SaveExchangeConfig"/>
             <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
         </operation>
         <operation name="RefreshExchangeManager">
-            <input name="RefreshExchangeManagerRequest" message="tns:RefreshExchangeManagerRequestMessage"/>
+            <input name="BasicRequest" message="tns:BasicRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:RefreshExchangeManager"/>
             <output name="RefreshExchangeManagerResponse" message="tns:RefreshExchangeManagerResponseMessage"/>
         </operation>
+        <operation name="GetOrganizationByHCID">
+            <input name="HCIDRequest" message="tns:HCIDRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetOrganizationByHCID"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="ListOrganizationByHCIDList">
+            <input name="ListOrganizationsByHCIDListRequest" message="tns:ListOrganizationsByHCIDListRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:ListOrganizationByHCIDList"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="GetOrganizationByHCIDServiceName">
+            <input name="HCIDServiceNameRequest" message="tns:HCIDServiceNameRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetOrganizationByHCIDServiceName"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="GetEndpointUrlByServiceName">
+            <input name="ServiceNameRequest" message="tns:ServiceNameRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetEndpointUrlByServiceName"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="GetEndpointUrlInternalByServiceName">
+            <input name="ServiceNameRequest" message="tns:ServiceNameRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetEndpointUrlInternalByServiceName"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="GetEndpointUrlByNhinTarget">
+            <input name="GetEndpointUrlByNhinTargetRequest" message="tns:GetEndpointUrlByNhinTargetRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetEndpointUrlByNhinTarget"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="ListEndpointUrlInfoByNhinTargetCommunities">
+            <input name="ListEndpointUrlInfoByNhinTargetCommunitiesRequest" message="tns:ListEndpointUrlInfoByNhinTargetCommunitiesRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:ListEndpointUrlInfoByNhinTargetCommunities"/>
+            <output name="ListEndpointUrlInfoByNhinTargetCommunitiesResponse" message="tns:ListEndpointUrlInfoByNhinTargetCommunitiesResponseMessage"/>
+        </operation>
+        <operation name="ListOrganizationsByHCIDServiceName">
+            <input name="HCIDServiceNameRequest" message="tns:HCIDServiceNameRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:ListOrganizationsByHCIDServiceName"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="ListOrganizationsByServiceName">
+            <input name="ServiceNameRequest" message="tns:ServiceNameRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:ListOrganizationsByServiceName"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="GetEndpointUrlByAdapter">
+            <input name="GetEndpointUrlByAdapterRequest" message="tns:GetEndpointUrlByAdapterRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetEndpointUrlByAdapter"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="GetAssigningAuthoritiesByHCID">
+            <input name="HCIDRequest" message="tns:HCIDRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetAssigningAuthoritiesByHCID"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="GetHomeCommunityIdByAssigningAuthorityId">
+            <input name="GetHomeCommunityIdByAssigningAuthorityIdRequest" message="tns:GetHomeCommunityIdByAssigningAuthorityIdRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:common:exchangemanagement:actions:GetHomeCommunityIdByAssigningAuthorityId"/>
+            <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
+        </operation>
     </portType>
-    
-    <binding name="EntityExchangeManagementBindingSoap" 
+
+    <binding name="EntityExchangeManagementBindingSoap"
              type="tns:EntityExchangeManagementPortType">
-        <soap:binding style="document" 
+        <soap:binding style="document"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="SaveExchange">
             <soap:operation soapAction="urn:SaveExchange"/>
-            <input name="SaveExchangeRequest">
+            <input name="ExchangeRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleExchangeManagementResponse">
@@ -120,7 +193,7 @@
         </operation>
         <operation name="DeleteExchange">
             <soap:operation soapAction="urn:DeleteExchange"/>
-            <input name="DeleteExchangeRequest">
+            <input name="RequiredExchangeNameRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleExchangeManagementResponse">
@@ -129,7 +202,7 @@
         </operation>
         <operation name="ListExchanges">
             <soap:operation soapAction="urn:ListExchanges"/>
-            <input name="ListExchangesRequest">
+            <input name="BasicRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="ListExchangesResponse">
@@ -138,7 +211,7 @@
         </operation>
         <operation name="ListOrganizations">
             <soap:operation soapAction="urn:ListOrganizations"/>
-            <input name="ListOrganizationsRequest">
+            <input name="OptionalExchangeNameRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="ListOrganizationsResponse">
@@ -156,7 +229,7 @@
         </operation>
         <operation name="GetExchangeInfoView">
             <soap:operation soapAction="urn:GetExchangeInfoView"/>
-            <input name="GetExchangeInfoViewRequest">
+            <input name="BasicRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="GetExchangeInfoViewResponse">
@@ -174,19 +247,127 @@
         </operation>
         <operation name="RefreshExchangeManager">
             <soap:operation soapAction="urn:RefreshExchangeManager"/>
-            <input name="RefreshExchangeManagerRequest">
+            <input name="BasicRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="RefreshExchangeManagerResponse">
                 <soap:body use="literal"/>
             </output>
         </operation>
+        <operation name="GetOrganizationByHCID">
+            <soap:operation soapAction="urn:GetOrganizationByHCID"/>
+            <input name="HCIDRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ListOrganizationByHCIDList">
+            <soap:operation soapAction="urn:ListOrganizationByHCIDList"/>
+            <input name="ListOrganizationsByHCIDListRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetOrganizationByHCIDServiceName">
+            <soap:operation soapAction="urn:GetOrganizationByHCIDServiceName"/>
+            <input name="HCIDServiceNameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetEndpointUrlByServiceName">
+            <soap:operation soapAction="urn:GetEndpointUrlByServiceName"/>
+            <input name="ServiceNameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetEndpointUrlInternalByServiceName">
+            <soap:operation soapAction="urn:GetEndpointUrlInternalByServiceName"/>
+            <input name="ServiceNameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetEndpointUrlByNhinTarget">
+            <soap:operation soapAction="urn:GetEndpointUrlByNhinTarget"/>
+            <input name="GetEndpointUrlByNhinTargetRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ListEndpointUrlInfoByNhinTargetCommunities">
+            <soap:operation soapAction="urn:ListEndpointUrlInfoByNhinTargetCommunities"/>
+            <input name="ListEndpointUrlInfoByNhinTargetCommunitiesRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="ListEndpointUrlInfoByNhinTargetCommunitiesResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ListOrganizationsByHCIDServiceName">
+            <soap:operation soapAction="urn:ListOrganizationsByHCIDServiceName"/>
+            <input name="HCIDServiceNameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ListOrganizationsByServiceName">
+            <soap:operation soapAction="urn:ListOrganizationsByServiceName"/>
+            <input name="ServiceNameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetEndpointUrlByAdapter">
+            <soap:operation soapAction="urn:GetEndpointUrlByAdapter"/>
+            <input name="GetEndpointUrlByAdapterRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetAssigningAuthoritiesByHCID">
+            <soap:operation soapAction="urn:GetAssigningAuthoritiesByHCID"/>
+            <input name="HCIDRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetHomeCommunityIdByAssigningAuthorityId">
+            <soap:operation soapAction="urn:GetHomeCommunityIdByAssigningAuthorityId"/>
+            <input name="GetHomeCommunityIdByAssigningAuthorityIdRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
     </binding>
-    
+
     <service name="EntityExchangeManagement">
-        <port name="EntityExchangeManagementPort" 
+        <port name="EntityExchangeManagementPort"
               binding="tns:EntityExchangeManagementBindingSoap">
-            <soap:address 
+            <soap:address
                location="http://localhost:${HttpDefaultPort}/CONNECTCommon/EntityExchangeManagement"/>
         </port>
     </service>
