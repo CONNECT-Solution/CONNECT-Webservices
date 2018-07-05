@@ -117,9 +117,9 @@
               element="exchange:ListOrganizationsByHCIDServiceNameRequestMessage"/>
     </message>
 
-    <message name="GetEndpointUrlByServiceNameRequestMessage">
-        <part name="GetEndpointUrlByServiceNameRequest"
-              element="exchange:GetEndpointUrlByServiceNameRequestMessage"/>
+    <message name="GetEndpointUrlDefaultByServiceNameRequestMessage">
+        <part name="GetEndpointUrlDefaultByServiceNameRequest"
+              element="exchange:GetEndpointUrlDefaultByServiceNameRequestMessage"/>
     </message>
     <message name="GetEndpointUrlInternalByServiceNameRequestMessage">
         <part name="GetEndpointUrlInternalByServiceNameRequest"
@@ -175,8 +175,8 @@
             <input name="GetOrganizationByHCIDServiceNameRequest" message="tns:GetOrganizationByHCIDServiceNameRequestMessage" />
             <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
         </operation>
-        <operation name="GetEndpointUrlByServiceName">
-            <input name="GetEndpointUrlByServiceNameRequest" message="tns:GetEndpointUrlByServiceNameRequestMessage" />
+        <operation name="GetEndpointUrlDefaultByServiceName">
+            <input name="GetEndpointUrlDefaultByServiceNameRequest" message="tns:GetEndpointUrlDefaultByServiceNameRequestMessage" />
             <output name="SimpleExchangeManagementResponse" message="tns:SimpleExchangeManagementResponseMessage"/>
         </operation>
         <operation name="GetEndpointUrlInternalByServiceName">
@@ -316,9 +316,9 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-        <operation name="GetEndpointUrlByServiceName">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:exchangemanagement:GetEndpointUrlByServiceName"/>
-            <input name="GetEndpointUrlByServiceNameRequest">
+        <operation name="GetEndpointUrlDefaultByServiceName">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:exchangemanagement:GetEndpointUrlDefaultByServiceName"/>
+            <input name="GetEndpointUrlDefaultByServiceNameRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleExchangeManagementResponse">
