@@ -24,13 +24,13 @@
 	<wsdl:message name="AdapterPatientLocationQuerySecuredRequestMessage">
 		<wsdl:part name="AdapterPatientLocationQuerySecuredRequest" element="nccommonadapter:AdapterPatientLocationQuerySecuredRequest"/>
 	</wsdl:message>
-	<wsdl:message name="AdapterPatientLocationQueryResponseMessage">
-		<wsdl:part name="AdapterPatientLocationQueryResponse" element="nccommonadapter:AdapterPatientLocationQueryResponse"/>
+	<wsdl:message name="AdapterPatientLocationQuerySecuredResponseMessage">
+		<wsdl:part name="AdapterPatientLocationQuerySecuredResponse" element="nccommonadapter:AdapterPatientLocationQuerySecuredResponse"/>
 	</wsdl:message>
 	<wsdl:portType name="AdapterPatientLocationQuerySecuredPortType">
 		<wsdl:operation name="AdapterPatientLocationQuerySecured">
 			<wsdl:input name="AdapterPatientLocationQuerySecuredRequest" message="tns:AdapterPatientLocationQuerySecuredRequestMessage"/>
-			<wsdl:output name="AdapterPatientLocationQueryResponse" message="tns:AdapterPatientLocationQueryResponseMessage"/>
+			<wsdl:output name="AdapterPatientLocationQuerySecuredResponse" message="tns:AdapterPatientLocationQuerySecuredResponseMessage"/>
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="AdapterPatientLocationQuerySecuredBindingSoap" type="tns:AdapterPatientLocationQuerySecuredPortType">
@@ -42,7 +42,7 @@
 				<soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_Binding_Soap_Input_Policy"/>
 			</wsdl:input>
-			<wsdl:output name="AdapterPatientLocationQueryResponse">
+			<wsdl:output name="AdapterPatientLocationQuerySecuredResponse">
 				<soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_Binding_Soap_Output_Policy"/>
 			</wsdl:output>
