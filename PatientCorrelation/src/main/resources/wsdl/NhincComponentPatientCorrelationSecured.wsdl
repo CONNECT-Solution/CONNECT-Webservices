@@ -63,6 +63,17 @@
                 <wsp:PolicyReference URI="#AddPatientCorrelation_Binding_Soap_Output_Policy"/>
             </output>
         </operation>
+       <operation name="AddPatientCorrelationPLQ">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:AddPatientCorrelationPLQRequestMessageSecured"/>
+            <input name="AddPatientCorrelationPLQRequest">
+                <soap:body use="literal"/>
+                <wsp:PolicyReference URI="#AddPatientCorrelationPLQ_Binding_Soap_Input_Policy"/>
+            </input>
+            <output name="SimplePatientCorrelationResponse">
+                <soap:body use="literal"/>
+                <wsp:PolicyReference URI="#SimplePatientCorrelation_Binding_Soap_Output_Policy"/>
+            </output>
+        </operation>
     </binding>
     <service name="PatientCorrelationServiceSecured">
         <port name="PatientCorrelationSecuredPort" binding="tns:PatientCorrelationSecuredBinding">
@@ -140,13 +151,13 @@
                 </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="RemovePatientCorrelationRequest_Binding_Soap_Input_Policy">
+    <wsp:Policy wsu:Id="AddPatientCorrelationPLQRequest_Binding_Soap_Input_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="RemovePatientCorrelationResponse_Binding_Soap_Output_Policy">
+    <wsp:Policy wsu:Id="SimplePatientCorrelation_Binding_Soap_Output_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
             </wsp:All>
