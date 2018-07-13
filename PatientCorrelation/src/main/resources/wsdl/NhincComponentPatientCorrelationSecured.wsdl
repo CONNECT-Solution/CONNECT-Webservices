@@ -18,6 +18,12 @@
     <message name="AddPatientCorrelationResponseMessageSecured">
         <part name="AddPatientCorrelationResponse" element="pc:AddPatientCorrelationResponseSecured"/>
     </message>
+    <message name="AddPatientCorrelationPLQRequestMessageSecured">
+        <part name="AddPatientCorrelationPLQRequest" element="pc:AddPatientCorrelationPLQSecuredRequest"/>
+    </message>
+    <message name="SimplePatientCorrelationResponseMessageSecured">
+        <part name="SimplePatientCorrelationResponse" element="pc:SimplePatientCorrelationSecuredResponse"/>
+    </message>
     <portType name="PatientCorrelationSecuredPortType">
         <operation name="RetrievePatientCorrelations">
             <input name="RetrievePatientCorrelationsRequest" message="tns:RetrievePatientCorrelationsRequestMessageSecured" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:RetrievePatientCorrelationsRequestMessageSecured"/>
@@ -27,6 +33,10 @@
             <input name="AddPatientCorrelationRequest" message="tns:AddPatientCorrelationRequestMessageSecured" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:AddPatientCorrelationRequestMessageSecured"/>
             <output name="AddPatientCorrelationResponse" message="tns:AddPatientCorrelationResponseMessageSecured" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:AddPatientCorrelationResponseMessageSecured"/>
         </operation>
+		<operation name="AddPatientCorrelationPLQ">
+			<input name="AddPatientCorrelationPLQRequest" message="tns:AddPatientCorrelationPLQRequestMessageSecured" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:AddPatientCorrelationPLQRequestMessageSecured"/>
+			<output name="SimplePatientCorrelationResponse" message="tns:SimplePatientCorrelationResponseMessageSecured" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:SimplePatientCorrelationResponseMessageSecured"/>
+		</operation>
     </portType>
     <binding name="PatientCorrelationSecuredBinding" type="tns:PatientCorrelationSecuredPortType">
         <wsp:PolicyReference URI="#PatientCorrelationService_Binding_SoapPolicy"/>

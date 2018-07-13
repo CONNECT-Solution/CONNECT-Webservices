@@ -17,6 +17,12 @@
 	<message name="AddPatientCorrelationResponseMessage">
 		<part name="AddPatientCorrelationResponse" element="pc:AddPatientCorrelationResponse"/>
 	</message>
+	<message name="AddPatientCorrelationPLQRequestMessage">
+		<part name="AddPatientCorrelationPLQRequest" element="pc:AddPatientCorrelationPLQRequest"/>
+	</message>
+	<message name="SimplePatientCorrelationResponseMessage">
+		<part name="SimplePatientCorrelationResponse" element="pc:SimplePatientCorrelationResponse"/>
+	</message>
 	<portType name="PatientCorrelationPortType">
 		<operation name="RetrievePatientCorrelations">
 			<input name="RetrievePatientCorrelationsRequest" message="tns:RetrievePatientCorrelationsRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:RetrievePatientCorrelationsRequestMessage"/>
@@ -25,6 +31,10 @@
 		<operation name="AddPatientCorrelation">
 			<input name="AddPatientCorrelationRequest" message="tns:AddPatientCorrelationRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:AddPatientCorrelationRequestMessage"/>
 			<output name="AddPatientCorrelationResponse" message="tns:AddPatientCorrelationResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:AddPatientCorrelationResponseMessage"/>
+		</operation>
+		<operation name="AddPatientCorrelationPLQ">
+			<input name="AddPatientCorrelationPLQRequest" message="tns:AddPatientCorrelationPLQRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:AddPatientCorrelationPLQRequestMessage"/>
+			<output name="SimplePatientCorrelationResponse" message="tns:SimplePatientCorrelationResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:SimplePatientCorrelationResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="PatientCorrelationBinding" type="tns:PatientCorrelationPortType">
@@ -44,6 +54,15 @@
 				<soap:body use="literal"/>
 			</input>
 			<output name="AddPatientCorrelationResponse">
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AddPatientCorrelationPLQ">
+			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhinccomponentpatientcorrelation:AddPatientCorrelationPLQRequestMessage"/>
+			<input name="AddPatientCorrelationPLQRequest">
+				<soap:body use="literal"/>
+			</input>
+			<output name="SimplePatientCorrelationResponse">
 				<soap:body use="literal"/>
 			</output>
 		</operation>
