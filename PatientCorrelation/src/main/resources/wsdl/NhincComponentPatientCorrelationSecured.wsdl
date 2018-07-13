@@ -151,7 +151,7 @@
                 </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
-    <wsp:Policy wsu:Id="AddPatientCorrelationPLQRequest_Binding_Soap_Input_Policy">
+    <wsp:Policy wsu:Id="AddPatientCorrelationPLQ_Binding_Soap_Input_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
             </wsp:All>
