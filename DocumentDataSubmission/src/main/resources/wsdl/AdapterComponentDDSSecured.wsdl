@@ -44,6 +44,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#AdapterComponentXDSPolicy"/>
         <operation name="RegisterDocumentSetb">
+        <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adaptercomponentxdssecured:RegisterDocumentSet-b"/>
             <input>
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#AdapterComponentXDSPolicy_Input_Policy"/>

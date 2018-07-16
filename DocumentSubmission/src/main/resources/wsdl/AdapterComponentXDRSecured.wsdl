@@ -46,6 +46,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#AdapterComponentXDRPolicy"/>
         <operation name="ProvideAndRegisterDocumentSetb">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adaptercomponentxdrsecured:ProvideAndRegisterDocumentSet-b"/>
             <input>
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#AdapterComponentXDRPolicy_Input_Policy"/>

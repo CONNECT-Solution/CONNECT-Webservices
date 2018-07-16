@@ -24,7 +24,7 @@
 	<wsdl:binding name="AdapterPatientDiscoveryBindingSoap" type="tns:AdapterPatientDiscoveryPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsdl:operation name="RespondingGateway_PRPA_IN201305UV02">
-			<soap:operation soapAction="urn:RespondingGateway_PRPA_IN201305UV02"/>
+			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterpatientdiscovery:RespondingGateway_PRPA_IN201305UV02RequestMessage"/>
 			<wsdl:input name="RespondingGateway_PRPA_IN201305UV02Request">
 				<soap:body use="literal"/>
 			</wsdl:input>

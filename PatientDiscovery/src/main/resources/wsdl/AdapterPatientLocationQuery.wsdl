@@ -30,7 +30,7 @@
 	<wsdl:binding name="AdapterPatientLocationQueryBindingSoap" type="tns:AdapterPatientLocationQueryPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsdl:operation name="AdapterPatientLocationQuery">
-			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterpatientlocationquery:PatientLocationQuery"/>
+			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterpatientlocationquery:AdapterPatientLocationQueryRequestMessage"/>
 			<wsdl:input name="AdapterPatientLocationQueryRequest">
 				<soap:body use="literal"/>
 			</wsdl:input>

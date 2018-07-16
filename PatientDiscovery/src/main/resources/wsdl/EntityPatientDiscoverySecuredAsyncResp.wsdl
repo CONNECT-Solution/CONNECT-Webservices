@@ -51,6 +51,7 @@
                      transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#Entity_PatientDiscovery_SoapPolicy"/>
         <wsdl:operation name="ProcessPatientDiscoveryAsyncResp">
+            <soap12:operation soapAction="urn:gov:hhs:fha:nhinc:entitypatientdiscoverysecuredasyncresp:ProcessPatientDiscoveryAsyncRespRequestMessage"/>
             <wsdl:input name="ProcessPatientDiscoveryAsyncRespAsyncRequest" >
                 <soap12:body use="literal"/>
             </wsdl:input>

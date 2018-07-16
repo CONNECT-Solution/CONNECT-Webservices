@@ -36,14 +36,15 @@
     </message>
     <portType name="EntityXDSSecured_PortType">
         <operation name="RegisterDocumentSet-b">
-            <input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="tns:RegisterDocumentSet-b" />
-            <output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="tns:RegisterDocumentSet-bResponse" />
+            <input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:entityxdssecured:RegisterDocumentSet-b" />
+            <output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:entityxdssecured:RegisterDocumentSet-bResponse" />
         </operation>
     </portType>
     <binding name="EntityXDSSecured_Binding" type="tns:EntityXDSSecured_PortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
         <wsp:PolicyReference URI="#RespondingGateway_XDS_Binding_SoapPolicy" />
         <operation name="RegisterDocumentSet-b">
+           <soap:operation soapAction="urn:gov:hhs:fha:nhinc:entityxdssecured:RegisterDocumentSet-b"/>
             <input>
                 <soap:body use="literal" />
                 <wsp:PolicyReference URI="#RespondingGateway_XDS_Binding_Soap_Input_Policy" />

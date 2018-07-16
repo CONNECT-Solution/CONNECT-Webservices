@@ -47,6 +47,7 @@
                      transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsaws:UsingAddressing/>
         <wsdl:operation name="ProcessPatientDiscoveryAsyncResp">
+            <soap12:operation soapAction="urn:gov:hhs:fha:nhinc:entitypatientdiscoveryasyncresp:ProcessPatientDiscoveryAsyncRespAsyncRequest"/>
             <wsdl:input name="ProcessPatientDiscoveryAsyncRespAsyncRequest" >
                 <soap12:body use="literal"/>
             </wsdl:input>

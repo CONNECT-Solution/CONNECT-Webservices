@@ -21,7 +21,7 @@
 	<binding name="AdapterComponentMpiPortTypeBinding" type="tns:AdapterComponentMpiPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="FindCandidates">
-			<soap:operation soapAction="FindCandidates"/>
+			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:adaptercomponentmpi:FindCandidatesRequest"/>
 			<input name="FindCandidatesRequest">
 				<soap:body use="literal"/>
 			</input>

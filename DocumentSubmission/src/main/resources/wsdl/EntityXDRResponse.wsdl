@@ -28,6 +28,7 @@
 	<binding name="EntityXDRAsyncResponse_Binding" type="tns:EntityXDRAsyncResponse_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="ProvideAndRegisterDocumentSet-bAsyncResponse">
+      <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhincentityxdr:async:response:ProvideAndRegisterDocumentSet-bAsyncResp_Request"/>
 			<input>
 				<soap:body use="literal"/>
 			</input>
