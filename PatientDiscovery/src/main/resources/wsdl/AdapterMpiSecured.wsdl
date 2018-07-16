@@ -45,7 +45,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#AdapterMpiSecuredPortType_Binding_SoapPolicy"/>
         <operation name="FindCandidates">
-            <soap:operation soapAction="FindCandidates"/>
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adaptermpi:FindCandidatesSecuredRequest"/>
             <input name="FindCandidatesSecuredRequest">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#FindCandidates_Binding_Soap_Input_Policy"/>

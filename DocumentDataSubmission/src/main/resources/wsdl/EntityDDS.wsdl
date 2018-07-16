@@ -32,13 +32,14 @@
 	</message>
 	<portType name="EntityXDS_PortType">
 		<operation name="RegisterDocumentSet-b">
-			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="tns:RegisterDocumentSet-b"/>
-			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="tns:RegisterDocumentSet-bResponse"/>
+			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:entityxds:RegisterDocumentSet-b"/>
+			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:entityxds:RegisterDocumentSet-bResponse"/>
 		</operation>
 	</portType>
 	<binding name="EntityXDS_Binding" type="tns:EntityXDS_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="RegisterDocumentSet-b">
+      <soap:operation soapAction="urn:gov:hhs:fha:nhinc:entityxds:RegisterDocumentSet-b"/>
 			<input>
 				<soap:body use="literal"/>
 			</input>

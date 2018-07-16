@@ -25,7 +25,7 @@
 	<binding name="AdapterPolicyEngineBindingSoap" type="tns:AdapterPolicyEnginePortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="CheckPolicy">
-			<soap:operation soapAction="urn:CheckPolicy"/>
+			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterpolicyengine:CheckPolicyRequest"/>
 			<input name="CheckPolicyRequest">
 				<soap:body use="literal"/>
 			</input>

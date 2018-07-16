@@ -41,7 +41,7 @@
     <binding name="AdapterPatientDiscoveryDeferredReqQueueProcessBindingSoap" type="tns:AdapterPatientDiscoveryDeferredReqQueueProcessPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="ProcessPatientDiscoveryDeferredReqQueue">
-            <soap:operation soapAction="urn:ProcessPatientDiscoveryDeferredReqQueue"/>
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterpatientdiscoveryreqqueueprocess:ProcessPatientDiscoveryDeferredReqQueue"/>
             <input name="ProcessPatientDiscoveryDeferredReqQueueRequest">
                 <soap:body use="literal"/>
             </input>

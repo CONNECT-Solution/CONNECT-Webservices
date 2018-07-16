@@ -47,7 +47,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#AdapterDocRetrievePolicy"/>
         <operation name="RespondingGateway_CrossGatewayRetrieve">
-            <soap:operation soapAction="urn:RespondingGateway_CrossGatewayRetrieve"/>
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterdocretrieve:RespondingGateway_CrossGatewayRetrieveRequestMessage"/>
             <input name="RespondingGateway_CrossGatewayRetrieveRequest">
                 <soap:body use="literal"/>
             </input>

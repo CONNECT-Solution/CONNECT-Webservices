@@ -25,6 +25,7 @@
         <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#Adapter_PatientDiscovery_SoapPolicy"/>
         <wsdl:operation name="AddPatientDiscoveryAsyncReq">
+           <soap12:operation soapAction="urn:gov:hhs:fha:nhinc:adapterpatientdiscoverysecuredasyncreqqueue:AddPatientDiscoveryAsyncReqAsyncRequest"/>
             <wsdl:input name="AddPatientDiscoveryAsyncReqAsyncRequest">
                 <soap12:body use="literal"/>
             </wsdl:input>

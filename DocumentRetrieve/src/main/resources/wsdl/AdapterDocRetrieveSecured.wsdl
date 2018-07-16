@@ -26,7 +26,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_Retrieve_Binding_SoapPolicy"/>
         <operation name="RespondingGateway_CrossGatewayRetrieve">
-            <soap:operation soapAction="urn:RespondingGateway_CrossGatewayRetrieve"/>
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterdocretrievesecured:RespondingGateway_CrossGatewayRetrieveSecuredRequestMessage"/>
             <input name="RespondingGateway_CrossGatewayRetrieveSecuredRequest">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_Retrieve_Binding_Soap_Input_Policy"/>

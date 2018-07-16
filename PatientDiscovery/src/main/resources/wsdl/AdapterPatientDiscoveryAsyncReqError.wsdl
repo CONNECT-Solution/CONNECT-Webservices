@@ -24,6 +24,7 @@
 	<wsdl:binding name="AdapterPatientDiscoveryAsyncReqErrorBindingSoap" type="tns:AdapterPatientDiscoveryAsyncReqErrorPortType">
 		<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsdl:operation name="ProcessPatientDiscoveryAsyncReqError">
+      <soap12:operation soapAction="urn:gov:hhs:fha:nhinc:adapterpatientdiscoveryasyncreqerror:ProcessPatientDiscoveryAsyncReqErrorRequest"/>
 			<wsdl:input name="ProcessPatientDiscoveryAsyncReqErrorRequest">
 				<soap12:body use="literal"/>
 			</wsdl:input>

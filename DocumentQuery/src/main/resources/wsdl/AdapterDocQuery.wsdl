@@ -25,7 +25,7 @@
 	<binding name="AdapterDocQueryBindingSoap" type="tns:AdapterDocQueryPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="RespondingGateway_CrossGatewayQuery">
-			<soap:operation soapAction="urn:RespondingGateway_CrossGatewayQuery"/>
+			<soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterdocquery:AdapterDocQueryRequestMessage"/>
 			<input name="RespondingGateway_CrossGatewayQueryRequest">
 				<soap:body use="literal"/>
 			</input>

@@ -27,6 +27,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_XDR_Binding_SoapPolicy"/>
         <operation name="ProvideAndRegisterDocumentSet-bDeferredResponse">
+           <soap:operation soapAction="urn:ihe:iti:xdr:2007:Deferred:XDRResponseInputMessage"/>
             <input>
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_XDRResponse_Binding_Soap_Input_Policy"/>

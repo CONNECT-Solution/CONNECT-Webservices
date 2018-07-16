@@ -38,6 +38,7 @@
         <!-- <wsaws:UsingAddressing/> -->
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="ProvideAndRegisterDocumentSet-bResponse">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterxdrresponse:XDRResponseInputMessage"/>
             <input>
                 <soap:body use="literal"/>
             </input>

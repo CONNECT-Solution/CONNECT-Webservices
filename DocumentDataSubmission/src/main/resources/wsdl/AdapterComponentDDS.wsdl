@@ -37,6 +37,7 @@
 	<binding name="AdapterComponentXDS_Binding" type="tns:AdapterComponentXDS_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="RegisterDocumentSetb">
+      <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adaptercomponentxds:RegisterDocumentSet-b"/>
 			<input>
 				<soap:body use="literal"/>
 			</input>

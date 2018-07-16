@@ -25,6 +25,7 @@
 	<binding name="AdapterComponentXDRRequest_Binding" type="tns:AdapterComponentXDRRequest_PortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="ProvideAndRegisterDocumentSet-bRequest">
+      <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adaptercomponentxdrrequest:XDRRequestInputMessage"/>
 			<input>
 				<soap:body use="literal"/>
 			</input>

@@ -49,7 +49,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#Adapter_PatientDiscovery_SoapPolicy"/>
         <wsdl:operation name="RespondingGateway_PRPA_IN201305UV02">
-            <soap:operation soapAction="urn:RespondingGateway_PRPA_IN201305UV02"/>
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterpatientdiscoverysecured:RespondingGateway_PRPA_IN201305UV02RequestSecuredMessage"/>
             <wsdl:input name="RespondingGateway_PRPA_IN201305UV02RequestSecured">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#Adapter_PatientDiscovery_Input_Policy"/>

@@ -41,7 +41,7 @@
     </message>
     <portType name="EntityXDRSecured_PortType">
         <operation name="ProvideAndRegisterDocumentSet-b">
-            <input message="tns:ProvideAndRegisterDocumentSet-b_Message" wsaw:Action="tns:ProvideAndRegisterDocumentSet-b" />
+            <input message="tns:ProvideAndRegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:nhincentityxdrsecured:ProvideAndRegisterDocumentSet-b" />
             <output message="tns:ProvideAndRegisterDocumentSet-bResponse_Message" wsaw:Action="tns:ProvideAndRegisterDocumentSet-bResponse" />
         </operation>
     </portType>
@@ -49,6 +49,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
         <wsp:PolicyReference URI="#RespondingGateway_XDR_Binding_SoapPolicy" />
         <operation name="ProvideAndRegisterDocumentSet-b">
+           <soap:operation soapAction="urn:gov:hhs:fha:nhinc:nhincentityxdrsecured:ProvideAndRegisterDocumentSet-b"/>
             <input>
                 <soap:body use="literal" />
                 <wsp:PolicyReference URI="#RespondingGateway_XDR_Binding_Soap_Input_Policy" />

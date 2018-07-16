@@ -44,6 +44,7 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_XDRRequest_Binding_SoapPolicy"/>
         <operation name="ProvideAndRegisterDocumentSet-bRequestError">
+           <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adapterxdrrequesterrorsecured:XDRRequestErrorInputMessage"/>
             <input>
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_XDRRequest_Binding_Soap_Input_Policy"/>
