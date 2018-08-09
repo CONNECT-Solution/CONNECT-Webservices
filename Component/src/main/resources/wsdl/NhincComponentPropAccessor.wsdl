@@ -14,7 +14,6 @@
                         schemaLocation="classpath:schemas/nhinc/common/PropertyAccess.xsd"/>
         </xsd:schema>
     </types>
-    
     <message name="GetPropertyRequestMessage">
         <part name="GetPropertyRequest" 
               element="propacc:GetPropertyRequest"/>
@@ -79,6 +78,18 @@
         <part name="DeletePropertyFileResponse" 
               element="propacc:DeletePropertyFileResponse"/>
     </message>
+    <message name="SavePropertyRequestMessage">
+        <part name="SavePropertyRequest"
+              element="propacc:SavePropertyRequest" />
+    </message>
+    <message name="ListPropertiesRequestMessage">
+        <part name="ListPropertiesRequest"
+              element="propacc:ListPropertiesRequest" />
+    </message>
+    <message name="SimplePropertyResponseMessage">
+        <part name="SimplePropertyResponse"
+              element="propacc:SimplePropertyResponse" />
+    </message>
     
     <portType name="NhincComponentPropAccessorPortType">
         <operation name="GetProperty">
@@ -128,6 +139,18 @@
                    message="tns:DeletePropertyFileRequestMessage"/>
             <output name="DeletePropertyFileResponse" 
                     message="tns:DeletePropertyFileResponseMessage"/>
+        </operation>
+        <operation name="SaveProperty">
+            <input name="SavePropertyRequest" 
+                   message="tns:SavePropertyRequestMessage"/>
+            <output name="SimplePropertyResponse" 
+                    message="tns:SimplePropertyResponseMessage"/>
+        </operation>
+        <operation name="ListProperties">
+            <input name="ListPropertiesRequest" 
+                   message="tns:ListPropertiesRequestMessage"/>
+            <output name="SimplePropertyResponse" 
+                    message="tns:SimplePropertyResponseMessage"/>
         </operation>
     </portType>
     
@@ -204,6 +227,24 @@
                 <soap:body use="literal"/>
             </input>
             <output name="DeletePropertyFileResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="SaveProperty">
+            <soap:operation soapAction="urn:SaveProperty"/>
+            <input name="SavePropertyRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimplePropertyResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ListProperties">
+            <soap:operation soapAction="urn:ListProperties"/>
+            <input name="ListPropertiesRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimplePropertyResponse">
                 <soap:body use="literal"/>
             </output>
         </operation>
