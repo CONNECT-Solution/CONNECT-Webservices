@@ -74,6 +74,7 @@
     <binding name="DeferredQueueManagerBinding" type="tns:DeferredQueueManagerPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="ForceProcessOnDeferredQueue">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:deferredqueuemanager.ForceProcessOnDeferredQueueRequest"/>
             <input name="ForceProcessOnDeferredQueueRequest">
                 <soap:body use="literal"/>
             </input>
@@ -82,6 +83,7 @@
             </output>
         </operation>
         <operation name="ForceProcessOnDeferredRequest">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:deferredqueuemanager.ForceProcessOnDeferredRequestRequest"/>
             <input name="ForceProcessOnDeferredRequestRequest">
                 <soap:body use="literal"/>
             </input>
@@ -90,6 +92,7 @@
             </output>
         </operation>
         <operation name="QueryDeferredQueue">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:deferredqueuemanager.QueryDeferredQueueRequest"/>
             <input name="QueryDeferredQueueRequest">
                 <soap:body use="literal"/>
             </input>
@@ -98,6 +101,7 @@
             </output>
         </operation>
         <operation name="RetrieveDeferredQueue">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:deferredqueuemanager.RetrieveDeferredQueueRequest"/>
             <input name="RetrieveDeferredQueueRequest">
                 <soap:body use="literal"/>
             </input>
@@ -106,6 +110,7 @@
             </output>
         </operation>
         <operation name="DeferredQueueStatistics">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:deferredqueuemanager.DeferredQueueStatisticsRequest"/>
             <input name="DeferredQueueStatisticsRequest">
                 <soap:body use="literal"/>
             </input>
