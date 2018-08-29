@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AdminGUIManagementService"
+             targetNamespace="urn:gov:hhs:fha:nhinc:adminguimanagement"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:adminguimanagement"
+             xmlns:admingui="urn:gov:hhs:fha:nhinc:common:adminguimanagement"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl">
+    <types>
+        <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:adminguimanagement">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:adminguimanagement"
+                        schemaLocation="classpath:schemas/nhinc/common/AdminGUIManagement.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="AdminGUIRequestMessage">
+        <part name="AdminGUIRequest"
+              element="admingui:AdminGUIRequestMessage"/>
+    </message>
+    
+    <message name="DashboardStatusResponseMessage">
+        <part name="DashboardStatusResponse"
+              element="admingui:DashboardStatusMessage"/>
+    </message>
+
+    <portType name="AdminGUIManagementPortType">
+        <operation name="DashboardStatus">
+            <input  name="AdminGUIRequest"  message="tns:AdminGUIRequestMessage" />
+            <output name="DashboardStatusResponse" message="tns:DashboardStatusResponseMessage"/>
+        </operation>
+    </portType>
+
+    <binding name="AdminGUIManagementBindingSoap"
+             type="tns:AdminGUIManagementPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+         <operation name="DashboardStatus">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adminguimanagement:DashboardStatus"/>
+            <input name="AdminGUIRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="DashboardStatusResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="AdminGUIManagement">
+        <port name="AdminGUIManagementPort"
+              binding="tns:AdminGUIManagementBindingSoap">
+            <soap:address location="https://localhost:${HttpsDefaultPort}/CONNECTGateway/AdminGUIServices/Dashboard"/>
+        </port>
+    </service>
+</definitions>
