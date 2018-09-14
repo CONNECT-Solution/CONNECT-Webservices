@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions name="ConfigAdminService" 
+<definitions name="ConfigAdminService"
              targetNamespace="urn:gov:hhs:fha:nhinc:configadmin"
              xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-             xmlns:tns="urn:gov:hhs:fha:nhinc:configadmin" 
-             xmlns:config="urn:gov:hhs:fha:nhinc:common:configadmin" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:configadmin"
+             xmlns:config="urn:gov:hhs:fha:nhinc:common:configadmin"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/">
     <types>
         <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:configadmin">
-            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:configadmin" 
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:configadmin"
                         schemaLocation="classpath:schemas/nhinc/common/configAdmin.xsd"/>
         </xsd:schema>
     </types>
     <message name="SimpleCertificateResponseMessage">
-        <part name="SimpleCertificateResponse" 
+        <part name="SimpleCertificateResponse"
               element="config:SimpleCertificateResponseMessage"/>
     </message>
     <message name="ImportCertificateRequestMessage">
-        <part name="ImportCertificateRequest" 
+        <part name="ImportCertificateRequest"
               element="config:ImportCertificateRequestMessage"/>
     </message>
-    
-	<message name="ListKeyStoresRequestMessage">
+
+    <message name="ListKeyStoresRequestMessage">
         <part name="ListKeyStoresRequest"
               element="config:ListKeyStoresRequestMessage"/>
     </message>
@@ -30,7 +30,7 @@
         <part name="ListKeyStoresResponse"
               element="config:ListKeyStoresResponseMessage"/>
     </message>
-	
+
     <message name="ListTrustStoresRequestMessage">
         <part name="ListTrustStoresRequest"
               element="config:ListTrustStoresRequestMessage"/>
@@ -39,8 +39,8 @@
         <part name="ListTrustStoresResponse"
               element="config:ListTrustStoresResponseMessage"/>
     </message>
-    
-	<message name="EditCertificateRequestMessage">
+
+    <message name="EditCertificateRequestMessage">
         <part name="EditCertificateRequest"
               element="config:EditCertificateRequestMessage"/>
     </message>
@@ -48,8 +48,17 @@
         <part name="DeleteCertificateRequest"
               element="config:DeleteCertificateRequestMessage"/>
     </message>
-	
-    
+
+    <message name="ListChainOfTrustRequestMessage">
+        <part name="ListChainOfTrustRequest"
+              element="config:ListChainOfTrustRequestMessage"/>
+    </message>
+    <message name="ListChainOfTrustResponseMessage">
+        <part name="ListChainOfTrustResponse"
+              element="config:ListCertificatesResponseMessage"/>
+    </message>
+
+
     <portType name="EntityConfigAdminPortType">
         <operation name="ImportCertificate">
             <input name="ImportCertificateRequest" message="tns:ImportCertificateRequestMessage"/>
@@ -59,23 +68,27 @@
             <input name="ListTrustStoresRequest"  message="tns:ListTrustStoresRequestMessage"/>
             <output name="ListTrustStoresResponse" message="tns:ListTrustStoresResponseMessage"/>
         </operation>
-		 <operation name="ListKeyStores">
+         <operation name="ListKeyStores">
             <input name="ListKeyStoresRequest"  message="tns:ListKeyStoresRequestMessage"/>
             <output name="ListKeyStoresResponse" message="tns:ListKeyStoresResponseMessage"/>
         </operation>
-		<operation name="EditCertificate">
+        <operation name="EditCertificate">
             <input name="EditCertificateRequest"  message="tns:EditCertificateRequestMessage"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
-		<operation name="DeleteCertificate">
+        <operation name="DeleteCertificate">
             <input name="DeleteCertificateRequest"  message="tns:DeleteCertificateRequestMessage"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
+         <operation name="ListChainOfTrust">
+            <input name="ListChainOfTrustRequest"  message="tns:ListChainOfTrustRequestMessage"/>
+            <output name="ListChainOfTrustResponse" message="tns:ListChainOfTrustResponseMessage"/>
+        </operation>
     </portType>
-    
-    <binding name="EntityConfigAdminBindingSoap" 
+
+    <binding name="EntityConfigAdminBindingSoap"
              type="tns:EntityConfigAdminPortType">
-        <soap:binding style="document" 
+        <soap:binding style="document"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="ImportCertificate">
             <soap:operation soapAction="urn:ImportCertificate"/>
@@ -86,7 +99,7 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-        
+
         <operation name="ListTrustStores">
             <soap:operation soapAction="urn:ListTrustStores"/>
             <input name="ListTrustStoresRequest">
@@ -96,8 +109,8 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-        
-		<operation name="ListKeyStores">
+
+        <operation name="ListKeyStores">
             <soap:operation soapAction="urn:ListKeyStores"/>
             <input name="ListKeyStoresRequest">
                 <soap:body use="literal"/>
@@ -106,8 +119,8 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-		
-		<operation name="EditCertificate">
+
+        <operation name="EditCertificate">
             <soap:operation soapAction="urn:EditCertificate"/>
             <input name="EditCertificateRequest">
                 <soap:body use="literal"/>
@@ -116,8 +129,8 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-		
-		<operation name="DeleteCertificate">
+
+        <operation name="DeleteCertificate">
             <soap:operation soapAction="urn:DeleteCertificate"/>
             <input name="DeleteCertificateRequest">
                 <soap:body use="literal"/>
@@ -126,13 +139,23 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-		
+
+        <operation name="ListChainOfTrust">
+            <soap:operation soapAction="urn:ListChainOfTrust"/>
+            <input name="ListChainOfTrustRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="ListChainOfTrustResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
     </binding>
-    
+
     <service name="EntityConfigAdmin">
-        <port name="EntityConfigAdminPort" 
+        <port name="EntityConfigAdminPort"
               binding="tns:EntityConfigAdminBindingSoap">
-            <soap:address 
+            <soap:address
                location="http://localhost:${HttpDefaultPort}/CONNECTCommon/EntityConfigAdmin"/>
         </port>
     </service>
