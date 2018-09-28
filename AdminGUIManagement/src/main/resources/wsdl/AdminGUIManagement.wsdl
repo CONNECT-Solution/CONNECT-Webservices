@@ -19,16 +19,51 @@
         <part name="AdminGUIRequest"
               element="admingui:AdminGUIRequestMessage"/>
     </message>
-    
+
     <message name="DashboardStatusResponseMessage">
         <part name="DashboardStatusResponse"
               element="admingui:DashboardStatusMessage"/>
+    </message>
+
+    <message name="LogEventSimpleResponseMessage">
+        <part name="LogEventSimpleResponse"
+              element="admingui:LogEventSimpleResponseMessage"/>
+    </message>
+
+    <message name="ListErrorLogRequestMessage">
+        <part name="ListErrorLogRequest"
+              element="admingui:ListErrorLogRequestMessage"/>
+    </message>
+
+    <message name="ViewErrorLogRequestMessage">
+        <part name="ViewErrorLogRequest"
+              element="admingui:ViewErrorLogRequestMessage"/>
+    </message>
+
+    <message name="GetSearchFilterRequestMessage">
+        <part name="GetSearchFilterRequest"
+              element="admingui:GetSearchFilterRequestMessage"/>
     </message>
 
     <portType name="AdminGUIManagementPortType">
         <operation name="DashboardStatus">
             <input  name="AdminGUIRequest"  message="tns:AdminGUIRequestMessage" />
             <output name="DashboardStatusResponse" message="tns:DashboardStatusResponseMessage"/>
+        </operation>
+
+        <operation name="GetSearchFilter">
+            <input  name="GetSearchFilterRequest"  message="tns:GetSearchFilterRequestMessage" />
+            <output name="LogEventSimpleResponse" message="tns:LogEventSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="ListErrorLog">
+            <input  name="ListErrorLogRequest"  message="tns:ListErrorLogRequestMessage" />
+            <output name="LogEventSimpleResponse" message="tns:LogEventSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="ViewErrorLog">
+            <input  name="ViewErrorLogReqest"  message="tns:ViewErrorLogRequestMessage" />
+            <output name="LogEventSimpleResponse" message="tns:LogEventSimpleResponseMessage"/>
         </operation>
     </portType>
 
@@ -41,6 +76,36 @@
                 <soap:body use="literal"/>
             </input>
             <output name="DashboardStatusResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetSearchFilter">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adminguimanagement:DashboardStatus"/>
+            <input name="GetSearchFilterRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LogEventSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ListErrorLog">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adminguimanagement:DashboardStatus"/>
+            <input name="ListErrorLogRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LogEventSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ViewErrorLog">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:adminguimanagement:DashboardStatus"/>
+            <input name="ViewErrorLogReqest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LogEventSimpleResponse">
                 <soap:body use="literal"/>
             </output>
         </operation>
