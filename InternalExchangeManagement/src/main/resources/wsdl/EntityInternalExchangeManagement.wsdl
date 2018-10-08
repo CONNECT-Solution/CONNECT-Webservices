@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="InternalExchangeManagementService"
+             targetNamespace="urn:gov:hhs:fha:nhinc:internalexchangemanagement"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:internalexchangemanagement"
+             xmlns:exchange="urn:gov:hhs:fha:nhinc:common:internalexchangemanagement"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl">
+    <types>
+        <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:internalexchangemanagement">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:internalexchangemanagement"
+                        schemaLocation="classpath:schemas/nhinc/common/InternalExchangeManagement.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="SimpleInternalExchangeManagementResponseMessage">
+        <part name="SimpleInternalExchangeManagementResponse"
+              element="exchange:SimpleInternalExchangeManagementResponseMessage"/>
+    </message>
+    <message name="UpdateEndpointRequestMessage">
+        <part name="UpdateEndpointRequest"
+              element="exchange:UpdateEndpointRequestMessage"/>
+    </message>
+
+    <message name="ListEndpointsRequestMessage">
+        <part name="ListEndpointsRequest"
+              element="exchange:ListEndpointsRequestMessage"/>
+    </message>
+
+    <portType name="EntityInternalExchangeManagementPortType">
+        <operation name="UpdateEndpoint">
+            <input name="UpdateEndpointRequest" message="tns:UpdateEndpointRequestMessage" />
+            <output name="SimpleInternalExchangeManagementResponse" message="tns:SimpleInternalExchangeManagementResponseMessage"/>
+        </operation>
+        <operation name="ListEndpoints">
+            <input name="ListEndpointsRequest" message="tns:ListEndpointsRequestMessage" />
+            <output name="SimpleInternalExchangeManagementResponse" message="tns:SimpleInternalExchangeManagementResponseMessage"/>
+        </operation>
+    </portType>
+
+    <binding name="EntityInternalExchangeManagementBindingSoap"
+             type="tns:EntityInternalExchangeManagementPortType">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="UpdateEndpoint">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:internalexchangemanagement:UpdateEndpoint"/>
+            <input name="UpdateEndpointRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleInternalExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ListEndpoints">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:internalexchangemanagement:ListEndpoints"/>
+            <input name="ListEndpointsRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleInternalExchangeManagementResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="EntityInternalExchangeManagement">
+        <port name="EntityInternalExchangeManagementPort"
+              binding="tns:EntityInternalExchangeManagementBindingSoap">
+            <soap:address
+               location="http://localhost:${HttpDefaultPort}/CONNECTCommon/EntityInternalExchangeManagement"/>
+        </port>
+    </service>
+</definitions>
