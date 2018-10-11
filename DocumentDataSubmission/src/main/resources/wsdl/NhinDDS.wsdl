@@ -34,15 +34,15 @@
     </message>
     <portType name="DocumentRegistryXDS_PortType">
         <operation name="DocumentRegistryXDS_RegisterDocumentSet-b">
-            <input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:ihe:iti:xds:2007:RegisterDocumentSet-b"/>
-            <output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:ihe:iti:xds:2007:RegisterDocumentSet-bResponse"/>
+            <input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:ihe:iti:2007:RegisterDocumentSet-b"/>
+            <output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:ihe:iti:2007:RegisterDocumentSet-bResponse"/>
         </operation>
     </portType>
     <binding name="DocumentRegistryXDS_Binding" type="tns:DocumentRegistryXDS_PortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_XDS_Binding_SoapPolicy"/>
         <operation name="DocumentRegistryXDS_RegisterDocumentSet-b">
-           <soap:operation soapAction="urn:ihe:iti:xds:2007:RegisterDocumentSet-b"/>
+           <soap:operation soapAction="urn:ihe:iti:2007:RegisterDocumentSet-b"/>
             <input>
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_XDS_Binding_Soap_Input_Policy"/>
