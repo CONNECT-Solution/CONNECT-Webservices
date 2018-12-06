@@ -67,7 +67,6 @@
         <module>PatientCorrelation</module>
         <module>PatientDiscovery</module>
         <module>PolicyEngine</module>
-        <module>RedactionEngine</module>
         <module>ConfigAdmin</module>
         <module>ExchangeManagement</module>
         <module>InternalExchangeManagement</module>

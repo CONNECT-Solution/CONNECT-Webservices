@@ -18,14 +18,8 @@
 	<message name="TransformAdhocQueryToCheckPolicyRequestMessage">
 		<part name="TransformAdhocQueryToCheckPolicyRequest" element="pdte:TransformAdhocQueryToCheckPolicyRequest"/>
 	</message>
-	<message name="TransformAdhocQueryResultToCheckPolicyRequestMessage">
-		<part name="TransformAdhocQueryResultToCheckPolicyRequest" element="pdte:TransformAdhocQueryResultToCheckPolicyRequest"/>
-	</message>
 	<message name="TransformDocRetrieveToCheckPolicyRequestMessage">
 		<part name="TransformDocRetrieveToCheckPolicyRequest" element="pdte:TransformDocRetrieveToCheckPolicyRequest"/>
-	</message>
-	<message name="TransformDocRetrieveResultToCheckPolicyRequestMessage">
-		<part name="TransformDocRetrieveResultToCheckPolicyRequest" element="pdte:TransformDocRetrieveResultToCheckPolicyRequest"/>
 	</message>
 	<message name="TransformFindAuditEventsToCheckPolicyRequestMessage">
 		<part name="TransformFindAuditEventsToCheckPolicyRequest" element="pdte:TransformFindAuditEventsToCheckPolicyRequest"/>
@@ -34,26 +28,13 @@
 		<part name="TransformSubjectReidentificationToCheckPolicyRequest" element="pdte:TransformSubjectReidentificationToCheckPolicyRequest"/>
 	</message>
 	<portType name="NhincInternalComponentPolicyEngineTransformPortType">
-		
-		<!--        <operation name="TransformSubjectRevokedToCheckPolicy">
-            <input name="TransformSubjectRevokedToCheckPolicyRequest" message="tns:TransformSubjectRevokedToCheckPolicyRequestMessage"/>
-            <output name="TransformSubjectRevokedToCheckPolicyResponse" message="tns:TransformResponseMessage"/>
-        </operation>-->
 		<operation name="TransformAdhocQueryToCheckPolicy">
 			<input name="TransformAdhocQueryToCheckPolicyRequest" message="tns:TransformAdhocQueryToCheckPolicyRequestMessage"/>
 			<output name="TransformAdhocQueryToCheckPolicyResponse" message="tns:TransformResponseMessage"/>
 		</operation>
-		<operation name="TransformAdhocQueryResultToCheckPolicy">
-			<input name="TransformAdhocQueryResultToCheckPolicyRequest" message="tns:TransformAdhocQueryResultToCheckPolicyRequestMessage"/>
-			<output name="TransformAdhocQueryResultToCheckPolicyResponse" message="tns:TransformResponseMessage"/>
-		</operation>
 		<operation name="TransformDocRetrieveToCheckPolicy">
 			<input name="TransformDocRetrieveToCheckPolicyRequest" message="tns:TransformDocRetrieveToCheckPolicyRequestMessage"/>
 			<output name="TransformDocRetrieveToCheckPolicyResponse" message="tns:TransformResponseMessage"/>
-		</operation>
-		<operation name="TransformDocRetrieveResultToCheckPolicy">
-			<input name="TransformDocRetrieveResultToCheckPolicyRequest" message="tns:TransformDocRetrieveResultToCheckPolicyRequestMessage"/>
-			<output name="TransformDocRetrieveResultToCheckPolicyResponse" message="tns:TransformResponseMessage"/>
 		</operation>
 		<operation name="TransformFindAuditEventsToCheckPolicy">
 			<input name="TransformFindAuditEventsToCheckPolicyRequest" message="tns:TransformFindAuditEventsToCheckPolicyRequestMessage"/>
@@ -62,15 +43,6 @@
 	</portType>
 	<binding name="NhincInternalComponentPolicyEngineTransformPortTypeBinding" type="tns:NhincInternalComponentPolicyEngineTransformPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-		<!--     <operation name="TransformSubjectRevokedToCheckPolicy">
-            <soap:operation/>
-            <input name="TransformSubjectRevokedToCheckPolicyRequest">
-                <soap:body use="literal"/>
-            </input>
-            <output name="TransformSubjectRevokedToCheckPolicyResponse">
-                <soap:body use="literal"/>
-            </output>
-        </operation>-->
 		<operation name="TransformAdhocQueryToCheckPolicy">
 			<soap:operation soapAction="urn:TransformAdhocQueryToCheckPolicy"/>
 			<input name="TransformAdhocQueryToCheckPolicyRequest">
@@ -80,30 +52,12 @@
 				<soap:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="TransformAdhocQueryResultToCheckPolicy">
-			<soap:operation soapAction="urn:TransformAdhocQueryResultToCheckPolicy"/>
-			<input name="TransformAdhocQueryResultToCheckPolicyRequest">
-				<soap:body use="literal"/>
-			</input>
-			<output name="TransformAdhocQueryResultToCheckPolicyResponse">
-				<soap:body use="literal"/>
-			</output>
-		</operation>
 		<operation name="TransformDocRetrieveToCheckPolicy">
 			<soap:operation soapAction="urn:TransformDocRetrieveToCheckPolicy"/>
 			<input name="TransformDocRetrieveToCheckPolicyRequest">
 				<soap:body use="literal"/>
 			</input>
 			<output name="TransformDocRetrieveToCheckPolicyResponse">
-				<soap:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="TransformDocRetrieveResultToCheckPolicy">
-			<soap:operation soapAction="urn:TransformDocRetrieveResultToCheckPolicy"/>
-			<input name="TransformDocRetrieveResultToCheckPolicyRequest">
-				<soap:body use="literal"/>
-			</input>
-			<output name="TransformDocRetrieveResultToCheckPolicyResponse">
 				<soap:body use="literal"/>
 			</output>
 		</operation>
@@ -122,7 +76,4 @@
 			<soap:address location="http://localhost:${NhincHttpPort}/NhinConnect/PolicyEngineGatewayTransformationService"/>
 		</port>
 	</service>
-	<!--   <message name="TransformSubjectRevokedToCheckPolicyRequestMessage">
-        <part name="TransformSubjectRevokedToCheckPolicyRequest" element="pdte:TransformSubjectRevokedToCheckPolicyRequest"/>
-    </message>-->
 </definitions>
