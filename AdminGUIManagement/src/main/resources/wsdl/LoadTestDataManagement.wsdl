@@ -187,7 +187,7 @@
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
 
-        <operation name="ListAllPersonname">
+        <operation name="ListAllPersonName">
             <input  name="ListAllPersonNameRequest"  message="tns:ListAllPersonNameRequestMessage" />
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
@@ -202,7 +202,7 @@
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
 
-        <operation name="ListAllPhonenumber">
+        <operation name="ListAllPhoneNumber">
             <input  name="ListAllPhoneNumberRequest"  message="tns:ListAllPhoneNumberRequestMessage" />
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
@@ -217,7 +217,7 @@
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
 
-        <operation name="DeletePersonname">
+        <operation name="DeletePersonName">
             <input  name="DeletePersonNameRequest"  message="tns:DeletePersonNameRequestMessage" />
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
@@ -232,7 +232,7 @@
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
 
-        <operation name="DeletePhonenumber">
+        <operation name="DeletePhoneNumber">
             <input  name="DeletePhoneNumberRequest"  message="tns:DeletePhoneNumberRequestMessage" />
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
@@ -247,7 +247,7 @@
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
 
-        <operation name="GetPersonname">
+        <operation name="GetPersonName">
             <input  name="GetPersonNameRequest"  message="tns:GetPersonNameRequestMessage" />
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
@@ -262,7 +262,7 @@
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
 
-        <operation name="GetPhonenumber">
+        <operation name="GetPhoneNumber">
             <input  name="GetPhoneNumberRequest"  message="tns:GetPhoneNumberRequestMessage" />
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
@@ -272,7 +272,7 @@
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
 
-        <operation name="SavePersonname">
+        <operation name="SavePersonName">
             <input  name="SavePersonNameRequest"  message="tns:SavePersonNameRequestMessage" />
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
@@ -287,7 +287,7 @@
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
 
-        <operation name="SavePhonenumber">
+        <operation name="SavePhoneNumber">
             <input  name="SavePhoneNumberRequest"  message="tns:SavePhoneNumberRequestMessage" />
             <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
         </operation>
@@ -353,8 +353,8 @@
             </output>
         </operation>
 
-         <operation name="ListAllPersonname">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPersonname"/>
+         <operation name="ListAllPersonName">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPersonName"/>
             <input name="ListAllPersonNameRequest">
                 <soap:body use="literal"/>
             </input>
@@ -383,8 +383,8 @@
             </output>
         </operation>
 
-         <operation name="ListAllPhonenumber">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPhonenumber"/>
+         <operation name="ListAllPhoneNumber">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPhoneNumber"/>
             <input name="ListAllPhoneNumberRequest">
                 <soap:body use="literal"/>
             </input>
@@ -404,8 +404,8 @@
         </operation>
 
 
-         <operation name="DeletePersonname">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeletePersonname"/>
+         <operation name="DeletePersonName">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeletePersonName"/>
             <input name="DeletePersonNameRequest">
                 <soap:body use="literal"/>
             </input>
@@ -434,8 +434,8 @@
             </output>
         </operation>
 
-         <operation name="DeletePhonenumber">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeletePhonenumber"/>
+         <operation name="DeletePhoneNumber">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeletePhoneNumber"/>
             <input name="DeletePhoneNumberRequest">
                 <soap:body use="literal"/>
             </input>
@@ -464,7 +464,7 @@
             </output>
         </operation>
 
-         <operation name="ListAllPersonname">
+         <operation name="ListAllPersonName">
             <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPatient"/>
             <input name="ListAllPersonNameRequest">
                 <soap:body use="literal"/>
@@ -484,8 +484,8 @@
             </output>
         </operation>
 
-         <operation name="GetPersonname">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetPersonname"/>
+         <operation name="GetPersonName">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetPersonName"/>
             <input name="GetPersonNameRequest">
                 <soap:body use="literal"/>
             </input>
@@ -514,8 +514,8 @@
             </output>
         </operation>
 
-         <operation name="GetPhonenumber">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetPhonenumber"/>
+         <operation name="GetPhoneNumber">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetPhoneNumber"/>
             <input name="GetPhoneNumberRequest">
                 <soap:body use="literal"/>
             </input>
@@ -534,8 +534,8 @@
             </output>
         </operation>
 
-         <operation name="SavePersonname">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SavePersonname"/>
+         <operation name="SavePersonName">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SavePersonName"/>
             <input name="SavePersonNameRequest">
                 <soap:body use="literal"/>
             </input>
@@ -564,8 +564,8 @@
             </output>
         </operation>
 
-         <operation name="SavePhonenumber">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SavePhonenumber"/>
+         <operation name="SavePhoneNumber">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SavePhoneNumber"/>
             <input name="SavePhoneNumberRequest">
                 <soap:body use="literal"/>
             </input>
