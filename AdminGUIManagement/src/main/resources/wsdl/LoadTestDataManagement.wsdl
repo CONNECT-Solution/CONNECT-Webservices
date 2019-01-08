@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AdminGUIManagementService"
+             targetNamespace="urn:gov:hhs:fha:nhinc:loadtestdatamanagement"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:loadtestdatamanagement"
+             xmlns:admingui="urn:gov:hhs:fha:nhinc:common:loadtestdatamanagement"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl">
+    <types>
+        <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:loadtestdatamanagement">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:loadtestdatamanagement"
+                        schemaLocation="classpath:schemas/nhinc/common/LoadTestDataManagement.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="LoadTestDataSimpleResponseMessage">
+        <part name="LoadTestDataSimpleResponse"
+              element="admingui:LoadTestDataSimpleResponseMessage"/>
+    </message>
+
+    <message name="ListAllPatientRequestMessage">
+        <part name="ListAllPatientRequest"
+              element="admingui:ListAllPatientRequestMessage"/>
+    </message>
+
+    <message name="ListAllPersonnameRequestMessage">
+        <part name="ListAllPersonnameRequest"
+              element="admingui:ListAllPersonnameRequestMessage"/>
+    </message>
+
+    <message name="ListAllAddressRequestMessage">
+        <part name="ListAllAddressRequest"
+              element="admingui:ListAllAddressRequestMessage"/>
+    </message>
+
+    <message name="ListAllIdentierRequestMessage">
+        <part name="ListAllIdentierRequest"
+              element="admingui:ListAllIdentierRequestMessage"/>
+    </message>
+
+    <message name="ListAllPhonenumberRequestMessage">
+        <part name="ListAllPhonenumberRequest"
+              element="admingui:ListAllPhonenumberRequestMessage"/>
+    </message>
+	
+    <message name="DeleteDocumentRequestMessage">
+        <part name="DeleteDocumentRequest"
+              element="admingui:DeleteDocumentRequestMessage"/>
+    </message>
+
+    <message name="DeletePatientRequestMessage">
+        <part name="DeletePatientRequest"
+              element="admingui:DeletePatientRequestMessage"/>
+    </message>
+
+    <message name="DeletePersonnameRequestMessage">
+        <part name="DeletePersonnameRequest"
+              element="admingui:DeletePersonnameRequestMessage"/>
+    </message>
+
+    <message name="DeleteAddressRequestMessage">
+        <part name="DeleteAddressRequest"
+              element="admingui:DeleteAddressRequestMessage"/>
+    </message>
+
+    <message name="DeleteIdentifierRequestMessage">
+        <part name="DeleteIdentifierRequest"
+              element="admingui:DeleteIdentifierRequestMessage"/>
+    </message>
+
+    <message name="DeletePhonenumberRequestMessage">
+        <part name="DeletePhonenumberRequest"
+              element="admingui:DeletePhonenumberRequestMessage"/>
+    </message>
+
+    <message name="GetPatientRequestMessage">
+        <part name="GetPatientRequest"
+              element="admingui:GetPatientRequestMessage"/>
+    </message>
+
+    <message name="DuplicatePatientRequestMessage">
+        <part name="DuplicatePatientRequest"
+              element="admingui:DuplicatePatientRequestMessage"/>
+    </message>
+
+    <message name="GetPersonnameRequestMessage">
+        <part name="GetPersonnameRequest"
+              element="admingui:GetPersonnameRequestMessage"/>
+    </message>
+
+    <message name="GetAddressRequestMessage">
+        <part name="GetAddressRequest"
+              element="admingui:GetAddressRequestMessage"/>
+    </message>
+
+    <message name="GetIdentifierRequestMessage">
+        <part name="GetIdentifierRequest"
+              element="admingui:GetIdentifierRequestMessage"/>
+    </message>
+
+    <message name="GetPhonenumberRequestMessage">
+        <part name="GetPhonenumberRequest"
+              element="admingui:GetPhonenumberRequestMessage"/>
+    </message>
+
+    <message name="SavePatientRequestMessage">
+        <part name="SavePatientRequest"
+              element="admingui:SavePatientRequestMessage"/>
+    </message>
+
+    <message name="SavePersonnameRequestMessage">
+        <part name="SavePersonnameRequest"
+              element="admingui:SavePersonnameRequestMessage"/>
+    </message>
+
+    <message name="SaveAddressRequestMessage">
+        <part name="SaveAddressRequest"
+              element="admingui:SaveAddressRequestMessage"/>
+    </message>
+
+    <message name="SavePhonenumberRequestMessage">
+        <part name="SavePhonenumberRequest"
+              element="admingui:SavePhonenumberRequestMessage"/>
+    </message>
+
+    <message name="ListAllDocumentRequestMessage">
+        <part name="ListAllDocumentRequest"
+              element="admingui:ListAllDocumentRequestMessage"/>
+    </message>
+
+    <message name="ListAllEventCodeRequestMessage">
+        <part name="ListAllEventCodeRequest"
+              element="admingui:ListAllEventCodeRequestMessage"/>
+    </message>
+
+    <message name="DuplicateDocumentRequestMessage">
+        <part name="DuplicateDocumentRequest"
+              element="admingui:DuplicateDocumentRequestMessage"/>
+    </message>
+
+    <message name="deleteEventCodeRequestMessage">
+        <part name="deleteEventCodeRequest"
+              element="admingui:deleteEventCodeRequestMessage"/>
+    </message>
+
+    <message name="GetDocumentRequestMessage">
+        <part name="GetDocumentRequest"
+              element="admingui:GetDocumentRequestMessage"/>
+    </message>
+
+    <message name="SaveDocumentRequestMessage">
+        <part name="SaveDocumentRequest"
+              element="admingui:SaveDocumentRequestMessage"/>
+    </message>
+
+    <message name="SaveEventCodeRequestMessage">
+        <part name="SaveEventCodeRequest"
+              element="admingui:SaveEventCodeRequestMessage"/>
+    </message>
+
+    <message name="GetPatientByIdentifierRequestMessage">
+        <part name="GetPatientByIdentifierRequest"
+              element="admingui:GetPatientByIdentifierRequestMessage"/>
+    </message>
+
+    <message name="SaveIdentifierRequestMessage">
+        <part name="SaveIdentifierRequest"
+              element="admingui:SaveIdentifierRequestMessage"/>
+    </message>
+
+    <message name="GetEventCodeRequestMessage">
+        <part name="GetEventCodeRequest"
+              element="admingui:GetEventCodeRequestMessage"/>
+    </message>
+
+    <message name="GetEventCodeRequestMessage">
+        <part name="GetEventCodeRequest"
+              element="admingui:GetEventCodeRequestMessage"/>
+    </message>
+
+    <portType name="EntityLoadTestDataManagementPortType">
+
+        <operation name="ListAllPatient">
+            <input  name="ListAllPatientRequest"  message="tns:ListAllPatientRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="ListAllPersonname">
+            <input  name="ListAllPersonnameRequest"  message="tns:ListAllPersonnameRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="ListAllAddress">
+            <input  name="ListAllAddressRequest"  message="tns:ListAllAddressRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="ListAllIdentier">
+            <input  name="ListAllIdentierRequest"  message="tns:ListAllIdentierRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="ListAllPhonenumber">
+            <input  name="ListAllPhonenumberRequest"  message="tns:ListAllPhonenumberRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="DeletePatient">
+            <input  name="DeletePatientRequest"  message="tns:DeletePatientRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="DeleteDocument">
+            <input  name="DeleteDocumentRequest"  message="tns:DeleteDocumentRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="DeletePersonname">
+            <input  name="DeletePersonnameRequest"  message="tns:DeletePersonnameRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="DeleteAddress">
+            <input  name="DeleteAddressRequest"  message="tns:DeleteAddressRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="DeleteIdentifier">
+            <input  name="DeleteIdentifierRequest"  message="tns:DeleteIdentifierRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="DeletePhonenumber">
+            <input  name="DeletePhonenumberRequest"  message="tns:DeletePhonenumberRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="GetPatient">
+            <input  name="GetPatientRequest"  message="tns:GetPatientRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="DuplicatePatient">
+            <input  name="DuplicatePatientRequest"  message="tns:DuplicatePatientRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="GetPersonname">
+            <input  name="GetPersonnameRequest"  message="tns:GetPersonnameRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="GetAddress">
+            <input  name="GetAddressRequest"  message="tns:GetAddressRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="GetIdentifier">
+            <input  name="GetIdentifierRequest"  message="tns:GetIdentifierRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="GetPhonenumber">
+            <input  name="GetPhonenumberRequest"  message="tns:GetPhonenumberRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="SavePatient">
+            <input  name="SavePatientRequest"  message="tns:SavePatientRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="SavePersonname">
+            <input  name="SavePersonnameRequest"  message="tns:SavePersonnameRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="SaveAddress">
+            <input  name="SaveAddressRequest"  message="tns:SaveAddressRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="SaveIdentifier">
+            <input  name="SaveIdentifierRequest"  message="tns:SaveIdentifierRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="SavePhonenumber">
+            <input  name="SavePhonenumberRequest"  message="tns:SavePhonenumberRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="ListAllDocument">
+            <input  name="ListAllDocumentRequest"  message="tns:ListAllDocumentRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="ListAllEventCode">
+            <input  name="ListAllEventCodeRequest"  message="tns:ListAllEventCodeRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="DuplicateDocument">
+            <input  name="DuplicateDocumentRequest"  message="tns:DuplicateDocumentRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="deleteEventCode">
+            <input  name="deleteEventCodeRequest"  message="tns:deleteEventCodeRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="GetDocument">
+            <input  name="GetDocumentRequest"  message="tns:GetDocumentRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="GetEventCode">
+            <input  name="GetEventCodeRequest"  message="tns:GetEventCodeRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="SaveDocument">
+            <input  name="SaveDocumentRequest"  message="tns:SaveDocumentRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="SaveEventCode">
+            <input  name="SaveEventCodeRequest"  message="tns:SaveEventCodeRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+        <operation name="GetPatientByIdentifier">
+            <input  name="GetPatientByIdentifierRequest"  message="tns:GetPatientByIdentifierRequestMessage" />
+            <output name="LoadTestDataSimpleResponse" message="tns:LoadTestDataSimpleResponseMessage"/>
+        </operation>
+
+    </portType>
+
+    <binding name="EntityLoadTestDataManagementBindingSoap"
+             type="tns:EntityLoadTestDataManagementPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+         <operation name="ListAllPatient">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPatient"/>
+            <input name="ListAllPatientRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ListAllPersonname">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPersonname"/>
+            <input name="ListAllPersonnameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ListAllAddress">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllAddress"/>
+            <input name="ListAllAddressRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ListAllIdentier">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllIdentier"/>
+            <input name="ListAllIdentierRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ListAllPhonenumber">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPhonenumber"/>
+            <input name="ListAllPhonenumberRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="DeletePatient">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeletePatient"/>
+            <input name="DeletePatientRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+
+         <operation name="DeletePersonname">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeletePersonname"/>
+            <input name="DeletePersonnameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="DeleteAddress">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeleteAddress"/>
+            <input name="DeleteAddressRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="DeleteIdentifier">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeleteIdentifier"/>
+            <input name="DeleteIdentifierRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="DeletePhonenumber">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeletePhonenumber"/>
+            <input name="DeletePhonenumberRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="DeleteDocument">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DeleteDocument"/>
+            <input name="DeleteDocumentRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetPatient">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetPatient"/>
+            <input name="GetPatientRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ListAllPersonname">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllPatient"/>
+            <input name="ListAllPersonnameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="DuplicatePatient">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DuplicatePatient"/>
+            <input name="DuplicatePatientRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetPersonname">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetPersonname"/>
+            <input name="GetPersonnameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetAddress">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetAddress"/>
+            <input name="GetAddressRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetIdentifier">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetIdentifier"/>
+            <input name="GetIdentifierRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetPhonenumber">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetPhonenumber"/>
+            <input name="GetPhonenumberRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="SavePatient">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SavePatient"/>
+            <input name="SavePatientRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="SavePersonname">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SavePersonname"/>
+            <input name="SavePersonnameRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="SaveAddress">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SaveAddress"/>
+            <input name="SaveAddressRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="SaveIdentifier">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SaveIdentifier"/>
+            <input name="SaveIdentifierRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="SavePhonenumber">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SavePhonenumber"/>
+            <input name="SavePhonenumberRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ListAllDocument">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllDocument"/>
+            <input name="ListAllDocumentRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="ListAllEventCode">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:ListAllEventCode"/>
+            <input name="ListAllEventCodeRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="DuplicateDocument">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:DuplicateDocument"/>
+            <input name="DuplicateDocumentRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="deleteEventCode">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:deleteEventCode"/>
+            <input name="deleteEventCodeRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetDocument">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetDocument"/>
+            <input name="GetDocumentRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetEventCode">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetEventCode"/>
+            <input name="GetEventCodeRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="SaveDocument">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SaveDocument"/>
+            <input name="SaveDocumentRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="SaveEventCode">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:SaveEventCode"/>
+            <input name="SaveEventCodeRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+         <operation name="GetPatientByIdentifier">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:loadtestdatamanagement:GetPatientByIdentifier"/>
+            <input name="GetPatientByIdentifierRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="LoadTestDataSimpleResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+    </binding>
+
+    <service name="EntityLoadTestDataManagement">
+        <port name="EntityLoadTestDataManagementPort"
+              binding="tns:EntityLoadTestDataManagementBindingSoap">
+            <soap:address location="https://localhost:${HttpsDefaultPort}/CONNECTGateway/AdminGUIServices/LoadTestData"/>
+        </port>
+    </service>
+</definitions>
