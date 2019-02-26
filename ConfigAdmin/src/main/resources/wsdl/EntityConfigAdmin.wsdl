@@ -68,9 +68,9 @@
               element="config:CreateCSRRequestMessage"/>
     </message>
 
-    <message name="DeleteGatewayNewRequestMessage">
-        <part name="DeleteGatewayNewRequest"
-              element="config:DeleteGatewayNewRequestMessage"/>
+    <message name="DeleteTemporaryKeystoreRequestMessage">
+        <part name="DeleteTemporaryKeystoreRequest"
+              element="config:DeleteTemporaryKeystoreRequestMessage"/>
     </message>
 
 
@@ -107,8 +107,8 @@
             <input name="CreateCSRRequest"  message="tns:CreateCSRRequestMessage"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
-        <operation name="DeleteGatewayNew">
-            <input name="DeleteGatewayNewRequest"  message="tns:DeleteGatewayNewRequestMessage"/>
+        <operation name="DeleteTemporaryKeystore">
+            <input name="DeleteTemporaryKeystoreRequest"  message="tns:DeleteTemporaryKeystoreRequestMessage"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
     </portType>
@@ -197,9 +197,9 @@
             </output>
         </operation>
 
-        <operation name="DeleteGatewayNew">
-            <soap:operation soapAction="urn:DeleteGatewayNew"/>
-            <input name="DeleteGatewayNewRequest">
+        <operation name="DeleteTemporaryKeystore">
+            <soap:operation soapAction="urn:DeleteTemporaryKeystore"/>
+            <input name="DeleteTemporaryKeystoreRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleCertificateResponse">
