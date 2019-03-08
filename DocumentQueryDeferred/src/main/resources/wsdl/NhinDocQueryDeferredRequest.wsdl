@@ -10,7 +10,7 @@
         xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
         xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
         xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
-        xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" 
+        xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
         xmlns:dq="http://www.hhs.gov/healthit/nhin"
         name="XCA_RespondingGateway_DeferredRequest" 
         targetNamespace="urn:ihe:iti:xds-b:2007">
