@@ -73,6 +73,15 @@
               element="config:DeleteTemporaryKeystoreRequestMessage"/>
     </message>
 
+    <message name="ImportToKeystoreRequestMessage">
+        <part name="ImportToKeystoreRequest"
+              element="config:ImportToKeystoreRequestMessage"/>
+    </message>
+
+    <message name="ImportToTruststoreRequestMessage">
+        <part name="ImportToTruststoreRequest"
+              element="config:ImportToTruststoreRequestMessage"/>
+    </message>
 
     <portType name="EntityConfigAdminPortType">
         <operation name="ImportCertificate">
@@ -109,6 +118,14 @@
         </operation>
         <operation name="DeleteTemporaryKeystore">
             <input name="DeleteTemporaryKeystoreRequest"  message="tns:DeleteTemporaryKeystoreRequestMessage"/>
+            <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
+        </operation>
+        <operation name="ImportToKeystore">
+            <input name="ImportToKeystoreRequest"  message="tns:ImportToKeystoreRequestMessage"/>
+            <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
+        </operation>
+        <operation name="ImportToTruststore">
+            <input name="ImportToTruststoreRequest"  message="tns:ImportToTruststoreRequestMessage"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
     </portType>
@@ -200,6 +217,26 @@
         <operation name="DeleteTemporaryKeystore">
             <soap:operation soapAction="urn:DeleteTemporaryKeystore"/>
             <input name="DeleteTemporaryKeystoreRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="ImportToKeystore">
+            <soap:operation soapAction="urn:ImportToKeystore"/>
+            <input name="ImportToKeystoreRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="ImportToTruststore">
+            <soap:operation soapAction="urn:ImportToTruststore"/>
+            <input name="ImportToTruststoreRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleCertificateResponse">
