@@ -83,6 +83,11 @@
               element="config:ImportToTruststoreRequestMessage"/>
     </message>
 
+    <message name="CompleteImportWizardRequestMessage">
+        <part name="CompleteImportWizardRequest"
+              element="config:CompleteImportWizardRequestMessage"/>
+    </message>
+
     <portType name="EntityConfigAdminPortType">
         <operation name="ImportCertificate">
             <input name="ImportCertificateRequest" message="tns:ImportCertificateRequestMessage"/>
@@ -126,6 +131,10 @@
         </operation>
         <operation name="ImportToTruststore">
             <input name="ImportToTruststoreRequest"  message="tns:ImportToTruststoreRequestMessage"/>
+            <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
+        </operation>
+        <operation name="CompleteImportWizard">
+            <input name="CompleteImportWizardRequest"  message="tns:CompleteImportWizardRequestMessage"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
     </portType>
@@ -237,6 +246,16 @@
         <operation name="ImportToTruststore">
             <soap:operation soapAction="urn:ImportToTruststore"/>
             <input name="ImportToTruststoreRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="CompleteImportWizard">
+            <soap:operation soapAction="urn:CompleteImportWizard"/>
+            <input name="CompleteImportWizardRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleCertificateResponse">
