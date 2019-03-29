@@ -62,7 +62,6 @@
         <module>DocRepository</module>
         <module>DocumentDataSubmission</module>
         <module>DocumentQuery</module>
-        <module>DocumentQueryDeferred</module>
         <module>DocumentRetrieve</module>
         <module>DocumentSubmission</module>
         <module>PatientCorrelation</module>
