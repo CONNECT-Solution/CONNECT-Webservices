@@ -6,6 +6,7 @@
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              xmlns:tns="urn:gov:hhs:fha:nhinc:configadmin"
              xmlns:config="urn:gov:hhs:fha:nhinc:common:configadmin"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/">
     <types>
         <xsd:schema targetNamespace="urn:gov:hhs:fha:nhinc:common:configadmin">
@@ -68,24 +69,14 @@
               element="config:CreateCSRRequestMessage"/>
     </message>
 
-    <message name="DeleteTemporaryKeystoreRequestMessage">
-        <part name="DeleteTemporaryKeystoreRequest"
-              element="config:DeleteTemporaryKeystoreRequestMessage"/>
+    <message name="ImportCertificateChainRequestMessage">
+        <part name="ImportCertificateChainRequest"
+              element="config:ImportCertificateChainRequestMessage"/>
     </message>
 
-    <message name="ImportToKeystoreRequestMessage">
-        <part name="ImportToKeystoreRequest"
-              element="config:ImportToKeystoreRequestMessage"/>
-    </message>
-
-    <message name="ImportToTruststoreRequestMessage">
-        <part name="ImportToTruststoreRequest"
-              element="config:ImportToTruststoreRequestMessage"/>
-    </message>
-
-    <message name="CompleteImportWizardRequestMessage">
-        <part name="CompleteImportWizardRequest"
-              element="config:CompleteImportWizardRequestMessage"/>
+    <message name="SimpleCertificateRequestMessage">
+        <part name="SimpleCertificateRequest"
+              element="config:SimpleCertificateRequestMessage"/>
     </message>
 
     <portType name="EntityConfigAdminPortType">
@@ -122,19 +113,31 @@
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
         <operation name="DeleteTemporaryKeystore">
-            <input name="DeleteTemporaryKeystoreRequest"  message="tns:DeleteTemporaryKeystoreRequestMessage"/>
+            <input name="SimpleCertificateRequest"  message="tns:SimpleCertificateRequestMessage" wsaw:Action="tns:DeleteTemporaryKeystore"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
         <operation name="ImportToKeystore">
-            <input name="ImportToKeystoreRequest"  message="tns:ImportToKeystoreRequestMessage"/>
+            <input name="ImportCertificateChainRequest"  message="tns:ImportCertificateChainRequestMessage" wsaw:Action="tns:ImportToKeystore"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
         <operation name="ImportToTruststore">
-            <input name="ImportToTruststoreRequest"  message="tns:ImportToTruststoreRequestMessage"/>
+            <input name="ImportCertificateChainRequest"  message="tns:ImportCertificateChainRequestMessage" wsaw:Action="tns:ImportToTruststore"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
         <operation name="CompleteImportWizard">
-            <input name="CompleteImportWizardRequest"  message="tns:CompleteImportWizardRequestMessage"/>
+            <input name="SimpleCertificateRequest"  message="tns:SimpleCertificateRequestMessage" wsaw:Action="tns:CompleteImportWizard"/>
+            <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
+        </operation>
+        <operation name="ListTemporaryAlias">
+            <input name="SimpleCertificateRequest"  message="tns:SimpleCertificateRequestMessage" wsaw:Action="tns:ListTemporaryAlias"/>
+            <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
+        </operation>
+        <operation name="UndoImportKeystore">
+            <input name="ImportCertificateChainRequest"  message="tns:ImportCertificateChainRequestMessage" wsaw:Action="tns:UndoImportKeystore"/>
+            <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
+        </operation>
+        <operation name="UndoImportTruststore">
+            <input name="ImportCertificateChainRequest"  message="tns:ImportCertificateChainRequestMessage" wsaw:Action="tns:UndoImportTruststore"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
     </portType>
@@ -225,7 +228,7 @@
 
         <operation name="DeleteTemporaryKeystore">
             <soap:operation soapAction="urn:DeleteTemporaryKeystore"/>
-            <input name="DeleteTemporaryKeystoreRequest">
+            <input name="SimpleCertificateRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleCertificateResponse">
@@ -235,7 +238,7 @@
 
         <operation name="ImportToKeystore">
             <soap:operation soapAction="urn:ImportToKeystore"/>
-            <input name="ImportToKeystoreRequest">
+            <input name="ImportCertificateChainRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleCertificateResponse">
@@ -245,7 +248,7 @@
 
         <operation name="ImportToTruststore">
             <soap:operation soapAction="urn:ImportToTruststore"/>
-            <input name="ImportToTruststoreRequest">
+            <input name="ImportCertificateChainRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleCertificateResponse">
@@ -255,7 +258,7 @@
 
         <operation name="CompleteImportWizard">
             <soap:operation soapAction="urn:CompleteImportWizard"/>
-            <input name="CompleteImportWizardRequest">
+            <input name="SimpleCertificateRequest">
                 <soap:body use="literal"/>
             </input>
             <output name="SimpleCertificateResponse">
@@ -263,6 +266,35 @@
             </output>
         </operation>
 
+        <operation name="ListTemporaryAlias">
+            <soap:operation soapAction="urn:ListTemporaryAlias"/>
+            <input name="SimpleCertificateRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="UndoImportKeystore">
+            <soap:operation soapAction="urn:UndoImportKeystore"/>
+            <input name="ImportCertificateChainRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="UndoImportTruststore">
+            <soap:operation soapAction="urn:UndoImportTruststore"/>
+            <input name="ImportCertificateChainRequest">
+                <soap:body use="literal"/>
+            </input>
+            <output name="SimpleCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
     </binding>
 
     <service name="EntityConfigAdmin">
