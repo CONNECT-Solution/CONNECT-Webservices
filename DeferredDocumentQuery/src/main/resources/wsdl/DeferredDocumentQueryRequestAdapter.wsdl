@@ -25,14 +25,14 @@
         <part name="RespondingGateway_CrossGatewayQueryResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQueryResponse"/>
     </message>
     <portType name="AdapterDocQueryDeferredRequestPortType">
-        <operation name="RespondingGateway_CrossGatewayQuery">
+        <operation name="RespondingGateway_CrossGatewayQueryDeferred">
             <input name="RespondingGateway_CrossGatewayQueryRequest" message="tns:RespondingGateway_CrossGatewayQueryRequestMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferred" />
             <output name="RespondingGateway_CrossGatewayQueryResponse" message="tns:RespondingGateway_CrossGatewayQueryResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
         </operation>
     </portType>
     <binding name="AdapterDocQueryDeferredRequestBindingSoap" type="tns:AdapterDocQueryDeferredRequestPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="RespondingGateway_CrossGatewayQuery">
+        <operation name="RespondingGateway_CrossGatewayQueryDeferred">
             <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQueryDeferred"/>
             <input name="RespondingGateway_CrossGatewayQueryRequest">
                 <soap:body use="literal"/>

@@ -26,7 +26,7 @@
         <part name="RespondingGateway_CrossGatewayQuerySecuredResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQuerySecureResponse"/>
     </message>
     <portType name="AdapterDocQueryDeferredRequestSecuredPortType">
-        <operation name="RespondingGateway_CrossGatewayQuerySecured">
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredSecured">
             <input name="RespondingGateway_CrossGatewayQuerySecuredRequest" message="tns:RespondingGateway_CrossGatewayQuerySecuredRequestMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQuerySecuredRequest"/>
             <output name="RespondingGateway_CrossGatewayQuerySecuredResponse" message="tns:RespondingGateway_CrossGatewayQuerySecuredResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQuerySecuredResponse"/>
         </operation>
@@ -34,7 +34,7 @@
     <binding name="AdapterDocQueryDeferredRequestSecuredBindingSoap" type="tns:AdapterDocQueryDeferredRequestSecuredPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_Query_Binding_SoapPolicy"/>
-        <operation name="RespondingGateway_CrossGatewayQuerySecured">
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredSecured">
             <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQuerySecured"/>
             <input name="RespondingGateway_CrossGatewayQuerySecuredRequest">
                 <soap:body use="literal"/>
