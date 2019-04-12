@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  Adapter Document Query Deferred Request Secured WSDL
+  Nhin Deferred Results Option Secured WSDL
   -->
 <definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
         xmlns="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:tns="urn:gov:hhs:fha:nhinc:adapterdocquerydeferredrequestsecured" 
+        xmlns:tns="urn:gov:hhs:fha:nhinc:dq:nhindeferredresultsecured" 
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
         xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
         xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
         xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
-        xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" 
-        name="AdapterDocQueryDeferredRequestSecured" 
-        targetNamespace="urn:gov:hhs:fha:nhinc:adapterdocquerydeferredrequestsecured">
-    <documentation>Adapter Document Query Deferred Request Secured</documentation>
+        xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
+        xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0"
+        name="NhinDocQueryDeferredRequestSecured" 
+        targetNamespace="urn:gov:hhs:fha:nhinc:dq:nhindeferredresultsecured">
+    <documentation>Nhin Deferred Results Option Secured</documentation>
     <types>
         <xsd:schema>
-            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
+            <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
+            <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" schemaLocation="classpath:schemas/ebRS/query.xsd"/>
         </xsd:schema>
     </types>
     <message name="RespondingGateway_CrossGatewayQuerySecuredRequestMessage">
-        <part name="RespondingGateway_CrossGatewayQuerySecuredRequest" element="nccommonadapter:RespondingGateway_CrossGatewayQuerySecureRequest"/>
+        <part name="RespondingGateway_CrossGatewayQuerySecuredRequest" element="query:AdhocQueryResponse"/>
     </message>
     <message name="RespondingGateway_CrossGatewayQuerySecuredResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQuerySecuredResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQuerySecureResponse"/>
+        <part name="RespondingGateway_CrossGatewayQuerySecuredResponse" element="rs:RegistryResponse"/>
     </message>
-    <portType name="AdapterDocQueryDeferredRequestSecuredPortType">
-        <operation name="RespondingGateway_CrossGatewayQueryDeferredSecured">
+    <portType name="NhinDocQueryDeferredResponseSecuredPortType">
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredNhinSecured">
             <input name="RespondingGateway_CrossGatewayQuerySecuredRequest" message="tns:RespondingGateway_CrossGatewayQuerySecuredRequestMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQuerySecuredRequest"/>
             <output name="RespondingGateway_CrossGatewayQuerySecuredResponse" message="tns:RespondingGateway_CrossGatewayQuerySecuredResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQuerySecuredResponse"/>
         </operation>
     </portType>
-    <binding name="AdapterDocQueryDeferredRequestSecuredBindingSoap" type="tns:AdapterDocQueryDeferredRequestSecuredPortType">
+    <binding name="NhinDocQueryDeferredResponseSecuredBindingSoap" type="tns:NhinDocQueryDeferredResponseSecuredPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_Query_Binding_SoapPolicy"/>
-        <operation name="RespondingGateway_CrossGatewayQueryDeferredSecured">
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredNhinSecured">
             <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQuerySecured"/>
             <input name="RespondingGateway_CrossGatewayQuerySecuredRequest">
                 <soap:body use="literal"/>
@@ -46,9 +48,9 @@
             </output>
         </operation>
     </binding>
-    <service name="AdapterDocQueryDeferredRequestSecured">
-        <port name="AdapterDocQueryDeferredRequestSecuredPortSoap" binding="tns:AdapterDocQueryDeferredRequestSecuredBindingSoap">
-            <soap:address location="https://localhost:${HttpsDefaultPort}/NhinConnect/AdapterDocQueryDeferredRequestSecured"/>
+    <service name="NhinDocQueryDeferredResponseSecured">
+        <port name="NhinDocQueryDeferredRequestSecuredPortSoap" binding="tns:NhinDocQueryDeferredResponseSecuredBindingSoap">
+            <soap:address location="https://localhost:${HttpsDefaultPort}/NhinConnect/NhinDocQueryDeferredResponseSecured"/>
         </port>
     </service>
 

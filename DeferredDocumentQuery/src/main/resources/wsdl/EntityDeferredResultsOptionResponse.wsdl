@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Entity Document Query Deferred Result Option WSDL
+  -->
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" 
+        xmlns="http://schemas.xmlsoap.org/wsdl/" 
+        xmlns:tns="urn:gov:hhs:fha:nhinc:dq:entitydeferredresponse"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+        xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+        xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+        xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
+        xmlns:dq="http://www.hhs.gov/healthit/nhin"
+        name="EntityDocQueryDeferredResult" 
+        targetNamespace="urn:gov:hhs:fha:nhinc:dq:entitydeferredresponse">
+    <documentation>Entity Document Query Deferred Result Option</documentation>
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="classpath:schemas/nhinc/common/NhincCommonEntity.xsd"/>
+            <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="RespondingGateway_CrossGatewayQueryResultMessage">
+        <part name="RespondingGateway_CrossGatewayQueryResult" element="nccommonentity:RespondingGateway_CrossGatewayQueryResponse"/>
+    </message>
+    <message name="RespondingGateway_CrossGatewayQueryResponseMessage">
+        <part name="RespondingGateway_CrossGatewayQueryResponse" element="rs:RegistryResponse"/>
+    </message>
+    <portType name="EntityDocQueryDeferredResultPortType">
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredEntity">
+            <input name="RespondingGateway_CrossGatewayQueryResult" message="tns:RespondingGateway_CrossGatewayQueryResultMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferred" />
+            <output name="RespondingGateway_CrossGatewayQueryResponse" message="tns:RespondingGateway_CrossGatewayQueryResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
+        </operation>
+    </portType>
+    <binding name="EntityDocQueryDeferredResultBindingSoap" type="tns:EntityDocQueryDeferredResultPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredEntity">
+            <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQueryDeferred"/>
+            <input name="RespondingGateway_CrossGatewayQueryResult">
+                <soap:body use="literal"/>
+            </input>
+            <output name="RespondingGateway_CrossGatewayQueryResponse">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="EntityDocQueryDeferredResult">
+        <port name="EntityDocQueryDeferredResultPortSoap"  binding="tns:EntityDocQueryDeferredResultBindingSoap">
+            <soap:address
+                    location="http://localhost:${HttpDefaultPort}/NhinConnect/EntityDocQueryDeferredResult" />
+        </port>
+    </service>
+</definitions>
