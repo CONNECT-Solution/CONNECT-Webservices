@@ -71,6 +71,7 @@
         <module>ExchangeManagement</module>
         <module>InternalExchangeManagement</module>
         <module>AdminGUIManagement</module>
+        <module>DeferredDocumentQuery</module>
     </modules>
 
     <dependencyManagement>
