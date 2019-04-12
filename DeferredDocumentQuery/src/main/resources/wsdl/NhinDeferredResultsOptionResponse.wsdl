@@ -29,15 +29,15 @@
     </message>
     <portType name="NhinDocQueryDeferredResponseSecuredPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferredNhinSecured">
-            <input name="RespondingGateway_CrossGatewayQuerySecuredRequest" message="tns:RespondingGateway_CrossGatewayQuerySecuredRequestMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQuerySecuredRequest"/>
-            <output name="RespondingGateway_CrossGatewayQuerySecuredResponse" message="tns:RespondingGateway_CrossGatewayQuerySecuredResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQuerySecuredResponse"/>
+            <input name="RespondingGateway_CrossGatewayQuerySecuredRequest" message="tns:RespondingGateway_CrossGatewayQuerySecuredRequestMessage" wsaw:Action="urn:ihe:iti:2007:CrossGatewayQueryDeferredResults"/>
+            <output name="RespondingGateway_CrossGatewayQuerySecuredResponse" message="tns:RespondingGateway_CrossGatewayQuerySecuredResponseMessage" wsaw:Action="urn:ihe:iti:2007:CrossGatewayQueryDeferredResultsResponse"/>
         </operation>
     </portType>
     <binding name="NhinDocQueryDeferredResponseSecuredBindingSoap" type="tns:NhinDocQueryDeferredResponseSecuredPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_Query_Binding_SoapPolicy"/>
         <operation name="RespondingGateway_CrossGatewayQueryDeferredNhinSecured">
-            <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQuerySecured"/>
+            <soap:operation soapAction="urn:ihe:iti:2007:CrossGatewayQueryDeferredResults"/>
             <input name="RespondingGateway_CrossGatewayQuerySecuredRequest">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_Query_Binding_Soap_Input_Policy"/>
