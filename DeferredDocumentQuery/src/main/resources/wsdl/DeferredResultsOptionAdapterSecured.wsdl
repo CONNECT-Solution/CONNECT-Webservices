@@ -21,29 +21,29 @@
             <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
         </xsd:schema>
     </types>
-    <message name="RespondingGateway_CrossGatewayQueryDeferredResultsMessage">
-        <part name="RespondingGateway_CrossGatewayQueryDeferredResults" element="query:AdhocQueryResponse"/>
+    <message name="RespondingGateway_CrossGatewayQueryDeferredResultsSecuredMessage">
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResultsSecured" element="query:AdhocQueryResponse"/>
     </message>
-    <message name="RespondingGateway_CrossGatewayQueryResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryResponse" element="rs:RegistryResponse"/>
+    <message name="RespondingGateway_CrossGatewayQueryDeferredResponseSecuredMessage">
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResponseSecured" element="rs:RegistryResponse"/>
     </message>
      <portType name="AdapterDocQueryDeferredResultsOptionSecuredPortType">
-        <operation name="RespondingGateway_CrossGatewayQueryResults">
-            <input name="RespondingGateway_CrossGatewayQueryDeferredResults" message="tns:RespondingGateway_CrossGatewayQueryDeferredResultsMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferredResults" />
-            <output name="RespondingGateway_CrossGatewayQueryResponse" message="tns:RespondingGateway_CrossGatewayQueryResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredResultsSecured">
+            <input name="RespondingGateway_CrossGatewayQueryDeferredResultsSecured" message="tns:RespondingGateway_CrossGatewayQueryDeferredResultsSecuredMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredresultoptionsecured:RespondingGateway_CrossGatewayQueryDeferredResultsSecured" />
+            <output name="RespondingGateway_CrossGatewayQueryDeferredResponseSecured" message="tns:RespondingGateway_CrossGatewayQueryDeferredResponseSecuredMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredresultoptionsecured:RespondingGateway_CrossGatewayQueryDeferredResponseSecured"/>
         </operation>
     </portType>
     
     <binding name="AdapterDeferredResultsOptionSecuredBindingSoap" type="tns:AdapterDocQueryDeferredResultsOptionSecuredPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsp:PolicyReference URI="#RespondingGateway_Query_Binding_SoapPolicy"/>
-        <operation name="RespondingGateway_CrossGatewayQueryResults">
-            <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQueryDeferredResults"/>
-            <input name="RespondingGateway_CrossGatewayQueryDeferredResults">
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredResultsSecured">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:dq:adapterdeferredresultoptionsecured:RespondingGateway_CrossGatewayQueryDeferredResultsSecured"/>
+            <input name="RespondingGateway_CrossGatewayQueryDeferredResultsSecured">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_Query_Binding_Soap_Input_Policy"/>
             </input>
-            <output name="RespondingGateway_CrossGatewayQueryResponse">
+            <output name="RespondingGateway_CrossGatewayQueryDeferredResponseSecured">
                 <soap:body use="literal"/>
                 <wsp:PolicyReference URI="#RespondingGateway_Query_Binding_Soap_Output_Policy"/>
             </output>
