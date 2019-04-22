@@ -6,7 +6,7 @@
         xmlns="http://schemas.xmlsoap.org/wsdl/" 
         xmlns:tns="urn:gov:hhs:fha:nhinc:dq:adapterdeferredresultquery"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-        xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0"
+        xmlns:nhinccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
         xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
         xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
         xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
@@ -15,30 +15,30 @@
     <documentation>Deferred Results Option Query Adapter</documentation>
     <types>
         <xsd:schema>
-            <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" schemaLocation="classpath:schemas/ebRS/query.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
             <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
         </xsd:schema>
     </types>   
     <message name="RespondingGateway_CrossGatewayQueryDeferredResultsMessage">
-        <part name="RespondingGateway_CrossGatewayQueryDeferredResults" element="query:AdhocQueryResponse"/>
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResults" element="nhinccommonadapter:RespondingGateway_CrossGatewayQueryResponse"/>
     </message>
-    <message name="RespondingGateway_CrossGatewayQueryResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryResponse" element="rs:RegistryResponse"/>
+    <message name="RespondingGateway_CrossGatewayQueryDeferredResponseMessage">
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="rs:RegistryResponse"/>
     </message>
      <portType name="AdapterDocQueryDeferredResultsOptionQueryPortType">
-        <operation name="RespondingGateway_CrossGatewayQueryResults">
-            <input name="RespondingGateway_CrossGatewayQueryDeferredResults" message="tns:RespondingGateway_CrossGatewayQueryDeferredResultsMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferredResults" />
-            <output name="RespondingGateway_CrossGatewayQueryResponse" message="tns:RespondingGateway_CrossGatewayQueryResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredResults">
+            <input name="RespondingGateway_CrossGatewayQueryDeferredResults" message="tns:RespondingGateway_CrossGatewayQueryDeferredResultsMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredresultquery:RespondingGateway_CrossGatewayQueryDeferredResults" />
+            <output name="RespondingGateway_CrossGatewayQueryDeferredResponse" message="tns:RespondingGateway_CrossGatewayQueryDeferredResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredresultquery:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
         </operation>
     </portType>
     <binding name="AdapterDeferredResultsOptionQueryBindingSoap" type="tns:AdapterDocQueryDeferredResultsOptionQueryPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="RespondingGateway_CrossGatewayQueryResults">
-            <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQueryDeferredResults"/>
+        <operation name="RespondingGateway_CrossGatewayQueryDeferredResults">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:dq:adapterdeferredresultquery:RespondingGateway_CrossGatewayQueryDeferredResults"/>
             <input name="RespondingGateway_CrossGatewayQueryDeferredResults">
                 <soap:body use="literal"/>
             </input>
-            <output name="RespondingGateway_CrossGatewayQueryResponse">
+            <output name="RespondingGateway_CrossGatewayQueryDeferredResponse">
                 <soap:body use="literal"/>
             </output>
         </operation>

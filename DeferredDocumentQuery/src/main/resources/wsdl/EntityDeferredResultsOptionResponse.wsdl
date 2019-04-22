@@ -20,26 +20,26 @@
             <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
         </xsd:schema>
     </types>
-    <message name="RespondingGateway_CrossGatewayQueryResultMessage">
-        <part name="RespondingGateway_CrossGatewayQueryResult" element="nccommonentity:RespondingGateway_CrossGatewayQueryResponse"/>
+    <message name="RespondingGateway_CrossGatewayQueryDeferredResultMessage">
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResult" element="nccommonentity:RespondingGateway_CrossGatewayQueryResponse"/>
     </message>
-    <message name="RespondingGateway_CrossGatewayQueryResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryResponse" element="rs:RegistryResponse"/>
+    <message name="RespondingGateway_CrossGatewayQueryDeferredResponseMessage">
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="rs:RegistryResponse"/>
     </message>
     <portType name="EntityDocQueryDeferredResultPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferredEntity">
-            <input name="RespondingGateway_CrossGatewayQueryResult" message="tns:RespondingGateway_CrossGatewayQueryResultMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferred" />
-            <output name="RespondingGateway_CrossGatewayQueryResponse" message="tns:RespondingGateway_CrossGatewayQueryResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
+            <input name="RespondingGateway_CrossGatewayQueryDeferredResult" message="tns:RespondingGateway_CrossGatewayQueryDeferredResultMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:entitydeferredresponse:RespondingGateway_CrossGatewayQueryDeferredEntity" />
+            <output name="RespondingGateway_CrossGatewayQueryDeferredResponse" message="tns:RespondingGateway_CrossGatewayQueryDeferredResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:entitydeferredresponse:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
         </operation>
     </portType>
     <binding name="EntityDocQueryDeferredResultBindingSoap" type="tns:EntityDocQueryDeferredResultPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="RespondingGateway_CrossGatewayQueryDeferredEntity">
-            <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQueryDeferred"/>
-            <input name="RespondingGateway_CrossGatewayQueryResult">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:dq:entitydeferredresponse:RespondingGateway_CrossGatewayQueryDeferredEntity"/>
+            <input name="RespondingGateway_CrossGatewayQueryDeferredResult">
                 <soap:body use="literal"/>
             </input>
-            <output name="RespondingGateway_CrossGatewayQueryResponse">
+            <output name="RespondingGateway_CrossGatewayQueryDeferredResponse">
                 <soap:body use="literal"/>
             </output>
         </operation>

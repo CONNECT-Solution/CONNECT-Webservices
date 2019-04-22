@@ -18,26 +18,26 @@
             <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
         </xsd:schema>
     </types>
-    <message name="RespondingGateway_CrossGatewayQueryRequestMessage">
-        <part name="RespondingGateway_CrossGatewayQueryRequest" element="nccommonadapter:RespondingGateway_CrossGatewayQueryRequest"/>
+    <message name="RespondingGateway_CrossGatewayQueryDeferredRequestMessage">
+        <part name="RespondingGateway_CrossGatewayQueryDeferredRequest" element="nccommonadapter:RespondingGateway_CrossGatewayQueryRequest"/>
     </message>
-    <message name="RespondingGateway_CrossGatewayQueryResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQueryResponse"/>
+    <message name="RespondingGateway_CrossGatewayQueryDeferredResponseMessage">
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQueryResponse"/>
     </message>
     <portType name="AdapterDeferredResponseOptionQueryRequestPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferred">
-            <input name="RespondingGateway_CrossGatewayQueryRequest" message="tns:RespondingGateway_CrossGatewayQueryRequestMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferred" />
-            <output name="RespondingGateway_CrossGatewayQueryResponse" message="tns:RespondingGateway_CrossGatewayQueryResponseMessage" wsaw:Action="tns:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
+            <input name="RespondingGateway_CrossGatewayQueryDeferredRequest" message="tns:RespondingGateway_CrossGatewayQueryDeferredRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestquery:RespondingGateway_CrossGatewayQueryDeferred" />
+            <output name="RespondingGateway_CrossGatewayQueryDeferredResponse" message="tns:RespondingGateway_CrossGatewayQueryDeferredResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestquery:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
         </operation>
     </portType>
     <binding name="AdapterDeferredResponseOptionQueryRequestBindingSoap" type="tns:AdapterDeferredResponseOptionQueryRequestPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="RespondingGateway_CrossGatewayQueryDeferred">
-            <soap:operation soapAction="tns:RespondingGateway_CrossGatewayQueryDeferred"/>
-            <input name="RespondingGateway_CrossGatewayQueryRequest">
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestquery:RespondingGateway_CrossGatewayQueryDeferred"/>
+            <input name="RespondingGateway_CrossGatewayQueryDeferredRequest">
                 <soap:body use="literal"/>
             </input>
-            <output name="RespondingGateway_CrossGatewayQueryResponse">
+            <output name="RespondingGateway_CrossGatewayQueryDeferredResponse">
                 <soap:body use="literal"/>
             </output>
         </operation>
