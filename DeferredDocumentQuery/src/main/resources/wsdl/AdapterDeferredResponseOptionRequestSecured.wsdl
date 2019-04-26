@@ -10,7 +10,8 @@
         xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
         xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
         xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
-        xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" 
+        xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
+        xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
         name="AdapterDeferredResponseOptionRequestSecured" 
         targetNamespace="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestoptionsecured">
     <documentation>Adapter Document Query Deferred Response Option Request Secured</documentation>
@@ -23,7 +24,7 @@
         <part name="RespondingGateway_CrossGatewayQueryDeferredSecuredRequest" element="nccommonadapter:RespondingGateway_CrossGatewayQuerySecureRequest"/>
     </message>
     <message name="RespondingGateway_CrossGatewayQueryDeferredSecuredResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryDeferredSecuredResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQuerySecureResponse"/>
+        <part name="RespondingGateway_CrossGatewayQueryDeferredSecuredResponse" element="rs:RegistryResponse"/>
     </message>
     <portType name="AdapterDeferredResponseOptionRequestSecuredPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferredSecured">
