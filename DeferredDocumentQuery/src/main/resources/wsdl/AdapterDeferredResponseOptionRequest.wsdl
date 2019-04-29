@@ -10,6 +10,7 @@
         xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
         xmlns:nccommonadapter="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
         xmlns:dq="http://www.hhs.gov/healthit/nhin"
+        xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
         name="AdapterDeferredResponseOptionRequest" 
         targetNamespace="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestoption">
     <documentation>Adapter Document Query Deferred Response Option Request</documentation>
@@ -22,7 +23,7 @@
         <part name="RespondingGateway_CrossGatewayQueryDeferredRequest" element="nccommonadapter:RespondingGateway_CrossGatewayQueryRequest"/>
     </message>
     <message name="RespondingGateway_CrossGatewayQueryDeferredResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQueryResponse"/>
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="rs:RegistryResponse"/>
     </message>
     <portType name="AdapterDeferredResponseOptionRequestPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferred">
