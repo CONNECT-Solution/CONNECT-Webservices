@@ -22,18 +22,18 @@
         <part name="RespondingGateway_CrossGatewayQueryDeferredRequest" element="nccommonadapter:RespondingGateway_CrossGatewayQueryRequest"/>
     </message>
     <message name="RespondingGateway_CrossGatewayQueryDeferredResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQueryResponse"/>
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="nccommonadapter:AdapterDeferredResponseOptionQuery"/>
     </message>
     <portType name="AdapterDeferredResponseOptionQueryRequestPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferred">
-            <input name="RespondingGateway_CrossGatewayQueryDeferredRequest" message="tns:RespondingGateway_CrossGatewayQueryDeferredRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestquery:RespondingGateway_CrossGatewayQueryDeferred" />
+            <input name="RespondingGateway_CrossGatewayQueryDeferredRequest" message="tns:RespondingGateway_CrossGatewayQueryDeferredRequestMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestquery:RespondingGateway_CrossGatewayQueryDeferredRequest" />
             <output name="RespondingGateway_CrossGatewayQueryDeferredResponse" message="tns:RespondingGateway_CrossGatewayQueryDeferredResponseMessage" wsaw:Action="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestquery:RespondingGateway_CrossGatewayQueryDeferredResponse"/>
         </operation>
     </portType>
     <binding name="AdapterDeferredResponseOptionQueryRequestBindingSoap" type="tns:AdapterDeferredResponseOptionQueryRequestPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="RespondingGateway_CrossGatewayQueryDeferred">
-            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestquery:RespondingGateway_CrossGatewayQueryDeferred"/>
+            <soap:operation soapAction="urn:gov:hhs:fha:nhinc:dq:adapterdeferredrequestquery:RespondingGateway_CrossGatewayQueryDeferredRequest"/>
             <input name="RespondingGateway_CrossGatewayQueryDeferredRequest">
                 <soap:body use="literal"/>
             </input>
