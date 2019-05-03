@@ -23,7 +23,7 @@
         <part name="RespondingGateway_CrossGatewayQueryDeferredSecuredRequest" element="nccommonadapter:RespondingGateway_CrossGatewayQuerySecureRequest"/>
     </message>
     <message name="RespondingGateway_CrossGatewayQueryDeferredSecuredResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryDeferredSecuredResponse" element="nccommonadapter:RespondingGateway_CrossGatewayQuerySecureResponse"/>
+        <part name="RespondingGateway_CrossGatewayQueryDeferredSecuredResponse" element="nccommonadapter:AdapterDeferredResponseOptionQuerySecured"/>
     </message>
     <portType name="AdapterDeferredResponseOptionQueryRequestSecuredPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferredSecuredRequest">
