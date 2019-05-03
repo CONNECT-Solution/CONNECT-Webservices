@@ -120,10 +120,6 @@
             <input name="ImportCertificateChainRequest"  message="tns:ImportCertificateChainRequestMessage" wsaw:Action="tns:ImportToKeystore"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
-        <operation name="ImportToTruststore">
-            <input name="ImportCertificateChainRequest"  message="tns:ImportCertificateChainRequestMessage" wsaw:Action="tns:ImportToTruststore"/>
-            <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
-        </operation>
         <operation name="CompleteImportWizard">
             <input name="SimpleCertificateRequest"  message="tns:SimpleCertificateRequestMessage" wsaw:Action="tns:CompleteImportWizard"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
@@ -134,10 +130,6 @@
         </operation>
         <operation name="UndoImportKeystore">
             <input name="ImportCertificateChainRequest"  message="tns:ImportCertificateChainRequestMessage" wsaw:Action="tns:UndoImportKeystore"/>
-            <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
-        </operation>
-        <operation name="UndoImportTruststore">
-            <input name="ImportCertificateChainRequest"  message="tns:ImportCertificateChainRequestMessage" wsaw:Action="tns:UndoImportTruststore"/>
             <output name="SimpleCertificateResponse" message="tns:SimpleCertificateResponseMessage"/>
         </operation>
     </portType>
@@ -246,15 +238,6 @@
             </output>
         </operation>
 
-        <operation name="ImportToTruststore">
-            <soap:operation soapAction="urn:ImportToTruststore"/>
-            <input name="ImportCertificateChainRequest">
-                <soap:body use="literal"/>
-            </input>
-            <output name="SimpleCertificateResponse">
-                <soap:body use="literal"/>
-            </output>
-        </operation>
 
         <operation name="CompleteImportWizard">
             <soap:operation soapAction="urn:CompleteImportWizard"/>
@@ -286,15 +269,6 @@
             </output>
         </operation>
 
-        <operation name="UndoImportTruststore">
-            <soap:operation soapAction="urn:UndoImportTruststore"/>
-            <input name="ImportCertificateChainRequest">
-                <soap:body use="literal"/>
-            </input>
-            <output name="SimpleCertificateResponse">
-                <soap:body use="literal"/>
-            </output>
-        </operation>
     </binding>
 
     <service name="EntityConfigAdmin">
