@@ -23,7 +23,7 @@
         <part name="RespondingGateway_CrossGatewayQueryDeferredResults" element="nccommonadapter:RespondingGateway_CrossGatewayQueryResponse"/>
     </message>
     <message name="RespondingGateway_CrossGatewayQueryDeferredResponseMessage">
-        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="rs:RegistryResponse"/>
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResponse" element="nccommonadapter:AdapterDeferredResultsResponse"/>
     </message>
      <portType name="AdapterDocQueryDeferredResultsOptionPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferredResults">

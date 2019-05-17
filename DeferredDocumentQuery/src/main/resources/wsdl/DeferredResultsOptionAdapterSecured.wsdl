@@ -11,21 +11,21 @@
         xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
         xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
         xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0"
-        xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
+        xmlns:common="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter"
         name="AdapterDocQueryDeferredResultsOptionSecured" 
         targetNamespace="urn:gov:hhs:fha:nhinc:dq:adapterdeferredresultoptionsecured">
     <documentation>Deferred Results Option Adapter Secured</documentation>
     <types>
         <xsd:schema>
             <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" schemaLocation="classpath:schemas/ebRS/query.xsd"/>
-            <xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="classpath:schemas/ebRS/rs.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonadapter" schemaLocation="classpath:schemas/nhinc/common/NhincCommonAdapter.xsd"/>
         </xsd:schema>
     </types>
     <message name="RespondingGateway_CrossGatewayQueryDeferredResultsSecuredMessage">
         <part name="RespondingGateway_CrossGatewayQueryDeferredResultsSecured" element="query:AdhocQueryResponse"/>
     </message>
     <message name="RespondingGateway_CrossGatewayQueryDeferredResponseSecuredMessage">
-        <part name="RespondingGateway_CrossGatewayQueryDeferredResponseSecured" element="rs:RegistryResponse"/>
+        <part name="RespondingGateway_CrossGatewayQueryDeferredResponseSecured" element="common:AdapterDeferredResultsResponse"/>
     </message>
      <portType name="AdapterDocQueryDeferredResultsOptionSecuredPortType">
         <operation name="RespondingGateway_CrossGatewayQueryDeferredResultsSecured">
